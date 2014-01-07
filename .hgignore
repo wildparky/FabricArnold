@@ -1,0 +1,6 @@
+syntax: glob
+*.dll
+*.exp
+*.obj
+*.lib
+.sconsign.dblite

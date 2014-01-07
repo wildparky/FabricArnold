@@ -1,0 +1,21 @@
+// FabricArnold Extension
+
+struct ArnoldRGB {
+  Float32 r;
+  Float32 g;
+  Float32 b;
+};
+
+struct ArnoldRGBA {
+  Float32 r;
+  Float32 g;
+  Float32 b;
+  Float32 a;
+};
+
+alias ArnoldRGB Color;
+
+function Color AiColor(Float32 f) = "fe_AiColor";
+function Color AiColorCreate(Float32 r, Float32 g, Float32 b) = "fe_AiColorCreate";
+//function ArnoldRGBA AiRGBACreate(Float32 r, Float32 g, Float32 b, Float32 a) = "fe_AiRGBACreate";
+

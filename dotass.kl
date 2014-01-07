@@ -1,0 +1,8 @@
+// FabricArnold Extension
+
+function Integer AiASSWrite(String filename) = "fe_AiASSWrite";
+function Integer AiASSWrite(String filename, Integer mask) = "fe_AiASSWrite_masked";
+function Integer AiASSWrite(String filename, Integer mask, Boolean open_procs) = "fe_AiASSWrite_masked_procs";
+function Integer AiASSLoad(String filename) = "fe_AiASSLoad";
+function Integer AiASSLoad(String filename, Integer mask) = "fe_AiASSLoad_masked";
+

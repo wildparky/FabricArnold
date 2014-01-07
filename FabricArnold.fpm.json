@@ -1,0 +1,11 @@
+{
+  "libs": "FabricArnold",
+  "code": [
+      "render.kl",
+      "nodes.kl",
+      "array.kl",
+      "color.kl",
+      "universe.kl",
+      "dotass.kl"
+   ]
+}

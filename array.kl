@@ -1,0 +1,51 @@
+// FabricArnold Extension
+
+struct ArnoldArray{
+  Data array;
+};
+
+function ArnoldArray AiArray(UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArray";
+function ArnoldArray AiArrayAllocate(UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArrayAllocate";
+function AiArrayDestroy(ArnoldArray array) = "fe_AiArrayDestroy";
+// function ArnoldArray AiArrayConvert(UInt32 nelements, Byte nkeys, Byte type, Data data) = "fe_AiArrayConvert";
+// function ArnoldArray AiArrayModify(ArnoldArray array, UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArrayModify";
+// function ArnoldArray AiArrayCopy(ArnoldArray array) = "fe_AiArrayCopy";
+// function Boolean AiArraySetKey(ArnoldArray array, Byte key, Data data) = "fe_AiArraySetKey";
+// function Vec3 AiArrayInterpolatePnt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolatePnt";
+// function Vec3 AiArrayInterpolateVec(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateVec";
+// function Color AiArrayInterpolateRGB(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGB";
+// function Color AiArrayInterpolateRGBA(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGBA";
+// function Float32 AiArrayInterpolateFlt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateFlt";
+// function AiArrayInterpolateMtx(ArnoldArray array, Float32 time, UInt32 idx, Mat44 result) = "fe_AiArrayInterpolateMtx";
+
+// array getters
+function Boolean AiArrayGetBool(ArnoldArray a, UInt32 i) = "fe_AiArrayGetBool";
+function Byte AiArrayGetByte(ArnoldArray a, UInt32 i) = "fe_AiArrayGetByte";
+function Integer AiArrayGetInt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetInt";
+function UInt8 AiArrayGetUInt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetUInt";
+function Float32 AiArrayGetFlt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetFlt";
+// function Color AiArrayGetRGB(ArnoldArray a, UInt32 i) = "fe_AiArrayGetRGB";
+// function Color AiArrayGetRGBA(ArnoldArray a, UInt32 i) = "fe_AiArrayGetRGBA";
+// function Vec3 AiArrayGetPnt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPnt";
+// function Vec2 AiArrayGetPnt2(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPnt2";
+// function Vec3 AiArrayGetVec(ArnoldArray a, UInt32 i) = "fe_AiArrayGetVec";
+// function AiArrayGetMtx(ArnoldArray a, UInt32 i, Mat44 out) = "fe_AiArrayGetMtx";
+// function String AiArrayGetStr(ArnoldArray a, UInt32 i) = "fe_AiArrayGetStr";
+// function Data AiArrayGetPtr(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPtr";
+// function ArnoldArray AiArrayGetArray(ArnoldArray a, UInt32 i) = "fe_AiArrayGetArray";
+
+// array setters
+// function AiArraySetBool(ArnoldArray a, UInt32 i, Boolean val) = "fe_AiArraySetBool";
+// function AiArraySetByte(ArnoldArray a, UInt32 i, Byte val) = "fe_AiArraySetByte";
+// function AiArraySetInt(ArnoldArray a, UInt32 i, Integer val) = "fe_AiArraySetInt";
+// function AiArraySetUInt(ArnoldArray a, UInt32 i, UInt8 val) = "fe_AiArraySetUInt";
+// function AiArraySetFlt(ArnoldArray a, UInt32 i, Float32 val) = "fe_AiArraySetFlt";
+// function AiArraySetRGB(ArnoldArray a, UInt32 i, Color val) = "fe_AiArraySetRGB";
+// function AiArraySetRGBA(ArnoldArray a, UInt32 i, Color val) = "fe_AiArraySetRGBA";
+// function AiArraySetPnt(ArnoldArray a, UInt32 i, Vec3 val) = "fe_AiArraySetPnt";
+// function AiArraySetPnt2(ArnoldArray a, UInt32 i, Vec2 val) = "fe_AiArraySetPnt2";
+// function AiArraySetVec(ArnoldArray a, UInt32 i, Vec3 val) = "fe_AiArraySetVec";
+// function AiArraySetMtx(ArnoldArray a, UInt32 i, Mat44 val) = "fe_AiArraySetMtx";
+// function AiArraySetStr(ArnoldArray a, UInt32 i, String val) = "fe_AiArraySetStr";
+// function AiArraySetPtr(ArnoldArray a, UInt32 i, Data val) = "fe_AiArraySetPtr";
+// function AiArraySetArray(ArnoldArray a, UInt32 i, ArnoldArray val) = "fe_AiArraySetArray";

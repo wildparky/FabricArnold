@@ -1,0 +1,29 @@
+// FabricArnold Extension
+
+// rendering modes
+const Integer AI_RENDER_MODE_CAMERA = 0x00;
+const Integer AI_RENDER_MODE_FREE = 0x00;
+
+// error codes
+const Integer AI_SUCCESS = 0x00;
+const Integer AI_ABORT = 0x01;
+const Integer AI_ERROR_WRONG_OUTPUT = 0x02;
+const Integer AI_ERROR_NO_CAMERA = 0x03;
+const Integer AI_ERROR_BAD_CAMERA = 0x04;
+const Integer AI_ERROR_VALIDATION = 0x05;
+const Integer AI_ERROR_RENDER_REGION = 0x06;
+const Integer AI_ERROR_OUTPUT_EXISTS = 0x07;
+const Integer AI_ERROR_OPENING_FILE = 0x08;
+const Integer AI_INTERRUPT = 0x09;
+const Integer AI_ERROR_UNRENDERABLE_SCENEGRAPH = 0x0A;
+const Integer AI_ERROR_NO_OUTPUTS = 0x0B;
+const Integer AI_ERROR = -1;
+
+function AiBegin() = "fe_AiBegin";
+function AiEnd() = "fe_AiEnd";
+function Integer AiRender(Integer mode) = "fe_AiRender";
+function AiRenderAbort() = "fe_AiRenderAbort";
+function AiRenderInterrupt() = "fe_AiRenderInterrupt";
+function Boolean AiRendering() = "fe_AiRendering";
+
+
