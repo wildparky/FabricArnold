@@ -33,12 +33,17 @@ FABRIC_EXT_EXPORT KL::Integer fe_AiUniverseGetNumLights()
    return AiUniverseGetNumLights();
 }
 
-// array of arnold nodes?
-// FABRIC_EXT_EXPORT void fe_AiUniverseGetLights(
-//    ArnoldNode** node)
-// {
-//    AtNode* nodes = AiUniverseGetLights();
-// }
+FABRIC_EXT_EXPORT void fe_AiUniverseGetLights(
+   KL::VariableArray<ArnoldNode>& lights)
+{
+   AtNode** nodes = AiUniverseGetLights();
+   int nbLights = AiUniverseGetNumLights();
+   lights.resize(nbLights);
+   for (int i=0; i<nbLights; i++)
+   {
+      lights[i].node = nodes[i];
+   }
+}
 
 FABRIC_EXT_EXPORT KL::Integer fe_AiUniverseGetNumGObjects()
 {

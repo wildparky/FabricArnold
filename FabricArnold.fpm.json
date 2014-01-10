@@ -4,6 +4,7 @@
       "render.kl",
       "nodes.kl",
       "array.kl",
+      "matrix.kl",
       "color.kl",
       "universe.kl",
       "dotass.kl"

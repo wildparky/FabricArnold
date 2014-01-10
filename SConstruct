@@ -14,6 +14,7 @@ Import('fabricBuildEnv')
 
 fabricBuildEnv.Extension('FabricArnold',
     ['FabricArnold.cpp',
+    'matrix.cpp',
     'render.cpp',
     'nodes.cpp',
     'array.cpp',

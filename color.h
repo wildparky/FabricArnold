@@ -1,3 +1,6 @@
+#ifndef COLOR_H
+#define COLOR_H
+
 #include <Fabric/EDK/EDK.h>
 
 #include <ai.h>
@@ -16,3 +19,5 @@ FABRIC_EXT_KL_STRUCT( ArnoldRGBA, {
   KL::Float32 b;
   KL::Float32 a;
 });
+
+#endif

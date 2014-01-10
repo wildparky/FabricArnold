@@ -7,8 +7,7 @@ function ArnoldNode AiUniverseGetOptions() = "fe_AiUniverseGetOptions";
 function ArnoldNode AiUniverseGetCamera() = "fe_AiUniverseGetCamera";
 //function BBox AiUniverseGetSceneBounds() = "fe_AiUniverseGetSceneBounds";
 function Integer AiUniverseGetNumLights() = "fe_AiUniverseGetNumLights";
-// don't know how to do an array of arnold nodes
-//function ArnoldNode[] AiUniverseGetLights() = "fe_AiUniverseGetLights";
+function ArnoldNode[] AiUniverseGetLights() = "fe_AiUniverseGetLights";
 function Integer AiUniverseGetNumGObjects() = "fe_AiUniverseGetNumGObjects";
 //function Undefined AiUniverseGetNodeIterator(UInt32 node_mask) = "fe_AiUniverseGetNodeIterator";
 //function Undefined AiUniverseGetNodeEntryIterator(UInt32 node_mask) = "fe_AiUniverseGetNodeEntryIterator";

@@ -1,5 +1,7 @@
 #include "nodes.h"
 #include "array.h"
+#include "color.h"
+#include "matrix.h"
 
 using namespace Fabric::EDK;
 
@@ -216,6 +218,16 @@ FABRIC_EXT_EXPORT void fe_AiNodeSetArray(
    AiNodeSetArray(node.node, param.data(), array.array);
 }
 
+FABRIC_EXT_EXPORT void fe_AiNodeSetMatrix(
+   ArnoldNode& node,
+   const KL::String& param,
+   ArnoldMatrix& matrix)
+{
+   AtMatrix m;
+   CopyMatrix(matrix, m);
+   AiNodeSetMatrix(node.node, param.data(), m);
+}
+
 // node parameter reader functions
 
 FABRIC_EXT_EXPORT KL::Byte fe_AiNodeGetByte(
@@ -253,26 +265,28 @@ FABRIC_EXT_EXPORT KL::Float32 fe_AiNodeGetFlt(
    return AiNodeGetFlt(node.node, param.data());
 }
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetRGB(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    const KL::Float32 r,
-//    const KL::Float32 g,
-//    const KL::Float32 b)
-// {
-//    AiNodeGetRGB(node.node, param.data(), r, g, b);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetRGB(
+   ArnoldRGB* color,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AtRGB c = AiNodeGetRGB(node.node, param.data());
+   color->r = c.r;
+   color->g = c.g;
+   color->b = c.b;
+}
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetRGBA(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    const KL::Float32 r,
-//    const KL::Float32 g,
-//    const KL::Float32 b,
-//    const KL::Float32 a)
-// {
-//    AiNodeGetRGBA(node.node, param.data(), r, g, b, a);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetRGBA(
+   ArnoldRGBA* color,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AtRGBA c = AiNodeGetRGBA(node.node, param.data());
+   color->r = c.r;
+   color->g = c.g;
+   color->b = c.b;
+   color->a = c.a;
+}
 
 // FABRIC_EXT_EXPORT void fe_AiNodeGetVec(
 //    ArnoldNode& node,
