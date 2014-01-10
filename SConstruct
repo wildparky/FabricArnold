@@ -13,14 +13,14 @@ SConscript(os.path.join(fabricEDKPath, 'SConscript'))
 Import('fabricBuildEnv')
 
 fabricBuildEnv.Extension('FabricArnold',
-    ['FabricArnold.cpp',
-    'matrix.cpp',
-    'render.cpp',
-    'nodes.cpp',
-    'array.cpp',
-    'color.cpp',
-    'universe.cpp',
-    'dotass.cpp' ])
+    ['cpp/FabricArnold.cpp',
+    'cpp/matrix.cpp',
+    'cpp/render.cpp',
+    'cpp/nodes.cpp',
+    'cpp/array.cpp',
+    'cpp/color.cpp',
+    'cpp/universe.cpp',
+    'cpp/dotass.cpp' ])
 
 # add arnold include
 # arnold root
