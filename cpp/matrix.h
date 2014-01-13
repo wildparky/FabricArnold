@@ -8,22 +8,6 @@
 using namespace Fabric::EDK;
 
 FABRIC_EXT_KL_STRUCT( ArnoldMatrix, {
-   // KL::Float32 a00;
-   // KL::Float32 a01;
-   // KL::Float32 a02;
-   // KL::Float32 a03;
-   // KL::Float32 a10;
-   // KL::Float32 a11;
-   // KL::Float32 a12;
-   // KL::Float32 a13;
-   // KL::Float32 a20;
-   // KL::Float32 a21;
-   // KL::Float32 a22;
-   // KL::Float32 a23;
-   // KL::Float32 a30;
-   // KL::Float32 a31;
-   // KL::Float32 a32;
-   // KL::Float32 a33;
    KL::Float32 m[4][4];
 });
 

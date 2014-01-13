@@ -4,18 +4,18 @@ struct ArnoldNode {
   Data node;
 };
 
-function ArnoldNode AiNode(String name) = "fe_AiNode";
-function ArnoldNode AiNodeLookUpByName(String name) = "fe_AiNodeLookUpByName";
+function ArnoldNode AiNode(in String name) = "fe_AiNode";
+function ArnoldNode AiNodeLookUpByName(in String name) = "fe_AiNodeLookUpByName";
 function AiNodeReset(ArnoldNode node) = "fe_AiNodeReset";
 function ArnoldNode AiNodeClone(ArnoldNode node) = "fe_AiNodeClone";
 function Boolean AiNodeDestroy(ArnoldNode node) = "fe_AiNodeDestroy";
-function Boolean AiNodeIs(ArnoldNode node, String str) = "fe_AiNodeIs";
-function Boolean AiNodeDeclare(ArnoldNode node, String param, String declaration) = "fe_AiNodeDeclare";
+function Boolean AiNodeIs(ArnoldNode node, in String str) = "fe_AiNodeIs";
+function Boolean AiNodeDeclare(ArnoldNode node, in String param, in String declaration) = "fe_AiNodeDeclare";
 function Boolean AiNodeLink(ArnoldNode src, ArnoldNode target) = "fe_AiNodeLink";
-function Boolean AiNodeLinkOutput(ArnoldNode src, ArnoldNode target, String input) = "fe_AiNodeLinkOutput";
-function Boolean AiNodeUnlink(ArnoldNode node, String input) = "fe_AiNodeUnlink";
-function Boolean AiNodeIsLinked(ArnoldNode node, String input) = "fe_AiNodeIsLinked";
-function ArnoldNode AiNodeGetLink(ArnoldNode node, String input, Integer comp) = "fe_AiNodeGetLink";
+function Boolean AiNodeLinkOutput(ArnoldNode src, ArnoldNode target, in String input) = "fe_AiNodeLinkOutput";
+function Boolean AiNodeUnlink(ArnoldNode node, in String input) = "fe_AiNodeUnlink";
+function Boolean AiNodeIsLinked(ArnoldNode node, in String input) = "fe_AiNodeIsLinked";
+function ArnoldNode AiNodeGetLink(ArnoldNode node, in String input, Integer comp) = "fe_AiNodeGetLink";
 function String AiNodeGetName(ArnoldNode node) = "fe_AiNodeGetName";
 // function Undefined AiNodeGetNodeEntry(ArnoldNode node) = "fe_AiNodeGetNodeEntry";
 // function AiNodeGetParams(ArnoldNode node) = "fe_AiNodeGetParams";
@@ -39,26 +39,26 @@ function AiNodeSetVec(ArnoldNode node, String param, Float32 x, Float32 y, Float
 function AiNodeSetPnt(ArnoldNode node, String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetPnt";
 function AiNodeSetPnt2(ArnoldNode node, String param, Float32 x, Float32 y) = "fe_AiNodeSetPnt2";
 function AiNodeSetStr(ArnoldNode node, String param, String str) = "fe_AiNodeSetStr";
-function AiNodeSetPtr(ArnoldNode node, String param, Data ptr) = "fe_AiNodeSetPtr";
+function AiNodeSetPtr(ArnoldNode node, String param, ArnoldNode ptr) = "fe_AiNodeSetPtr";
 function AiNodeSetArray(ArnoldNode node, String param, ArnoldArray array) = "fe_AiNodeSetArray";
 function AiNodeSetMatrix(ArnoldNode node, String param, ArnoldMatrix matrix) = "fe_AiNodeSetMatrix";
-// function AiNodeSetAttributes(ArnoldNode node, String attributes) = "fe_AiNodeSetAttributes";
+function AiNodeSetAttributes(ArnoldNode node, String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
-function Byte AiNodeGetByte(ArnoldNode node, String param) = "fe_AiNodeGetByte";
-function Integer AiNodeGetInt(ArnoldNode node, String param) = "fe_AiNodeGetInt";
-function UInt32 AiNodeGetUInt(ArnoldNode node, String param) = "fe_AiNodeGetUInt";
-function Boolean AiNodeGetBool(ArnoldNode node, String param) = "fe_AiNodeGetBool";
-function Float32 AiNodeGetFlt(ArnoldNode node, String param) = "fe_AiNodeGetFlt";
-function ArnoldRGB AiNodeGetRGB(ArnoldNode node, String param) = "fe_AiNodeGetRGB";
-function ArnoldRGBA AiNodeGetRGBA(ArnoldNode node, String param) = "fe_AiNodeGetRGBA";
-// function Vec3 AiNodeGetVec(ArnoldNode node, String param) = "fe_AiNodeGetVec";
-// function Vec3 AiNodeGetPnt(ArnoldNode node, String param) = "fe_AiNodeGetPnt";
-// function Vec2 AiNodeGetPnt2(ArnoldNode node, String param) = "fe_AiNodeGetPnt2";
-function String AiNodeGetStr(ArnoldNode node, String param) = "fe_AiNodeGetStr";
-// function Data AiNodeGetPtr(ArnoldNode node, String param) = "fe_AiNodeGetPtr";
-// function ArnoldArray AiNodeGetArray(ArnoldNode node, String param) = "fe_AiNodeGetArray";
-// function AiNodeGetMatrix(ArnoldNode node, String param, io Mat44 matrix) = "fe_AiNodeGetMatrix";
+function Byte AiNodeGetByte(ArnoldNode node, in String param) = "fe_AiNodeGetByte";
+function Integer AiNodeGetInt(ArnoldNode node, in String param) = "fe_AiNodeGetInt";
+function UInt32 AiNodeGetUInt(ArnoldNode node, in String param) = "fe_AiNodeGetUInt";
+function Boolean AiNodeGetBool(ArnoldNode node, in String param) = "fe_AiNodeGetBool";
+function Float32 AiNodeGetFlt(ArnoldNode node, in String param) = "fe_AiNodeGetFlt";
+function ArnoldRGB AiNodeGetRGB(ArnoldNode node, in String param) = "fe_AiNodeGetRGB";
+function ArnoldRGBA AiNodeGetRGBA(ArnoldNode node, in String param) = "fe_AiNodeGetRGBA";
+function ArnoldVector AiNodeGetVec(ArnoldNode node, in String param) = "fe_AiNodeGetVec";
+function ArnoldPoint AiNodeGetPnt(ArnoldNode node, in String param) = "fe_AiNodeGetPnt";
+function ArnoldPoint2 AiNodeGetPnt2(ArnoldNode node, in String param) = "fe_AiNodeGetPnt2";
+function String AiNodeGetStr(ArnoldNode node, in String param) = "fe_AiNodeGetStr";
+function ArnoldNode AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
+function ArnoldArray AiNodeGetArray(ArnoldNode node, in String param) = "fe_AiNodeGetArray";
+function AiNodeGetMatrix(ArnoldNode node, in String param, io ArnoldMatrix matrix) = "fe_AiNodeGetMatrix";
 
 // convenience methods, not representative of the Arnold API
 
@@ -80,6 +80,7 @@ function ArnoldNode.setPtr?(in String param, in Data value) = "fe_AiNodeSetPtr";
 //function ArnoldNode.setNode?(in String param, in ArnoldNode value) = "FabricArnold_Node_setNode";
 function ArnoldNode.setArray?(in String param, in ArnoldArray value) = "fe_AiNodeSetArray";
 function ArnoldNode.setMatrix?(in String param, in ArnoldMatrix value) = "fe_AiNodeSetMatrix";
+function ArnoldNode.setAttributes?(in String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
 function Byte ArnoldNode.getByte?(in String param) = "fe_AiNodeGetByte";
@@ -89,12 +90,12 @@ function Boolean ArnoldNode.getBool?(in String param) = "fe_AiNodeGetBool";
 function Float32 ArnoldNode.getFlt?(in String param) = "fe_AiNodeGetFlt";
 function ArnoldRGB ArnoldNode.getRGB?(in String param) = "fe_AiNodeGetRGB";
 function ArnoldRGBA ArnoldNode.getRGBA?(in String param) = "fe_AiNodeGetRGBA";
-// function Vec3 ArnoldNode.getVec?(in String param) = "FabricArnold_Node_getVec";
-// function Vec3 ArnoldNode.getPnt?(in String param) = "FabricArnold_Node_getPnt";
-// function Vec2 ArnoldNode.getPnt2?(in String param) = "FabricArnold_Node_getPnt2";
+function ArnoldVector ArnoldNode.getVec?(in String param) = "fe_AiNodeGetVec";
+function ArnoldPoint ArnoldNode.getPnt?(in String param) = "fe_AiNodeGetPnt";
+function ArnoldVector2 ArnoldNode.getPnt2?(in String param) = "fe_AiNodeGetPnt2";
 function String ArnoldNode.getStr?(in String param) = "fe_AiNodeGetStr";
 // function Data ArnoldNode.getPtr(in String param) = "FabricArnold_Node_getPtr";
 // function ArnoldNode ArnoldNode.getNode(in String param) = "FabricArnold_Node_getNode";
 // function ArnoldArray ArnoldNode.getArray(in String param) = "FabricArnold_Node_getArray";
-// function Mat44 ArnoldNode.getMatrix(in String param) = "FabricArnold_Node_getMatrix";
+function ArnoldNode.getMatrix(in String param, io ArnoldMatrix matrix) = "fe_AiNodeGetMatrix";
 

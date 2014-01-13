@@ -2,6 +2,7 @@
 #include "array.h"
 #include "color.h"
 #include "matrix.h"
+#include "vector.h"
 
 using namespace Fabric::EDK;
 
@@ -205,9 +206,9 @@ FABRIC_EXT_EXPORT void fe_AiNodeSetStr(
 FABRIC_EXT_EXPORT void fe_AiNodeSetPtr(
    ArnoldNode& node,
    const KL::String& param,
-   KL::Data ptr)
+   ArnoldNode ptr)
 {
-   AiNodeSetPtr(node.node, param.data(), ptr);
+   AiNodeSetPtr(node.node, param.data(), ptr.node);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetArray(
@@ -226,6 +227,13 @@ FABRIC_EXT_EXPORT void fe_AiNodeSetMatrix(
    AtMatrix m;
    CopyMatrix(matrix, m);
    AiNodeSetMatrix(node.node, param.data(), m);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeSetAttributes(
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AiNodeSetAttributes(node.node, param.data());
 }
 
 // node parameter reader functions
@@ -288,34 +296,37 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetRGBA(
    color->a = c.a;
 }
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetVec(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    const KL::Float32 x,
-//    const KL::Float32 y,
-//    const KL::Float32 z)
-// {
-//    AiNodeGetVec(node.node, param.data(), x, y, z);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetVec(
+   ArnoldVector* vector,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AtVector v = AiNodeGetVec(node.node, param.data());
+   vector->x = v.x;
+   vector->y = v.y;
+   vector->z = v.z;
+}
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetPnt(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    const KL::Float32 x,
-//    const KL::Float32 y,
-//    const KL::Float32 z)
-// {
-//    AiNodeGetPnt(node.node, param.data(), x, y, z);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetPnt(
+   ArnoldPoint* point,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AtPoint p = AiNodeGetPnt(node.node, param.data());
+   point->x = p.x;
+   point->y = p.y;
+   point->z = p.z;
+}
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetPnt2(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    const KL::Float32 x,
-//    const KL::Float32 y)
-// {
-//    AiNodeGetPnt2(node.node, param.data(), x, y);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetPnt2(
+   ArnoldPoint2* point,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   AtPoint2 p = AiNodeGetPnt2(node.node, param.data());
+   point->x = p.x;
+   point->y = p.y;
+}
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetStr(
    KL::String& str,
@@ -325,18 +336,29 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetStr(
    str = KL::String(AiNodeGetStr(node.node, param.data()));
 }
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetPtr(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    KL::Data ptr)
-// {
-//    AiNodeGetPtr(node.node, param.data(), ptr);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetPtr(
+   ArnoldNode& ptr,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   ptr.node = (AtNode *)AiNodeGetPtr(node.node, param.data());
+}
 
-// FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
-//    ArnoldNode& node,
-//    const KL::String& param,
-//    ArnoldArray& array)
-// {
-//    AiNodeGetArray(node.node, param.data(), array.array);
-// }
+FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
+   ArnoldArray& array,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   array.array = AiNodeGetArray(node.node, param.data());
+}
+
+
+FABRIC_EXT_EXPORT void fe_AiNodeGetMatrix(
+   ArnoldNode& node,
+   const KL::String& param,
+   ArnoldMatrix& matrix)
+{
+   AtMatrix m;
+   AiNodeGetMatrix(node.node, param.data(), m);
+   CopyMatrix(m, matrix);
+}

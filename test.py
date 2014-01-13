@@ -39,8 +39,22 @@ operator entry(io Boolean active) {
 
   ArnoldMatrix m;
   AiM4Identity(m);
-  AiM4RotationX(m, 90);
+  AiM4RotationX(m, -90);
+
+  ArnoldVector v;
+  v.set(0,1,0);
+
+  //report(m);
+
   quadLight.setMatrix("matrix", m);
+
+  ArnoldPoint p;
+  p.setNull();
+
+  AiM4PointByMatrixMult(p, m, v);
+
+  report(p);
+
   ArnoldNode nodes[] = AiUniverseGetLights();
   report("Arnold light nodes...");
   for (Index i=0; i<nodes.size(); i++)

@@ -1,45 +1,26 @@
 // FabricArnold Extension
 
-// struct ArnoldMatrix{
-//   Float32 a00;
-//   Float32 a01;
-//   Float32 a02;
-//   Float32 a03;
-//   Float32 a10;
-//   Float32 a11;
-//   Float32 a12;
-//   Float32 a13;
-//   Float32 a20;
-//   Float32 a21;
-//   Float32 a22;
-//   Float32 a23;
-//   Float32 a30;
-//   Float32 a31;
-//   Float32 a32;
-//   Float32 a33;
-// };
-
 struct ArnoldMatrix{
   Float32 m[4][4];
 };
 
-function AiM4Identity(ArnoldMatrix mout) = "fe_AiM4Identity";
-// function AiM4Translation(ArnoldMatrix mout, Vec3 t) = "fe_AiM4Translation";
-function AiM4RotationX(ArnoldMatrix mout, Scalar x) = "fe_AiM4RotationX";
-// function AiM4RotationY(ArnoldMatrix mout, Scalar y) = "fe_AiM4RotationY";
-// function AiM4RotationZ(ArnoldMatrix mout, Scalar z) = "fe_AiM4RotationZ";
-// function AiM4Scaling(ArnoldMatrix mout, Vec3 s) = "fe_AiM4Scaling";
-// function AiM4Frame(ArnoldMatrix mout, Vec3 o, Vec3 u, Vec3 v, Vec3 w) = "fe_AiM4Frame";
-// function AiM4PointByMatrixMult(Vec3 pout, ArnoldMatrix m, Vec3 pin) = "fe_AiM4PointByMatrixMult";
-// function AiM4HPointByMatrixMult(Vec3 pout, ArnoldMatrix m, Vec3 pin) = "fe_AiM4HPointByMatrixMult";
-// function AiM4VectorByMatrixMult(Vec3 vout, ArnoldMatrix m, Vec3 vin) = "fe_AiM4VectorByMatrixMult";
-// function AiM4VectorByMatrixTMult(Vec3 vout, ArnoldMatrix m, Vec3 vin) = "fe_AiM4VectorByMatrixTMult";
-// function AiM4Mult(ArnoldMatrix mout, ArnoldMatrix ma, ArnoldMatrix mb) = "fe_AiM4Mult";
-// function AiM4Copy(ArnoldMatrix dest, ArnoldMatrix src) = "fe_AiM4Copy";
-// function AiM4Transpose(ArnoldMatrix min, ArnoldMatrix mout) = "fe_AiM4Transpose";
-// function AiM4Invert(ArnoldMatrix min, ArnoldMatrix mout) = "fe_AiM4Invert";
-// function Float64 AiM4Determinant(ArnoldMatrix m) = "fe_AiM4Determinant";
-// function AiM4Lerp(ArnoldMatrix mout, Scalar t, ArnoldMatrix ma, ArnoldMatrix mb) = "fe_AiM4Lerp";
-// function AiM4Berp(Scalar bu, Scalar bv, ArnoldMatrix m0, ArnoldMatrix m1, ArnoldMatrix m2, ArnoldMatrix mout) = "fe_AiM4Berp";
-// function Boolean AiM4IsIdentity(ArnoldMatrix m) = "fe_AiM4IsIdentity";
-// function Boolean AiM4IsSingular(ArnoldMatrix m) = "fe_AiM4IsSingular";
+function AiM4Identity(io ArnoldMatrix mout) = "fe_AiM4Identity";
+function AiM4Translation(io ArnoldMatrix mout, in ArnoldVector t) = "fe_AiM4Translation";
+function AiM4RotationX(io ArnoldMatrix mout, in Float32 x) = "fe_AiM4RotationX";
+function AiM4RotationY(io ArnoldMatrix mout, in Float32 y) = "fe_AiM4RotationY";
+function AiM4RotationZ(io ArnoldMatrix mout, in Float32 z) = "fe_AiM4RotationZ";
+function AiM4Scaling(io ArnoldMatrix mout, in ArnoldVector s) = "fe_AiM4Scaling";
+function AiM4Frame(io ArnoldMatrix mout, in ArnoldVector o, in ArnoldVector u, in ArnoldVector v, in ArnoldVector w) = "fe_AiM4Frame";
+function AiM4PointByMatrixMult(io ArnoldPoint pout, in ArnoldMatrix m, in ArnoldPoint pin) = "fe_AiM4PointByMatrixMult";
+function AiM4HPointByMatrixMult(io ArnoldHPoint pout, in ArnoldMatrix m, in ArnoldHPoint pin) = "fe_AiM4HPointByMatrixMult";
+function AiM4VectorByMatrixMult(io ArnoldVector vout, in ArnoldMatrix m, in ArnoldVector vin) = "fe_AiM4VectorByMatrixMult";
+function AiM4VectorByMatrixTMult(io ArnoldVector vout, in ArnoldMatrix m, in ArnoldVector vin) = "fe_AiM4VectorByMatrixTMult";
+function AiM4Mult(io ArnoldMatrix mout, in ArnoldMatrix ma, in ArnoldMatrix mb) = "fe_AiM4Mult";
+function AiM4Copy(io ArnoldMatrix dest, in ArnoldMatrix src) = "fe_AiM4Copy";
+function AiM4Transpose(in ArnoldMatrix min, io ArnoldMatrix mout) = "fe_AiM4Transpose";
+function AiM4Invert(in ArnoldMatrix min, io ArnoldMatrix mout) = "fe_AiM4Invert";
+function Float64 AiM4Determinant(in ArnoldMatrix m) = "fe_AiM4Determinant";
+function AiM4Lerp(io ArnoldMatrix mout, in Float32 t, in ArnoldMatrix ma, in ArnoldMatrix mb) = "fe_AiM4Lerp";
+function AiM4Berp(in Float32 bu, in Float32 bv, in ArnoldMatrix m0, in ArnoldMatrix m1, in ArnoldMatrix m2, io ArnoldMatrix mout) = "fe_AiM4Berp";
+function Boolean AiM4IsIdentity(ArnoldMatrix m) = "fe_AiM4IsIdentity";
+function Boolean AiM4IsSingular(ArnoldMatrix m) = "fe_AiM4IsSingular";

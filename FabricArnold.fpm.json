@@ -5,6 +5,7 @@
       "nodes.kl",
       "array.kl",
       "matrix.kl",
+      "vector.kl",
       "color.kl",
       "universe.kl",
       "dotass.kl"

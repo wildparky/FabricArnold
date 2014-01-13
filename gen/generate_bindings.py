@@ -1,6 +1,7 @@
 import os
 import glob
 import re
+import string
 
 arnoldInclude = "E:/library/development/solidangle/Arnold-4.0.16.2-windows/include"
 
@@ -164,19 +165,20 @@ typeMap = {
    }
 
 func_format = "function {type}{func_name}({param_list}) = \"fe_{func_name}\";"
+define_format = "const Integer {const_name} = {const_value};"
 
-def setParamListFromMatchObject(formatDict, match):
+def setParamListFromMatchObject(funcFormatDict, match):
    param_type = typeMap[match.group(1)]
    param_name = match.group(2)
 
    # comma delimiter, if this key isn't empty then add a comma
-   if formatDict["param_list"]:
-      formatDict["param_list"] += ", "
-      formatDict["param_list"] += "{0}{1}".format(param_type, param_name)
+   if funcFormatDict["param_list"]:
+      funcFormatDict["param_list"] += ", "
+      funcFormatDict["param_list"] += "{0}{1}".format(param_type, param_name)
    else:
-      formatDict["param_list"] += "{0}{1}".format(param_type, param_name)
+      funcFormatDict["param_list"] += "{0}{1}".format(param_type, param_name)
 
-   return formatDict
+   return funcFormatDict
 
 
 def main():
@@ -187,7 +189,8 @@ def main():
          print("skipping %s..." % os.path.basename(file))
          continue
 
-      formatDict = {}
+      funcFormatDict = {}
+      defineFormatDict = {}
       arnoldStructs = []
       arnoldFunctions = []
       arnoldConstants = []
@@ -198,15 +201,15 @@ def main():
       for line in lines:
 
          # functions
-         if line.startswith("AI_API"):
+         if line.startswith("AI_API") or line.startswith("inline"):
             nonConstPattern = r"^(?:AI_API)\s*(\S+)\s*(\S+)\s*\((.*?)\)"
             constPattern = r"^(?:AI_API)\s*(\S+\s{1}\S+)\s*(\S+)\s*\((.*?)\)"
             match1 = re.search(nonConstPattern, line)
             match2 = re.search(constPattern, line)
             if match1:
-               formatDict["type"] = typeMap[match1.group(1)]
-               formatDict["func_name"] = match1.group(2)
-               formatDict["param_list"] = ""
+               funcFormatDict["type"] = typeMap[match1.group(1)]
+               funcFormatDict["func_name"] = match1.group(2)
+               funcFormatDict["param_list"] = ""
                # the function might have multiple arguments
                # notice the split on ', ' the extra space was
                # confusing the regex
@@ -216,24 +219,24 @@ def main():
                      constPattern = r"^(\S+\s\S+)\s(.+)"
                      match3 = re.search(constPattern, param)
                      if match3:
-                        formatDict = setParamListFromMatchObject(formatDict, match3)
+                        funcFormatDict = setParamListFromMatchObject(funcFormatDict, match3)
                   elif param.startswith("unsigned"):
                      constPattern = r"^(\S+\s\S+)\s(.+)"
                      match3 = re.search(constPattern, param)
                      if match3:
-                        formatDict = setParamListFromMatchObject(formatDict, match3)
+                        funcFormatDict = setParamListFromMatchObject(funcFormatDict, match3)
                   else:
                      nonConstPattern = r"^(\S+)\s(.+)"
                      match3 = re.search(nonConstPattern, param)
                      if match3:
-                        formatDict = setParamListFromMatchObject(formatDict, match3)
+                        funcFormatDict = setParamListFromMatchObject(funcFormatDict, match3)
 
-               formatted = func_format.format(**formatDict)
+               formatted = func_format.format(**funcFormatDict)
                arnoldFunctions.append(formatted)
             elif match2:
-               formatDict["type"] = typeMap[match2.group(1)]
-               formatDict["func_name"] = match2.group(2)
-               formatDict["param_list"] = ""
+               funcFormatDict["type"] = typeMap[match2.group(1)]
+               funcFormatDict["func_name"] = match2.group(2)
+               funcFormatDict["param_list"] = ""
                # the function might have multiple arguments
                # notice the split on ', ' the extra space was
                # confusing the regex
@@ -243,14 +246,14 @@ def main():
                      constPattern = r"^(\S+\s\S+)\s(.+)"
                      match3 = re.search(constPattern, param)
                      if match3:
-                        formatDict = setParamListFromMatchObject(formatDict, match3)
+                        funcFormatDict = setParamListFromMatchObject(funcFormatDict, match3)
                   else:
                      nonConstPattern = r"^(\S+)\s(.+)"
                      match3 = re.search(nonConstPattern, param)
                      if match3:
-                        formatDict = setParamListFromMatchObject(formatDict, match3)
+                        funcFormatDict = setParamListFromMatchObject(funcFormatDict, match3)
 
-               formatted = func_format.format(**formatDict)
+               formatted = func_format.format(**funcFormatDict)
                arnoldFunctions.append(formatted)
 
          # structures
@@ -265,6 +268,8 @@ def main():
             pass
 
          if line.startswith("#define"):
+            defineFormatDict["const_name"] = ""
+            defineFormatDict["const_value"] = ""
             # function defines
             if ";" in line:
                continue
@@ -272,10 +277,20 @@ def main():
             constantName = re.sub(r'[\W_]+', '', split[1])
             isUpper = [letter.isupper() for letter in constantName]
             if all(isUpper[0] == item for item in isUpper):
-               arnoldConstants.append(split[1])            
+               defineFormatDict["const_name"] = split[1]
+            if isinstance(split[2], (int, long, float, complex)):
+               defineFormatDict["const_value"] = split[2]
+            else:
+               try:
+                  i = string.atoi(split[2], 0)
+                  defineFormatDict["const_value"] = split[2]
+               except ValueError:
+                  continue
+            formatted = define_format.format(**defineFormatDict)
+            arnoldConstants.append(formatted)
 
       klName = os.path.basename(file).replace(".h", ".kl")
-      outputPath = os.path.join(os.path.dirname(__file__), "gen", klName)
+      outputPath = os.path.join(os.path.dirname(__file__), klName)
 
       output = open(outputPath, "w")
       #output.write("\n")
@@ -286,8 +301,8 @@ def main():
          #print(func)
          output.write("{0}\n".format(func))
       for constant in arnoldConstants:
-         #print(constant)
-         pass
+         output.write("{0}\n".format(constant))
+
       output.close()
 
 if __name__ == '__main__':

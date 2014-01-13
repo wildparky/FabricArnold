@@ -2,22 +2,20 @@
 
 require Math;
 
-// struct ArnoldRGB {
-//   Float32 r;
-//   Float32 g;
-//   Float32 b;
-// };
+struct ArnoldRGB {
+  Float32 r;
+  Float32 g;
+  Float32 b;
+};
 
-// struct ArnoldRGBA {
-//   Float32 r;
-//   Float32 g;
-//   Float32 b;
-//   Float32 a;
-// };
+struct ArnoldRGBA {
+  Float32 r;
+  Float32 g;
+  Float32 b;
+  Float32 a;
+};
 
-alias RGB ArnoldRGB;
 alias ArnoldRGB ArnoldColor; // same as ArnoldRGB
-alias RGBA ArnoldRGBA;
 
 function ArnoldColor AiColor(Float32 f) = "fe_AiColor";
 function ArnoldColor AiColorCreate(Float32 r, Float32 g, Float32 b) = "fe_AiColorCreate";
