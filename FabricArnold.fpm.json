@@ -4,6 +4,7 @@
       "render.kl",
       "nodes.kl",
       "array.kl",
+      "params.kl",
       "matrix.kl",
       "vector.kl",
       "color.kl",

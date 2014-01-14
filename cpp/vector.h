@@ -53,6 +53,18 @@ inline void CopyVector(AtPoint* src, ArnoldPoint& dst)
    dst.z = src->z;
 }
 
+inline void CopyVector(AtPoint2& src, ArnoldPoint2& dst)
+{
+   dst.x = src.x;
+   dst.y = src.y;
+}
+
+inline void CopyVector(AtPoint2* src, ArnoldPoint2& dst)
+{
+   dst.x = src->x;
+   dst.y = src->y;
+}
+
 inline void CopyHVector(AtHPoint* src, ArnoldHPoint& dst)
 {
    dst.x = src->x;

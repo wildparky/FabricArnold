@@ -56,7 +56,7 @@ function ArnoldVector AiNodeGetVec(ArnoldNode node, in String param) = "fe_AiNod
 function ArnoldPoint AiNodeGetPnt(ArnoldNode node, in String param) = "fe_AiNodeGetPnt";
 function ArnoldPoint2 AiNodeGetPnt2(ArnoldNode node, in String param) = "fe_AiNodeGetPnt2";
 function String AiNodeGetStr(ArnoldNode node, in String param) = "fe_AiNodeGetStr";
-function ArnoldNode AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
+function Data AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
 function ArnoldArray AiNodeGetArray(ArnoldNode node, in String param) = "fe_AiNodeGetArray";
 function AiNodeGetMatrix(ArnoldNode node, in String param, io ArnoldMatrix matrix) = "fe_AiNodeGetMatrix";
 

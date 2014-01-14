@@ -308,24 +308,21 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetVec(
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetPnt(
-   ArnoldPoint* point,
+   ArnoldPoint& point,
    ArnoldNode& node,
    const KL::String& param)
 {
    AtPoint p = AiNodeGetPnt(node.node, param.data());
-   point->x = p.x;
-   point->y = p.y;
-   point->z = p.z;
+   CopyVector(p, point);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetPnt2(
-   ArnoldPoint2* point,
+   ArnoldPoint2& point,
    ArnoldNode& node,
    const KL::String& param)
 {
    AtPoint2 p = AiNodeGetPnt2(node.node, param.data());
-   point->x = p.x;
-   point->y = p.y;
+   CopyVector(p, point);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetStr(
@@ -336,12 +333,13 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetStr(
    str = KL::String(AiNodeGetStr(node.node, param.data()));
 }
 
-FABRIC_EXT_EXPORT void fe_AiNodeGetPtr(
-   ArnoldNode& ptr,
+FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetPtr(
    ArnoldNode& node,
    const KL::String& param)
 {
-   ptr.node = (AtNode *)AiNodeGetPtr(node.node, param.data());
+   KL::Data ptr = NULL;
+   ptr = AiNodeGetPtr(node.node, param.data());
+   return ptr;
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
@@ -350,8 +348,10 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
    const KL::String& param)
 {
    array.array = AiNodeGetArray(node.node, param.data());
+   array.nelements = array.array->nelements;
+   array.nkeys = array.array->nkeys;
+   array.type = array.array->type;
 }
-
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetMatrix(
    ArnoldNode& node,

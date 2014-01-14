@@ -2,6 +2,10 @@
 
 struct ArnoldArray{
   Data array;
+  UInt32 nelements;
+  Byte nkeys;
+  Byte type;
+  Byte padding;
 };
 
 function ArnoldArray AiArray(UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArray";
@@ -19,33 +23,33 @@ function AiArrayDestroy(ArnoldArray array) = "fe_AiArrayDestroy";
 // function AiArrayInterpolateMtx(ArnoldArray array, Float32 time, UInt32 idx, Mat44 result) = "fe_AiArrayInterpolateMtx";
 
 // array getters
-function Boolean AiArrayGetBool(ArnoldArray a, UInt32 i) = "fe_AiArrayGetBool";
-function Byte AiArrayGetByte(ArnoldArray a, UInt32 i) = "fe_AiArrayGetByte";
-function Integer AiArrayGetInt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetInt";
-function UInt8 AiArrayGetUInt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetUInt";
-function Float32 AiArrayGetFlt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetFlt";
-// function Color AiArrayGetRGB(ArnoldArray a, UInt32 i) = "fe_AiArrayGetRGB";
-// function Color AiArrayGetRGBA(ArnoldArray a, UInt32 i) = "fe_AiArrayGetRGBA";
-// function Vec3 AiArrayGetPnt(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPnt";
-// function Vec2 AiArrayGetPnt2(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPnt2";
-// function Vec3 AiArrayGetVec(ArnoldArray a, UInt32 i) = "fe_AiArrayGetVec";
-// function AiArrayGetMtx(ArnoldArray a, UInt32 i, Mat44 out) = "fe_AiArrayGetMtx";
-// function String AiArrayGetStr(ArnoldArray a, UInt32 i) = "fe_AiArrayGetStr";
-// function Data AiArrayGetPtr(ArnoldArray a, UInt32 i) = "fe_AiArrayGetPtr";
-// function ArnoldArray AiArrayGetArray(ArnoldArray a, UInt32 i) = "fe_AiArrayGetArray";
+function Boolean AiArrayGetBool(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetBool";
+function Byte AiArrayGetByte(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetByte";
+function Integer AiArrayGetInt(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetInt";
+function UInt32 AiArrayGetUInt(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetUInt";
+function Float32 AiArrayGetFlt(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetFlt";
+function ArnoldRGB AiArrayGetRGB(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetRGB";
+function ArnoldRGBA AiArrayGetRGBA( in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetRGBA";
+function ArnoldPoint AiArrayGetPnt(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetPnt";
+function ArnoldPoint2 AiArrayGetPnt2(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetPnt2";
+function ArnoldVector AiArrayGetVec(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetVec";
+function AiArrayGetMtx(in ArnoldArray a, in UInt32 i, io ArnoldMatrix out) = "fe_AiArrayGetMtx";
+function String AiArrayGetStr(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetStr";
+function Data AiArrayGetPtr(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetPtr";
+// function ArnoldArray AiArrayGetArray(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetArray";
 
 // array setters
-// function AiArraySetBool(ArnoldArray a, UInt32 i, Boolean val) = "fe_AiArraySetBool";
-// function AiArraySetByte(ArnoldArray a, UInt32 i, Byte val) = "fe_AiArraySetByte";
-// function AiArraySetInt(ArnoldArray a, UInt32 i, Integer val) = "fe_AiArraySetInt";
-// function AiArraySetUInt(ArnoldArray a, UInt32 i, UInt8 val) = "fe_AiArraySetUInt";
-// function AiArraySetFlt(ArnoldArray a, UInt32 i, Float32 val) = "fe_AiArraySetFlt";
-// function AiArraySetRGB(ArnoldArray a, UInt32 i, Color val) = "fe_AiArraySetRGB";
-// function AiArraySetRGBA(ArnoldArray a, UInt32 i, Color val) = "fe_AiArraySetRGBA";
-// function AiArraySetPnt(ArnoldArray a, UInt32 i, Vec3 val) = "fe_AiArraySetPnt";
-// function AiArraySetPnt2(ArnoldArray a, UInt32 i, Vec2 val) = "fe_AiArraySetPnt2";
-// function AiArraySetVec(ArnoldArray a, UInt32 i, Vec3 val) = "fe_AiArraySetVec";
-// function AiArraySetMtx(ArnoldArray a, UInt32 i, Mat44 val) = "fe_AiArraySetMtx";
-// function AiArraySetStr(ArnoldArray a, UInt32 i, String val) = "fe_AiArraySetStr";
-// function AiArraySetPtr(ArnoldArray a, UInt32 i, Data val) = "fe_AiArraySetPtr";
+function AiArraySetBool(io ArnoldArray a, in UInt32 i, in Boolean val) = "fe_AiArraySetBool";
+function AiArraySetByte(io ArnoldArray a, in UInt32 i, in Byte val) = "fe_AiArraySetByte";
+function AiArraySetInt(io ArnoldArray a, in UInt32 i, in Integer val) = "fe_AiArraySetInt";
+function AiArraySetUInt(io ArnoldArray a, in UInt32 i, in UInt8 val) = "fe_AiArraySetUInt";
+function AiArraySetFlt(io ArnoldArray a, in UInt32 i, in Float32 val) = "fe_AiArraySetFlt";
+function AiArraySetRGB(io ArnoldArray a, in UInt32 i, in ArnoldRGB val) = "fe_AiArraySetRGB";
+function AiArraySetRGBA(io ArnoldArray a, in UInt32 i, in ArnoldRGBA val) = "fe_AiArraySetRGBA";
+// function AiArraySetPnt(io ArnoldArray a, in UInt32 i, in ArnoldPoint val) = "fe_AiArraySetPnt";
+// function AiArraySetPnt2(io ArnoldArray a, in UInt32 i, in ArnoldPoint val) = "fe_AiArraySetPnt2";
+// function AiArraySetVec(io ArnoldArray a, in UInt32 i, in ArnoldVector val) = "fe_AiArraySetVec";
+// function AiArraySetMtx(io ArnoldArray a, in UInt32 i, in ArnoldMatrix val) = "fe_AiArraySetMtx";
+function AiArraySetStr(io ArnoldArray a, in UInt32 i, in String val) = "fe_AiArraySetStr";
+// function AiArraySetPtr(io ArnoldArray a, in UInt32 i, in Data val) = "fe_AiArraySetPtr";
 // function AiArraySetArray(ArnoldArray a, UInt32 i, ArnoldArray val) = "fe_AiArraySetArray";

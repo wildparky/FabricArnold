@@ -17,6 +17,28 @@ require FabricArnold;
 
 operator entry(io Boolean active) {
   AiBegin();
+
+  ArnoldNode options = AiUniverseGetOptions();
+  AiNodeSetInt(options, "AA_samples", 1);
+
+  ArnoldNode driver = AiNode("driver_tiff");
+  AiNodeSetStr(driver, "name", "mydriver");
+  AiNodeSetStr(driver, "filename", "scene1.tiff");
+
+  ArnoldNode filter = AiNode("gaussian_filter");
+  AiNodeSetStr(filter, "name", "myfilter");
+
+  ArnoldArray outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING);
+  AiArraySetStr(outputs_array, 0, "RGB RGB myfilter mydriver");
+  AiNodeSetArray(options, "outputs", outputs_array);
+
+  ArnoldArray outs = AiNodeGetArray(options, "outputs");
+  report(outs.nelements);
+  for(Index i=0; i<outs.nelements; i++)
+  {
+    report(AiArrayGetStr(outs, i));
+  }
+
   report("Testing FabricArnold KL extension!");
   ArnoldNode n = AiNode("sphere");
   AiNodeSetStr(n, "name", "mySphere");
