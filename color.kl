@@ -2,13 +2,15 @@
 
 require Math;
 
-struct AtRGB {
+struct AtRGB
+{
   Float32 r;
   Float32 g;
   Float32 b;
 };
 
-struct AtRGBA {
+struct AtRGBA
+{
   Float32 r;
   Float32 g;
   Float32 b;
