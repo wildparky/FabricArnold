@@ -72,7 +72,7 @@ FABRIC_EXT_EXPORT KL::Float32 fe_AiArrayGetFlt(
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetRGB(
-   ARGB& color,
+   AtRGB& color,
    ArnoldArray a,
    const KL::UInt32 i)
 {
@@ -88,30 +88,27 @@ FABRIC_EXT_EXPORT void fe_AiArrayGetRGBA(
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetPnt(
-   ArnoldPoint& point,
+   AtPoint& point,
    ArnoldArray a,
    const KL::UInt32 i)
 {
-   AtPoint p = AiArrayGetPnt(a.array, i);
-   CopyVector(p, point);
+   point = AiArrayGetPnt(a.array, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetPnt2(
-   ArnoldPoint2& point,
+   AtPoint2& point,
    ArnoldArray a,
    const KL::UInt32 i)
 {
-   AtPoint2 p = AiArrayGetPnt2(a.array, i);
-   CopyVector(p, point);
+   point = AiArrayGetPnt2(a.array, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetVec(
-   ArnoldVector& vector,
+   AtVector& vector,
    ArnoldArray a,
    const KL::UInt32 i)
 {
-   AtVector v = AiArrayGetVec(a.array, i);
-   CopyVector(v, vector);
+   vector = AiArrayGetVec(a.array, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetMtx(

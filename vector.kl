@@ -1,28 +1,27 @@
 // FabricArnold Extension
 
 require Math;
-// struct ArnoldPoint{
-//   Float32 x;
-//   Float32 y;
-//   Float32 z;
-// };
 
-// struct ArnoldPoint2{
-//   Float32 x;
-//   Float32 y;
-// };
+struct AtPoint
+{
+  Float32 x;
+  Float32 y;
+  Float32 z;
+};
 
-alias Vec3 ArnoldPoint;
-alias Vec2 ArnoldPoint2;
-alias ArnoldPoint ArnoldVector;
-alias ArnoldPoint2 ArnoldVector2;
-alias Vec4 ArnoldHPoint;
+struct AtPoint2
+{
+  Float32 x;
+  Float32 y;
+};
 
-// function ArnoldPoint +(ArnoldPoint a, ArnoldPoint b)
-// {
-//   ArnoldPoint temp;
-//   temp.x = a.x + b.x;
-//   temp.y = a.y + b.y;
-//   temp.z = a.z  + b.z;
-//   return temp;
-// }
+struct AtHPoint
+{
+  Float32 x;
+  Float32 y;
+  Float32 z;
+  Float32 w;
+};
+
+alias AtPoint AtVector;
+alias AtPoint2 AtVector2;

@@ -13,10 +13,10 @@ FABRIC_EXT_EXPORT void fe_AiM4Identity(
 
 FABRIC_EXT_EXPORT void fe_AiM4Translation(
    ArnoldMatrix& mout,
-   ArnoldVector* t)
+   AtVector* t)
 {
    AtMatrix m;
-   AiM4Translation(m, (AtVector *)t);
+   AiM4Translation(m, t);
    CopyMatrix(m, mout);
 }
 
@@ -49,75 +49,63 @@ FABRIC_EXT_EXPORT void fe_AiM4RotationZ(
 
 FABRIC_EXT_EXPORT void fe_AiM4Scaling(
    ArnoldMatrix& mout,
-   ArnoldVector* s)
+   AtVector* s)
 {
    AtMatrix m;
-   AiM4Scaling(m, (AtVector *)s);
+   AiM4Scaling(m, s);
    CopyMatrix(m, mout);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4Frame(
    ArnoldMatrix& mout,
-   ArnoldVector* o,
-   ArnoldVector* u,
-   ArnoldVector* v,
-   ArnoldVector* w)
+   AtVector* o,
+   AtVector* u,
+   AtVector* v,
+   AtVector* w)
 {
    AtMatrix m;
-   AiM4Frame(m,
-      (AtVector *)o,
-      (AtVector *)u,
-      (AtVector *)v,
-      (AtVector *)w);
+   AiM4Frame(m, o, u, v, w);
    CopyMatrix(m, mout);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4PointByMatrixMult(
-   ArnoldPoint& pout,
+   AtPoint* pout,
    ArnoldMatrix m,
-   ArnoldPoint* pin)
+   AtPoint* pin)
 {
    AtMatrix mat;
-   AtPoint* pnt;
    CopyMatrix(m, mat);
-   AiM4PointByMatrixMult(pnt, mat, (AtPoint *)pin);
-   CopyVector(pnt, pout);
+   AiM4PointByMatrixMult(pout, mat, pin);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4HPointByMatrixMult(
-   ArnoldHPoint& pout,
+   AtHPoint* pout,
    ArnoldMatrix m,
-   ArnoldHPoint* pin)
+   AtHPoint* pin)
 {
    AtMatrix mat;
-   AtHPoint* pnt;
    CopyMatrix(m, mat);
-   AiM4HPointByMatrixMult(pnt, mat, (AtHPoint *)pin);
-   CopyHVector(pnt, pout);
+   AiM4HPointByMatrixMult(pout, mat, pin);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4VectorByMatrixMult(
-   ArnoldVector& vout,
+   AtVector* vout,
    ArnoldMatrix m,
-   ArnoldVector* vin)
+   AtVector* vin)
 {
    AtMatrix mat;
-   AtVector* vec;
    CopyMatrix(m, mat);
-   AiM4VectorByMatrixMult(vec, mat, (AtPoint *)vin);
-   CopyVector(vec, vout);
+   AiM4VectorByMatrixMult(vout, mat, vin);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4VectorByMatrixTMult(
-   ArnoldVector& vout,
+   AtVector* vout,
    ArnoldMatrix m,
-   ArnoldVector* vin)
+   AtVector* vin)
 {
    AtMatrix mat;
-   AtVector* vec;
    CopyMatrix(m, mat);
-   AiM4VectorByMatrixTMult(vec, mat, (AtPoint *)vin);
-   CopyVector(vec, vout);
+   AiM4VectorByMatrixTMult(vout, mat, vin);
 }
 
 FABRIC_EXT_EXPORT void fe_AiM4Mult(

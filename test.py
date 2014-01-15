@@ -66,15 +66,16 @@ operator entry(io Boolean active) {
   AiM4Identity(m);
   AiM4RotationX(m, -90);
 
-  ArnoldVector v;
-  v.set(0,1,0);
+  AtVector v;
+  v.x = 0;
+  v.y = 1;
+  v.z = 0;
 
   //report(m);
 
   quadLight.setMatrix("matrix", m);
 
-  ArnoldPoint p;
-  p.setNull();
+  AtPoint p;
 
   AiM4PointByMatrixMult(p, m, v);
 

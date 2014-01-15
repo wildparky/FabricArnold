@@ -5,16 +5,16 @@ struct ArnoldMatrix{
 };
 
 function AiM4Identity(io ArnoldMatrix mout) = "fe_AiM4Identity";
-function AiM4Translation(io ArnoldMatrix mout, in ArnoldVector t) = "fe_AiM4Translation";
+function AiM4Translation(io ArnoldMatrix mout, in AtVector t) = "fe_AiM4Translation";
 function AiM4RotationX(io ArnoldMatrix mout, in Float32 x) = "fe_AiM4RotationX";
 function AiM4RotationY(io ArnoldMatrix mout, in Float32 y) = "fe_AiM4RotationY";
 function AiM4RotationZ(io ArnoldMatrix mout, in Float32 z) = "fe_AiM4RotationZ";
-function AiM4Scaling(io ArnoldMatrix mout, in ArnoldVector s) = "fe_AiM4Scaling";
-function AiM4Frame(io ArnoldMatrix mout, in ArnoldVector o, in ArnoldVector u, in ArnoldVector v, in ArnoldVector w) = "fe_AiM4Frame";
-function AiM4PointByMatrixMult(io ArnoldPoint pout, in ArnoldMatrix m, in ArnoldPoint pin) = "fe_AiM4PointByMatrixMult";
-function AiM4HPointByMatrixMult(io ArnoldHPoint pout, in ArnoldMatrix m, in ArnoldHPoint pin) = "fe_AiM4HPointByMatrixMult";
-function AiM4VectorByMatrixMult(io ArnoldVector vout, in ArnoldMatrix m, in ArnoldVector vin) = "fe_AiM4VectorByMatrixMult";
-function AiM4VectorByMatrixTMult(io ArnoldVector vout, in ArnoldMatrix m, in ArnoldVector vin) = "fe_AiM4VectorByMatrixTMult";
+function AiM4Scaling(io ArnoldMatrix mout, in AtVector s) = "fe_AiM4Scaling";
+function AiM4Frame(io ArnoldMatrix mout, in AtVector o, in AtVector u, in AtVector v, in AtVector w) = "fe_AiM4Frame";
+function AiM4PointByMatrixMult(io AtPoint pout, in ArnoldMatrix m, in AtPoint pin) = "fe_AiM4PointByMatrixMult";
+function AiM4HPointByMatrixMult(io AtHPoint pout, in ArnoldMatrix m, in AtHPoint pin) = "fe_AiM4HPointByMatrixMult";
+function AiM4VectorByMatrixMult(io AtVector vout, in ArnoldMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixMult";
+function AiM4VectorByMatrixTMult(io AtVector vout, in ArnoldMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixTMult";
 function AiM4Mult(io ArnoldMatrix mout, in ArnoldMatrix ma, in ArnoldMatrix mb) = "fe_AiM4Mult";
 function AiM4Copy(io ArnoldMatrix dest, in ArnoldMatrix src) = "fe_AiM4Copy";
 function AiM4Transpose(in ArnoldMatrix min, io ArnoldMatrix mout) = "fe_AiM4Transpose";
