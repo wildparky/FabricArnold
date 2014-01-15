@@ -274,26 +274,19 @@ FABRIC_EXT_EXPORT KL::Float32 fe_AiNodeGetFlt(
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetRGB(
-   ArnoldRGB* color,
+   AtRGB& color,
    ArnoldNode& node,
    const KL::String& param)
 {
-   AtRGB c = AiNodeGetRGB(node.node, param.data());
-   color->r = c.r;
-   color->g = c.g;
-   color->b = c.b;
+   color = AiNodeGetRGB(node.node, param.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetRGBA(
-   ArnoldRGBA* color,
+   AtRGBA& color,
    ArnoldNode& node,
    const KL::String& param)
 {
-   AtRGBA c = AiNodeGetRGBA(node.node, param.data());
-   color->r = c.r;
-   color->g = c.g;
-   color->b = c.b;
-   color->a = c.a;
+   color = AiNodeGetRGBA(node.node, param.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetVec(

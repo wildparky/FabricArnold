@@ -49,8 +49,11 @@ operator entry(io Boolean active) {
   AiNodeSetRGB(s, "Kd_color", 1.0, 0.0, 0.0);
   AiNodeSetFlt(s, "Kd", 0.5555);
   report("Arnold shader name is '" + AiNodeGetName(s) + "'");
-  ArnoldRGB c = AiNodeGetRGB(s, "Kd_color");
+  AtRGB c = AiNodeGetRGB(s, "Kd_color");
   report(c);
+  c.g = 0.54545;
+  report(c);
+  AiNodeSetRGB(s, "Kd_color", c.r, c.g, c.b);
   ArnoldNode pointLight = AiNode("point_light");
   AiNodeSetStr(pointLight, "name", "point_light");
   AiNodeSetPnt(pointLight, "position", 0.0, 10.0, 0.0);

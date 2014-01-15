@@ -72,30 +72,19 @@ FABRIC_EXT_EXPORT KL::Float32 fe_AiArrayGetFlt(
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetRGB(
-   ArnoldRGB& color,
+   ARGB& color,
    ArnoldArray a,
    const KL::UInt32 i)
 {
    color = AiArrayGetRGB(a.array, i);
-   //AtRGB c = AiArrayGetRGB(a.array, i);
-   //CopyColor(c, color);
-   // color.r = c.r;
-   // color.g = c.g;
-   // color.b = c.b;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetRGBA(
-   ArnoldRGBA& color,
+   AtRGBA& color,
    ArnoldArray a,
    const KL::UInt32 i)
 {
    color = AiArrayGetRGBA(a.array, i);
-   //AtRGBA c = AiArrayGetRGBA(a.array, i);
-   //CopyColor(c, color);
-   // color.r = c.r;
-   // color.g = c.g;
-   // color.b = c.b;
-   // color.a = c.a;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetPnt(
@@ -196,17 +185,17 @@ FABRIC_EXT_EXPORT void fe_AiArraySetFlt(
 FABRIC_EXT_EXPORT void fe_AiArraySetRGB(
    ArnoldArray& a,
    KL::UInt32 i,
-   ArnoldRGB val)
+   AtRGB val)
 {
-   AiArraySetRGB(a.array, i, (AtRGB)val);
+   AiArraySetRGB(a.array, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetRGBA(
    ArnoldArray& a,
    KL::UInt32 i,
-   ArnoldRGBA val)
+   AtRGBA val)
 {
-   AiArraySetRGBA(a.array, i, (AtRGBA)val);
+   AiArraySetRGBA(a.array, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetStr(
