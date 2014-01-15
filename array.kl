@@ -36,7 +36,7 @@ function AtVector AiArrayGetVec(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetV
 function AiArrayGetMtx(in ArnoldArray a, in UInt32 i, io AtMatrix out) = "fe_AiArrayGetMtx";
 function String AiArrayGetStr(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetStr";
 function Data AiArrayGetPtr(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetPtr";
-// function ArnoldArray AiArrayGetArray(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetArray";
+function ArnoldArray AiArrayGetArray(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetArray";
 
 // array setters
 function AiArraySetBool(io ArnoldArray a, in UInt32 i, in Boolean val) = "fe_AiArraySetBool";
@@ -46,10 +46,10 @@ function AiArraySetUInt(io ArnoldArray a, in UInt32 i, in UInt8 val) = "fe_AiArr
 function AiArraySetFlt(io ArnoldArray a, in UInt32 i, in Float32 val) = "fe_AiArraySetFlt";
 function AiArraySetRGB(io ArnoldArray a, in UInt32 i, in AtRGB val) = "fe_AiArraySetRGB";
 function AiArraySetRGBA(io ArnoldArray a, in UInt32 i, in AtRGBA val) = "fe_AiArraySetRGBA";
-// function AiArraySetPnt(io ArnoldArray a, in UInt32 i, in AtPoint val) = "fe_AiArraySetPnt";
-// function AiArraySetPnt2(io ArnoldArray a, in UInt32 i, in AtPoint val) = "fe_AiArraySetPnt2";
-// function AiArraySetVec(io ArnoldArray a, in UInt32 i, in AtVector val) = "fe_AiArraySetVec";
-// function AiArraySetMtx(io ArnoldArray a, in UInt32 i, in AtMatrix val) = "fe_AiArraySetMtx";
+function AiArraySetPnt(io ArnoldArray a, in UInt32 i, in AtPoint val) = "fe_AiArraySetPnt";
+function AiArraySetPnt2(io ArnoldArray a, in UInt32 i, in AtPoint val) = "fe_AiArraySetPnt2";
+function AiArraySetVec(io ArnoldArray a, in UInt32 i, in AtVector val) = "fe_AiArraySetVec";
+function AiArraySetMtx(io ArnoldArray a, in UInt32 i, in AtMatrix val) = "fe_AiArraySetMtx";
 function AiArraySetStr(io ArnoldArray a, in UInt32 i, in String val) = "fe_AiArraySetStr";
-// function AiArraySetPtr(io ArnoldArray a, in UInt32 i, in Data val) = "fe_AiArraySetPtr";
-// function AiArraySetArray(ArnoldArray a, UInt32 i, ArnoldArray val) = "fe_AiArraySetArray";
+function AiArraySetPtr(io ArnoldArray a, in UInt32 i, in Data val) = "fe_AiArraySetPtr";
+function AiArraySetArray(io ArnoldArray a, in UInt32 i, in ArnoldArray val) = "fe_AiArraySetArray";

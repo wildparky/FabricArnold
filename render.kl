@@ -25,5 +25,3 @@ function Integer AiRender(Integer mode) = "fe_AiRender";
 function AiRenderAbort() = "fe_AiRenderAbort";
 function AiRenderInterrupt() = "fe_AiRenderInterrupt";
 function Boolean AiRendering() = "fe_AiRendering";
-
-

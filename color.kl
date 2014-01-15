@@ -22,4 +22,3 @@ alias AtRGB AtColor; // same as AtRGB
 function AtColor AiColor(Float32 f) = "fe_AiColor";
 function AtColor AiColorCreate(Float32 r, Float32 g, Float32 b) = "fe_AiColorCreate";
 function AtRGBA AiRGBACreate(Float32 r, Float32 g, Float32 b, Float32 a) = "fe_AiRGBACreate";
-

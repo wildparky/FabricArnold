@@ -136,6 +136,14 @@ FABRIC_EXT_EXPORT KL::Data fe_AiArrayGetPtr(
    return ptr;
 }
 
+FABRIC_EXT_EXPORT void fe_AiArrayGetArray(
+   ArnoldArray& aout,
+   ArnoldArray a,
+   KL::UInt32 i)
+{
+   aout.array = AiArrayGetArray(a.array, i);
+}
+
 // array setters
 FABRIC_EXT_EXPORT void fe_AiArraySetBool(
    ArnoldArray& a,
@@ -193,10 +201,58 @@ FABRIC_EXT_EXPORT void fe_AiArraySetRGBA(
    AiArraySetRGBA(a.array, i, val);
 }
 
+FABRIC_EXT_EXPORT void fe_AiArraySetPnt(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   AtPoint val)
+{
+   AiArraySetPnt(a.array, i, val);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArraySetPnt2(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   AtPoint2 val)
+{
+   AiArraySetPnt2(a.array, i, val);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArraySetVec(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   AtVector val)
+{
+   AiArraySetVec(a.array, i, val);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArraySetMtx(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   AtMatrix val)
+{
+   AiArraySetMtx(a.array, i, val);
+}
+
 FABRIC_EXT_EXPORT void fe_AiArraySetStr(
    ArnoldArray& a,
    KL::UInt32 i,
    const KL::String val)
 {
    AiArraySetStr(a.array, i, val.data());
+}
+
+FABRIC_EXT_EXPORT void fe_AiArraySetPtr(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   KL::Data val)
+{
+   AiArraySetPtr(a.array, i, val);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArraySetArray(
+   ArnoldArray& a,
+   KL::UInt32 i,
+   ArnoldArray val)
+{
+   AiArraySetArray(a.array, i, val.array);
 }
