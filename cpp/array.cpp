@@ -112,13 +112,11 @@ FABRIC_EXT_EXPORT void fe_AiArrayGetVec(
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetMtx(
-   ArnoldMatrix& matrix,
+   AtMatrix& matrix,
    ArnoldArray a,
    const KL::UInt32 i)
 {
-   AtMatrix m;
-   AiArrayGetMtx(a.array, i, m);
-   CopyMatrix(m, matrix);
+   AiArrayGetMtx(a.array, i, matrix);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetStr(

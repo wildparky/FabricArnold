@@ -1,26 +1,24 @@
 // FabricArnold Extension
 
-struct ArnoldMatrix{
-  Float32 m[4][4];
-};
+alias Float32 AtMatrix[4][4];
 
-function AiM4Identity(io ArnoldMatrix mout) = "fe_AiM4Identity";
-function AiM4Translation(io ArnoldMatrix mout, in AtVector t) = "fe_AiM4Translation";
-function AiM4RotationX(io ArnoldMatrix mout, in Float32 x) = "fe_AiM4RotationX";
-function AiM4RotationY(io ArnoldMatrix mout, in Float32 y) = "fe_AiM4RotationY";
-function AiM4RotationZ(io ArnoldMatrix mout, in Float32 z) = "fe_AiM4RotationZ";
-function AiM4Scaling(io ArnoldMatrix mout, in AtVector s) = "fe_AiM4Scaling";
-function AiM4Frame(io ArnoldMatrix mout, in AtVector o, in AtVector u, in AtVector v, in AtVector w) = "fe_AiM4Frame";
-function AiM4PointByMatrixMult(io AtPoint pout, in ArnoldMatrix m, in AtPoint pin) = "fe_AiM4PointByMatrixMult";
-function AiM4HPointByMatrixMult(io AtHPoint pout, in ArnoldMatrix m, in AtHPoint pin) = "fe_AiM4HPointByMatrixMult";
-function AiM4VectorByMatrixMult(io AtVector vout, in ArnoldMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixMult";
-function AiM4VectorByMatrixTMult(io AtVector vout, in ArnoldMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixTMult";
-function AiM4Mult(io ArnoldMatrix mout, in ArnoldMatrix ma, in ArnoldMatrix mb) = "fe_AiM4Mult";
-function AiM4Copy(io ArnoldMatrix dest, in ArnoldMatrix src) = "fe_AiM4Copy";
-function AiM4Transpose(in ArnoldMatrix min, io ArnoldMatrix mout) = "fe_AiM4Transpose";
-function AiM4Invert(in ArnoldMatrix min, io ArnoldMatrix mout) = "fe_AiM4Invert";
-function Float64 AiM4Determinant(in ArnoldMatrix m) = "fe_AiM4Determinant";
-function AiM4Lerp(io ArnoldMatrix mout, in Float32 t, in ArnoldMatrix ma, in ArnoldMatrix mb) = "fe_AiM4Lerp";
-function AiM4Berp(in Float32 bu, in Float32 bv, in ArnoldMatrix m0, in ArnoldMatrix m1, in ArnoldMatrix m2, io ArnoldMatrix mout) = "fe_AiM4Berp";
-function Boolean AiM4IsIdentity(ArnoldMatrix m) = "fe_AiM4IsIdentity";
-function Boolean AiM4IsSingular(ArnoldMatrix m) = "fe_AiM4IsSingular";
+function AiM4Identity(io AtMatrix mout) = "fe_AiM4Identity";
+function AiM4Translation(io AtMatrix mout, in AtVector t) = "fe_AiM4Translation";
+function AiM4RotationX(io AtMatrix mout, in Float32 x) = "fe_AiM4RotationX";
+function AiM4RotationY(io AtMatrix mout, in Float32 y) = "fe_AiM4RotationY";
+function AiM4RotationZ(io AtMatrix mout, in Float32 z) = "fe_AiM4RotationZ";
+function AiM4Scaling(io AtMatrix mout, in AtVector s) = "fe_AiM4Scaling";
+function AiM4Frame(io AtMatrix mout, in AtVector o, in AtVector u, in AtVector v, in AtVector w) = "fe_AiM4Frame";
+function AiM4PointByMatrixMult(io AtPoint pout, in AtMatrix m, in AtPoint pin) = "fe_AiM4PointByMatrixMult";
+function AiM4HPointByMatrixMult(io AtHPoint pout, in AtMatrix m, in AtHPoint pin) = "fe_AiM4HPointByMatrixMult";
+function AiM4VectorByMatrixMult(io AtVector vout, in AtMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixMult";
+function AiM4VectorByMatrixTMult(io AtVector vout, in AtMatrix m, in AtVector vin) = "fe_AiM4VectorByMatrixTMult";
+function AiM4Mult(io AtMatrix mout, in AtMatrix ma, in AtMatrix mb) = "fe_AiM4Mult";
+function AiM4Copy(io AtMatrix dest, in AtMatrix src) = "fe_AiM4Copy";
+function AiM4Transpose(in AtMatrix min, io AtMatrix mout) = "fe_AiM4Transpose";
+function AiM4Invert(in AtMatrix min, io AtMatrix mout) = "fe_AiM4Invert";
+function Float64 AiM4Determinant(in AtMatrix m) = "fe_AiM4Determinant";
+function AiM4Lerp(io AtMatrix mout, in Float32 t, in AtMatrix ma, in AtMatrix mb) = "fe_AiM4Lerp";
+function AiM4Berp(in Float32 bu, in Float32 bv, in AtMatrix m0, in AtMatrix m1, in AtMatrix m2, io AtMatrix mout) = "fe_AiM4Berp";
+function Boolean AiM4IsIdentity(AtMatrix m) = "fe_AiM4IsIdentity";
+function Boolean AiM4IsSingular(AtMatrix m) = "fe_AiM4IsSingular";

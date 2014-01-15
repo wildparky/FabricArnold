@@ -62,16 +62,15 @@ operator entry(io Boolean active) {
   AiNodeSetStr(quadLight, "name", "quad_light");
   quadLight.setFlt("intensity", 500.0);
 
-  ArnoldMatrix m;
+  AtMatrix m;
   AiM4Identity(m);
-  AiM4RotationX(m, -90);
+  //AiM4RotationY(m, -90);
 
   AtVector v;
   v.x = 0;
   v.y = 1;
   v.z = 0;
 
-  //report(m);
 
   quadLight.setMatrix("matrix", m);
 

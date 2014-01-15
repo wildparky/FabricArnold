@@ -41,7 +41,7 @@ function AiNodeSetPnt2(ArnoldNode node, String param, Float32 x, Float32 y) = "f
 function AiNodeSetStr(ArnoldNode node, String param, String str) = "fe_AiNodeSetStr";
 function AiNodeSetPtr(ArnoldNode node, String param, ArnoldNode ptr) = "fe_AiNodeSetPtr";
 function AiNodeSetArray(ArnoldNode node, String param, ArnoldArray array) = "fe_AiNodeSetArray";
-function AiNodeSetMatrix(ArnoldNode node, String param, ArnoldMatrix matrix) = "fe_AiNodeSetMatrix";
+function AiNodeSetMatrix(ArnoldNode node, String param, AtMatrix matrix) = "fe_AiNodeSetMatrix";
 function AiNodeSetAttributes(ArnoldNode node, String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
@@ -58,7 +58,7 @@ function AtPoint2 AiNodeGetPnt2(ArnoldNode node, in String param) = "fe_AiNodeGe
 function String AiNodeGetStr(ArnoldNode node, in String param) = "fe_AiNodeGetStr";
 function Data AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
 function ArnoldArray AiNodeGetArray(ArnoldNode node, in String param) = "fe_AiNodeGetArray";
-function AiNodeGetMatrix(ArnoldNode node, in String param, io ArnoldMatrix matrix) = "fe_AiNodeGetMatrix";
+function AiNodeGetMatrix(ArnoldNode node, in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
 
 // convenience methods, not representative of the Arnold API
 
@@ -79,7 +79,7 @@ function ArnoldNode.setStr?(in String param, in String value) = "fe_AiNodeSetStr
 function ArnoldNode.setPtr?(in String param, in Data value) = "fe_AiNodeSetPtr";
 //function ArnoldNode.setNode?(in String param, in ArnoldNode value) = "FabricArnold_Node_setNode";
 function ArnoldNode.setArray?(in String param, in ArnoldArray value) = "fe_AiNodeSetArray";
-function ArnoldNode.setMatrix?(in String param, in ArnoldMatrix value) = "fe_AiNodeSetMatrix";
+function ArnoldNode.setMatrix?(in String param, in AtMatrix value) = "fe_AiNodeSetMatrix";
 function ArnoldNode.setAttributes?(in String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
@@ -97,5 +97,5 @@ function String ArnoldNode.getStr?(in String param) = "fe_AiNodeGetStr";
 // function Data ArnoldNode.getPtr(in String param) = "FabricArnold_Node_getPtr";
 // function ArnoldNode ArnoldNode.getNode(in String param) = "FabricArnold_Node_getNode";
 // function ArnoldArray ArnoldNode.getArray(in String param) = "FabricArnold_Node_getArray";
-function ArnoldNode.getMatrix(in String param, io ArnoldMatrix matrix) = "fe_AiNodeGetMatrix";
+function ArnoldNode.getMatrix(in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
 

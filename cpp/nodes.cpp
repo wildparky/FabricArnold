@@ -222,11 +222,9 @@ FABRIC_EXT_EXPORT void fe_AiNodeSetArray(
 FABRIC_EXT_EXPORT void fe_AiNodeSetMatrix(
    ArnoldNode& node,
    const KL::String& param,
-   ArnoldMatrix& matrix)
+   AtMatrix& matrix)
 {
-   AtMatrix m;
-   CopyMatrix(matrix, m);
-   AiNodeSetMatrix(node.node, param.data(), m);
+   AiNodeSetMatrix(node.node, param.data(), matrix);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetAttributes(
@@ -344,9 +342,7 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
 FABRIC_EXT_EXPORT void fe_AiNodeGetMatrix(
    ArnoldNode& node,
    const KL::String& param,
-   ArnoldMatrix& matrix)
+   AtMatrix& matrix)
 {
-   AtMatrix m;
-   AiNodeGetMatrix(node.node, param.data(), m);
-   CopyMatrix(m, matrix);
+   AiNodeGetMatrix(node.node, param.data(), matrix);
 }
