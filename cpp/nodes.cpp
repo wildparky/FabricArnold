@@ -1,7 +1,6 @@
 #include "nodes.h"
 #include "array.h"
 #include "color.h"
-#include "matrix.h"
 #include "vector.h"
 
 using namespace Fabric::EDK;
