@@ -33,7 +33,7 @@ operator entry(io Boolean active) {
   AiNodeSetArray(options, "outputs", outputs_array);
 
   ArnoldArray outs = AiNodeGetArray(options, "outputs");
-  report(outs.nelements);
+
   for(Index i=0; i<outs.nelements; i++)
   {
     report(AiArrayGetStr(outs, i));
@@ -89,6 +89,22 @@ operator entry(io Boolean active) {
   }
 
   AiASSWrite("./test.ass");
+
+  //AiUniverseCacheFlush(AI_CACHE_ALL);
+  
+  AiEnd();
+  AiBegin();
+
+  AiASSLoad("./test.ass");
+
+  AtNodeIterator iter = AiUniverseGetNodeIterator(AI_NODE_ALL);
+  while (!AiNodeIteratorFinished(iter))
+  {
+    ArnoldNode nNode = AiNodeIteratorGetNext(iter);
+    report(nNode.getName());
+  }
+  AiNodeIteratorDestroy(iter);
+
   AiEnd();
   active = true;
 }

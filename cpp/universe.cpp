@@ -1,6 +1,4 @@
-#include <Fabric/EDK/EDK.h>
-
-#include <ai.h>
+#include "universe.h"
 #include "nodes.h"
 
 using namespace Fabric::EDK;
@@ -48,4 +46,30 @@ FABRIC_EXT_EXPORT void fe_AiUniverseGetLights(
 FABRIC_EXT_EXPORT KL::Integer fe_AiUniverseGetNumGObjects()
 {
    return AiUniverseGetNumGObjects();
+}
+
+FABRIC_EXT_EXPORT void fe_AiUniverseGetNodeIterator(
+   ArnoldNodeIterator& iter,
+   KL::UInt32 node_mask)
+{
+   iter.it = AiUniverseGetNodeIterator(node_mask);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeIteratorDestroy(
+   ArnoldNodeIterator& iter)
+{
+   AiNodeIteratorDestroy(iter.it);
+}
+
+FABRIC_EXT_EXPORT void  fe_AiNodeIteratorGetNext(
+   ArnoldNode& node,
+   ArnoldNodeIterator& iter)
+{
+   node.node = AiNodeIteratorGetNext(iter.it);
+}
+
+FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeIteratorFinished(
+   ArnoldNodeIterator& iter)
+{
+   return AiNodeIteratorFinished(iter.it);
 }

@@ -1,5 +1,10 @@
 // FabricArnold Extension
 
+struct AtNodeIterator
+{
+  Data it;
+};
+
 // universe methods
 function Boolean AiUniverseIsActive() = "fe_AiUniverseIsActive";
 function AiUniverseCacheFlush(Integer cache_flags) = "fe_AiUniverseCacheFlush";
@@ -9,14 +14,14 @@ function ArnoldNode AiUniverseGetCamera() = "fe_AiUniverseGetCamera";
 function Integer AiUniverseGetNumLights() = "fe_AiUniverseGetNumLights";
 function ArnoldNode[] AiUniverseGetLights() = "fe_AiUniverseGetLights";
 function Integer AiUniverseGetNumGObjects() = "fe_AiUniverseGetNumGObjects";
-//function Undefined AiUniverseGetNodeIterator(UInt32 node_mask) = "fe_AiUniverseGetNodeIterator";
+function AtNodeIterator AiUniverseGetNodeIterator(in UInt32 node_mask) = "fe_AiUniverseGetNodeIterator";
 //function Undefined AiUniverseGetNodeEntryIterator(UInt32 node_mask) = "fe_AiUniverseGetNodeEntryIterator";
 //function Undefined AiUniverseGetAOVIterator() = "fe_AiUniverseGetAOVIterator";
 
 // node iterators
-//function AiNodeIteratorDestroy(Undefined iter) = "fe_AiNodeIteratorDestroy";
-//function ArnoldNode AiNodeIteratorGetNext(Undefined iter) = "fe_AiNodeIteratorGetNext";
-//function Boolean AiNodeIteratorFinished(Undefined iter) = "fe_AiNodeIteratorFinished";
+function AiNodeIteratorDestroy(AtNodeIterator iter) = "fe_AiNodeIteratorDestroy";
+function ArnoldNode AiNodeIteratorGetNext(AtNodeIterator iter) = "fe_AiNodeIteratorGetNext";
+function Boolean AiNodeIteratorFinished(AtNodeIterator iter) = "fe_AiNodeIteratorFinished";
 
 // node entry iterators
 //function AiNodeEntryIteratorDestroy(Undefined iter) = "fe_AiNodeEntryIteratorDestroy";
