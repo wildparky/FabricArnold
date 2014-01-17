@@ -3,6 +3,7 @@
   "code": [
       "render.kl",
       "nodes.kl",
+      "node_entry.kl",
       "array.kl",
       "params.kl",
       "matrix.kl",
