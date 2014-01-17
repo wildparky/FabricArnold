@@ -1,0 +1,9 @@
+// FabricArnold Extension
+
+struct AtEnum
+{
+  Data enum;
+};
+
+function Integer AiEnumGetValue(in AtEnum enum_type, in String string) = "fe_AiEnumGetValue";
+function String AiEnumGetString(in AtEnum enum_type, in Integer index) = "fe_AiEnumGetString";
