@@ -1,4 +1,7 @@
-#include "matrix.h"
+#include <Fabric/EDK/EDK.h>
+
+#include <ai.h>
+
 #include "vector.h"
 
 using namespace Fabric::EDK;
