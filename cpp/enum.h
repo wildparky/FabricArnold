@@ -7,7 +7,7 @@
 
 struct ArnoldEnum
 {
-  AtEnum enum;
+  AtEnum aenum;
 };
 
 #endif

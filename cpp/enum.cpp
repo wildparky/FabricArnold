@@ -6,14 +6,14 @@ FABRIC_EXT_EXPORT KL::Integer fe_AiEnumGetValue(
    ArnoldEnum enum_type,
    const KL::String string)
 {
-   return AiEnumGetValue(enum_type.enum, string.data());
+   return AiEnumGetValue(enum_type.aenum, string.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiEnumGetString(
    KL::String& string,
    ArnoldEnum enum_type,
-   KL::Integer int)
+   KL::Integer index)
 {
    string = "";
-   string = AiEnumGetValue(enum_type.enum, int);
+   string = AiEnumGetString(enum_type.aenum, index);
 }
