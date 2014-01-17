@@ -91,7 +91,7 @@ operator entry(io Boolean active) {
   AiASSWrite("./test.ass");
 
   //AiUniverseCacheFlush(AI_CACHE_ALL);
-  
+
   AiEnd();
   AiBegin();
 
@@ -104,6 +104,10 @@ operator entry(io Boolean active) {
     report(nNode.getName());
   }
   AiNodeIteratorDestroy(iter);
+
+  AtNodeEntry entry = AiNodeEntryLookUp("standard");
+  report("Node Entry...");
+  report(AiNodeEntryGetTypeName(entry) + " : " + AiNodeEntryGetName(entry) + " : " + String(AiNodeEntryGetVersion(entry)));
 
   AiEnd();
   active = true;
