@@ -5,8 +5,9 @@
 
 #include <ai.h>
 
-FABRIC_EXT_KL_STRUCT( ArnoldNode, {
+struct ArnoldNode
+{
    AtNode* node;
-});
+};
 
 #endif
