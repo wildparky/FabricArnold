@@ -1,4 +1,5 @@
 #include "node_entry.h"
+#include "params.h"
 
 using namespace Fabric::EDK;
 
@@ -63,4 +64,43 @@ FABRIC_EXT_EXPORT KL::Integer fe_AiNodeEntryGetNumParams(
    ArnoldNodeEntry& nentry)
 {
    return AiNodeEntryGetNumParams(nentry.entry);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeEntryGetParameter(
+   ArnoldParamEntry& pentry,
+   ArnoldNodeEntry& nentry,
+   KL::Integer i)
+{
+   pentry.entry = AiNodeEntryGetParameter(nentry.entry, i);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeEntryLookUpParameter(
+   ArnoldParamEntry& pentry,
+   ArnoldNodeEntry& nentry,
+   const KL::String param)
+{
+   pentry.entry = AiNodeEntryLookUpParameter(nentry.entry, param.data());
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeEntryInstall(
+   KL::Integer type,
+   KL::Byte output_type,
+   const KL::String& name,
+   const KL::String& filename,
+   ArnoldNodeMethods& methods,
+   const KL::String& version)
+{
+   AiNodeEntryInstall(
+      type,
+      output_type,
+      name.data(),
+      filename.data(),
+      methods.methods,
+      version.data());
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeEntryUninstall(
+   const KL::String& name)
+{
+   AiNodeEntryUninstall(name.data());
 }

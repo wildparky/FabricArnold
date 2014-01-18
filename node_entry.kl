@@ -1,5 +1,10 @@
 // FabricArnold Extension
 
+struct AtNodeMethods
+{
+  Data methods;
+};
+
 struct AtNodeEntry
 {
   Data entry;
@@ -14,22 +19,23 @@ function String AiNodeEntryGetName(in AtNodeEntry nentry) = "fe_AiNodeEntryGetNa
 function Integer AiNodeEntryGetType(in AtNodeEntry nentry) = "fe_AiNodeEntryGetType";
 function String AiNodeEntryGetTypeName(in AtNodeEntry nentry) = "fe_AiNodeEntryGetTypeName";
 function Integer AiNodeEntryGetOutputType(in AtNodeEntry nentry) = "fe_AiNodeEntryGetOutputType";
-function String AiNodeEntryGetFilename(AtNodeEntry nentry) = "fe_AiNodeEntryGetFilename";
-function String AiNodeEntryGetVersion(AtNodeEntry nentry) = "fe_AiNodeEntryGetVersion";
-function Integer AiNodeEntryGetCount(AtNodeEntry nentry) = "fe_AiNodeEntryGetCount";
-function Integer AiNodeEntryGetNumParams(AtNodeEntry nentry) = "fe_AiNodeEntryGetNumParams";
-// function AtNodeEntry AiNodeEntryGetParameter(AtNodeEntry nentry, Integer i) = "fe_AiNodeEntryGetParameter";
-// function AtNodeEntry AiNodeEntryLookUpParameter(AtNodeEntry nentry, String param) = "fe_AiNodeEntryLookUpParameter";
+function String AiNodeEntryGetFilename(in AtNodeEntry nentry) = "fe_AiNodeEntryGetFilename";
+function String AiNodeEntryGetVersion(in AtNodeEntry nentry) = "fe_AiNodeEntryGetVersion";
+function Integer AiNodeEntryGetCount(in AtNodeEntry nentry) = "fe_AiNodeEntryGetCount";
+function Integer AiNodeEntryGetNumParams(in AtNodeEntry nentry) = "fe_AiNodeEntryGetNumParams";
+function AtParamEntry AiNodeEntryGetParameter(in AtNodeEntry nentry, in Integer i) = "fe_AiNodeEntryGetParameter";
+function AtParamEntry AiNodeEntryLookUpParameter(in AtNodeEntry nentry, in String param) = "fe_AiNodeEntryLookUpParameter";
 // function AtNodeEntry AiNodeEntryGetParamIterator(AtNodeEntry nentry) = "fe_AiNodeEntryGetParamIterator";
 // function AtNodeEntry AiNodeEntryGetMetaDataIterator(AtNodeEntry nentry, String param = NULL) = "fe_AiNodeEntryGetMetaDataIterator";
-// function AiNodeEntryInstall(Integer type, Byte output_type, String name, String filename, AtNodeEntry methods, String version) = "fe_AiNodeEntryInstall";
-// function AiNodeEntryUninstall(String name) = "fe_AiNodeEntryUninstall";
+function AiNodeEntryInstall(in Integer type, in Byte output_type, in String name, in String filename, in AtNodeMethods methods, in String version) = "fe_AiNodeEntryInstall";
+function AiNodeEntryUninstall(String name) = "fe_AiNodeEntryUninstall";
 // function AiParamIteratorDestroy(AtNodeEntry iter) = "fe_AiParamIteratorDestroy";
 // function AtNodeEntry AiParamIteratorGetNext(AtNodeEntry iter) = "fe_AiParamIteratorGetNext";
 // function Boolean AiParamIteratorFinished(AtNodeEntry iter) = "fe_AiParamIteratorFinished";
 // function AiMetaDataIteratorDestroy(AtNodeEntry iter) = "fe_AiMetaDataIteratorDestroy";
 // function AtNodeEntry AiMetaDataIteratorGetNext(AtNodeEntry iter) = "fe_AiMetaDataIteratorGetNext";
 // function Boolean AiMetaDataIteratorFinished(AtNodeEntry iter) = "fe_AiMetaDataIteratorFinished";
+
 const Integer AI_NODE_UNDEFINED = 0x0000;
 const Integer AI_NODE_OPTIONS = 0x0001;
 const Integer AI_NODE_CAMERA = 0x0002;

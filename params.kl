@@ -1,38 +1,31 @@
 // FabricArnold Extension
 
-// struct AtList {};
-// struct AtNode {};
-// struct AtParamEntry {};
-// struct AtUserParamEntry {};
+struct AtParamValue
+{
+  Data param;
+};
 
-// function String AiParamGetName(Undefined pentry) = "fe_AiParamGetName";
-// function Integer AiParamGetType(Undefined pentry) = "fe_AiParamGetType";
-// function AiParamGetDefault(Undefined pentry) = "fe_AiParamGetDefault";
-// function ArnoldEnumAiParamGetEnum(Undefined pentry) = "fe_AiParamGetEnum";
-// function String AiParamGetTypeName(Byte type) = "fe_AiParamGetTypeName";
-// function Integer AiParamGetTypeSize(Byte type) = "fe_AiParamGetTypeSize";
-// function String AiUserParamGetName(Undefined upentry) = "fe_AiUserParamGetName";
-// function Integer AiUserParamGetType(Undefined upentry) = "fe_AiUserParamGetType";
-// function Integer AiUserParamGetArrayType(Undefined upentry) = "fe_AiUserParamGetArrayType";
-// function Integer AiUserParamGetCategory(Undefined upentry) = "fe_AiUserParamGetCategory";
-// function Integer AiUserParamGetIndex(Undefined upentry) = "fe_AiUserParamGetIndex";
+struct AtParamEntry
+{
+  Data entry;
+};
 
-// function AiNodeParamByte(Undefined params, Integer varoffset, String pname, Byte pdefault) = "fe_AiNodeParamByte";
-// function AiNodeParamInt(Undefined params, Integer varoffset, String pname, Integer pdefault) = "fe_AiNodeParamInt";
-// function AiNodeParamUInt(Undefined params, Integer varoffset, String pname, UInt8 pdefault) = "fe_AiNodeParamUInt";
-// function AiNodeParamBool(Undefined params, Integer varoffset, String pname, Boolean pdefault) = "fe_AiNodeParamBool";
-// function AiNodeParamFlt(Undefined params, Integer varoffset, String pname, Scalar pdefault) = "fe_AiNodeParamFlt";
-// function AiNodeParamRGB(Undefined params, Integer varoffset, String pname, Scalar r, Scalar g, Scalar b) = "fe_AiNodeParamRGB";
-// function AiNodeParamRGBA(Undefined params, Integer varoffset, String pname, Scalar r, Scalar g, Scalar b, Scalar a) = "fe_AiNodeParamRGBA";
-// function AiNodeParamVec(Undefined params, Integer varoffset, String pname, Float64 x, Float64 y, Float64 z) = "fe_AiNodeParamVec";
-// function AiNodeParamPnt(Undefined params, Integer varoffset, String pname, Float64 x, Float64 y, Float64 z) = "fe_AiNodeParamPnt";
-// function AiNodeParamPnt2(Undefined params, Integer varoffset, String pname, Scalar x, Scalar y) = "fe_AiNodeParamPnt2";
-// function AiNodeParamStr(Undefined params, Integer varoffset, String pname, String pdefault) = "fe_AiNodeParamStr";
-// function AiNodeParamPtr(Undefined params, Integer varoffset, String pname, Data pdefault) = "fe_AiNodeParamPtr";
-// function AiNodeParamNode(Undefined params, Integer varoffset, String pname, ArnoldNode pdefault) = "fe_AiNodeParamNode";
-// function AiNodeParamArray(Undefined params, Integer varoffset, String pname, ArnoldArray pdefault) = "fe_AiNodeParamArray";
-// function AiNodeParamMtx(Undefined params, Integer varoffset, String pname, Mat44 matrix) = "fe_AiNodeParamMtx";
-// function AiNodeParamEnum(Undefined params, Integer varoffset, String pname, Integer pdefault, ArnoldEnumenum_type) = "fe_AiNodeParamEnum";
+struct AtUserParamEntry
+{
+  Data entry;
+};
+
+function String AiParamGetName(in AtParamEntry pentry) = "fe_AiParamGetName";
+function Integer AiParamGetType(in AtParamEntry pentry) = "fe_AiParamGetType";
+function AiParamGetDefault(in AtParamEntry pentry) = "fe_AiParamGetDefault";
+function AtEnum AiParamGetEnum(in AtParamEntry pentry) = "fe_AiParamGetEnum";
+function String AiParamGetTypeName(in Byte type) = "fe_AiParamGetTypeName";
+function Integer AiParamGetTypeSize(in Byte type) = "fe_AiParamGetTypeSize";
+function String AiUserParamGetName(in AtUserParamEntry upentry) = "fe_AiUserParamGetName";
+function Integer AiUserParamGetType(in AtUserParamEntry upentry) = "fe_AiUserParamGetType";
+function Integer AiUserParamGetArrayType(in AtUserParamEntry upentry) = "fe_AiUserParamGetArrayType";
+function Integer AiUserParamGetCategory(in AtUserParamEntry upentry) = "fe_AiUserParamGetCategory";
+function Integer AiUserParamGetIndex(in AtUserParamEntry upentry) = "fe_AiUserParamGetIndex";
 
 const Integer AI_TYPE_BYTE = 0x00;
 const Integer AI_TYPE_INT = 0x01;
@@ -52,6 +45,7 @@ const Integer AI_TYPE_MATRIX = 0x0E;
 const Integer AI_TYPE_ENUM = 0x0F;
 const Integer AI_TYPE_UNDEFINED = 0xFF;
 const Integer AI_TYPE_NONE = 0xFF;
+
 const Integer AI_USERDEF_UNDEFINED = 0;
 const Integer AI_USERDEF_CONSTANT = 1;
 const Integer AI_USERDEF_UNIFORM = 2;

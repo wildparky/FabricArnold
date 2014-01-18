@@ -1,13 +1,14 @@
 {
   "libs": "FabricArnold",
   "code": [
+      "matrix.kl",
+      "vector.kl",
       "render.kl",
       "nodes.kl",
       "node_entry.kl",
-      "array.kl",
       "params.kl",
-      "matrix.kl",
-      "vector.kl",
+      "enum.kl",
+      "array.kl",
       "color.kl",
       "universe.kl",
       "dotass.kl"

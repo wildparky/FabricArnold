@@ -5,6 +5,11 @@
 
 #include <ai.h>
 
+struct ArnoldNodeMethods
+{
+   AtNodeMethods* methods;
+};
+
 struct ArnoldNodeEntry
 {
    const AtNodeEntry* entry;
