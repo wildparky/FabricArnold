@@ -105,9 +105,9 @@ operator entry(io Boolean active) {
   }
   AiNodeIteratorDestroy(iter);
 
-  AtNodeEntry entry = AiNodeEntryLookUp("standard");
+  AtNodeEntry aentry = AiNodeEntryLookUp("standard");
   report("Node Entry...");
-  report(AiNodeEntryGetTypeName(entry) + " : " + AiNodeEntryGetName(entry) + " : " + String(AiNodeEntryGetVersion(entry)));
+  report(AiNodeEntryGetTypeName(aentry) + " : " + AiNodeEntryGetName(aentry) + " : " + String(AiNodeEntryGetVersion(aentry)));
 
   AiEnd();
   active = true;
