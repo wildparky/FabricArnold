@@ -3,5 +3,6 @@ syntax: glob
 *.exp
 *.obj
 *.lib
+#.tif
 .sconsign.dblite
 .git/
