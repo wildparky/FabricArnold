@@ -99,7 +99,8 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetName(
    KL::String& name,
    ArnoldNode& node)
 {
-   name = KL::String(AiNodeGetName(node.node));
+   name = "";
+   name = AiNodeGetName(node.node);
 }
 
 // node parameter writer functions
