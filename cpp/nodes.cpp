@@ -206,9 +206,17 @@ FABRIC_EXT_EXPORT void fe_AiNodeSetStr(
 FABRIC_EXT_EXPORT void fe_AiNodeSetPtr(
    ArnoldNode& node,
    const KL::String& param,
-   ArnoldNode ptr)
+   KL::Data ptr)
 {
-   AiNodeSetPtr(node.node, param.data(), ptr.node);
+   AiNodeSetPtr(node.node, param.data(), ptr);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeSetNode(
+   ArnoldNode& node,
+   const KL::String& param,
+   ArnoldNode& value)
+{
+   AiNodeSetPtr(node.node, param.data(), value.node);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetArray(

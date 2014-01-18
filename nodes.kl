@@ -28,21 +28,22 @@ function String AiNodeGetName(ArnoldNode node) = "fe_AiNodeGetName";
 // function Boolean AiUserParamIteratorFinished(Undefined iter) = "fe_AiUserParamIteratorFinished";
 
 // node parameter writer functions
-function AiNodeSetByte(ArnoldNode node, String param, Byte val) = "fe_AiNodeSetByte";
-function AiNodeSetInt(ArnoldNode node, String param, Integer val) = "fe_AiNodeSetInt";
-function AiNodeSetUInt(ArnoldNode node, String param, UInt32 val) = "fe_AiNodeSetUInt";
-function AiNodeSetBool(ArnoldNode node, String param, Boolean val) = "fe_AiNodeSetBool";
-function AiNodeSetFlt(ArnoldNode node, String param, Float32 val) = "fe_AiNodeSetFlt";
-function AiNodeSetRGB(ArnoldNode node, String param, Float32 r, Float32 g, Float32 b) = "fe_AiNodeSetRGB";
-function AiNodeSetRGBA(ArnoldNode node, String param, Float32 r, Float32 g, Float32 b, Float32 a) = "fe_AiNodeSetRGBA";
-function AiNodeSetVec(ArnoldNode node, String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetVec";
-function AiNodeSetPnt(ArnoldNode node, String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetPnt";
-function AiNodeSetPnt2(ArnoldNode node, String param, Float32 x, Float32 y) = "fe_AiNodeSetPnt2";
-function AiNodeSetStr(ArnoldNode node, String param, String str) = "fe_AiNodeSetStr";
-function AiNodeSetPtr(ArnoldNode node, String param, ArnoldNode ptr) = "fe_AiNodeSetPtr";
-function AiNodeSetArray(ArnoldNode node, String param, ArnoldArray array) = "fe_AiNodeSetArray";
-function AiNodeSetMatrix(ArnoldNode node, String param, AtMatrix matrix) = "fe_AiNodeSetMatrix";
-function AiNodeSetAttributes(ArnoldNode node, String attributes) = "fe_AiNodeSetAttributes";
+function AiNodeSetByte(ArnoldNode node, in String param, in Byte val) = "fe_AiNodeSetByte";
+function AiNodeSetInt(ArnoldNode node, in String param, in Integer val) = "fe_AiNodeSetInt";
+function AiNodeSetUInt(ArnoldNode node, in String param, in UInt32 val) = "fe_AiNodeSetUInt";
+function AiNodeSetBool(ArnoldNode node, in String param, in Boolean val) = "fe_AiNodeSetBool";
+function AiNodeSetFlt(ArnoldNode node, in String param, in Float32 val) = "fe_AiNodeSetFlt";
+function AiNodeSetRGB(ArnoldNode node, in String param, in Float32 r, in Float32 g, in Float32 b) = "fe_AiNodeSetRGB";
+function AiNodeSetRGBA(ArnoldNode node, in String param, in Float32 r, in Float32 g, in Float32 b, in Float32 a) = "fe_AiNodeSetRGBA";
+function AiNodeSetVec(ArnoldNode node, in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetVec";
+function AiNodeSetPnt(ArnoldNode node, in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetPnt";
+function AiNodeSetPnt2(ArnoldNode node, in String param, in Float32 x, in Float32 y) = "fe_AiNodeSetPnt2";
+function AiNodeSetStr(ArnoldNode node, in String param, in String str) = "fe_AiNodeSetStr";
+function AiNodeSetPtr(ArnoldNode node, in String param, in Data ptr) = "fe_AiNodeSetPtr";
+function AiNodeSetNode(ArnoldNode node, in String param, in ArnoldNode value) = "fe_AiNodeSetNode";
+function AiNodeSetArray(ArnoldNode node, in String param, in ArnoldArray array) = "fe_AiNodeSetArray";
+function AiNodeSetMatrix(ArnoldNode node, in String param, in AtMatrix matrix) = "fe_AiNodeSetMatrix";
+function AiNodeSetAttributes(ArnoldNode node, in String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
 function Byte AiNodeGetByte(ArnoldNode node, in String param) = "fe_AiNodeGetByte";
@@ -74,7 +75,7 @@ function ArnoldNode.setPnt?(in String param, in Float32 x, in Float32 y, in Floa
 function ArnoldNode.setPnt2?(in String param, in Float32 x, in Float32 y) = "fe_AiNodeSetPnt2";
 function ArnoldNode.setStr?(in String param, in String value) = "fe_AiNodeSetStr";
 function ArnoldNode.setPtr?(in String param, in Data value) = "fe_AiNodeSetPtr";
-//function ArnoldNode.setNode?(in String param, in ArnoldNode value) = "FabricArnold_Node_setNode";
+function ArnoldNode.setNode?(in String param, in ArnoldNode value) = "fe_AiNodeSetNode";
 function ArnoldNode.setArray?(in String param, in ArnoldArray value) = "fe_AiNodeSetArray";
 function ArnoldNode.setMatrix?(in String param, in AtMatrix value) = "fe_AiNodeSetMatrix";
 function ArnoldNode.setAttributes?(in String attributes) = "fe_AiNodeSetAttributes";
