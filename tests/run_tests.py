@@ -1,8 +1,10 @@
 #!/usr/bin/env python
-# run all tests in tests folder
+# run all tests
+# TODO: allow a specific test to be run
 
 import os
 import sys
+import imgdiff
 
 # append arnold bin to path
 arnoldBin = "E:/library/development/solidangle/Arnold-4.0.16.2-windows/bin"
@@ -23,14 +25,26 @@ else:
 # for each test_#### directory, run the test
 for d in os.listdir(os.getcwd()):
     if os.path.isdir(d):
+
+        # generate reference image
         arnoldPythonTest = os.path.join(os.getcwd(), d, "reference.py")
         if os.path.exists(arnoldPythonTest):
             execfile(arnoldPythonTest)
         else:
             sys.exit(1)
+
+        # generate image made from kl bindings
         klExtTest = os.path.join(os.getcwd(), d, "test.py")
         if os.path.exists(klExtTest):
             execfile(klExtTest)
         else:
             sys.exit(1)
+
+        # run difference test
+        if imgdiff.main(d):
+            print("[FabricArnold::TestSuite] {0} failed!".format(testNumber))
+        else:
+            print("[FabricArnold::TestSuite] {0} passed!".format(testNumber))
+
+
 

@@ -5,7 +5,7 @@ import os
 from arnold import *
 
 testNumber = "test_0001"
-print("[FabricArnold::TestSuite] Generating reference image for {0}".format(testNumber))
+print("[FabricArnold::TestSuite] Generating reference image for {0}...".format(testNumber))
 
 AiBegin()
 
@@ -41,9 +41,9 @@ AiNodeSetInt(options, "yres", 240)
 AiNodeSetPtr(options, "camera", camera)
 
 # create an output driver
-driver = AiNode("driver_tiff")
+driver = AiNode("driver_jpeg")
 AiNodeSetStr(driver, "name", "mydriver")
-filename = os.path.join(os.getcwd(), testNumber, "reference.tif")
+filename = os.path.join(os.getcwd(), testNumber, "reference.jpg")
 AiNodeSetStr(driver, "filename", filename)
 
 # create a gaussian filter node
@@ -52,14 +52,12 @@ AiNodeSetStr(gfilter, "name", "myfilter");
 
 # assign th driver and the filter to the outputs
 outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING)
-AiArraySetStr(outputs_array, 0, "RGBA RGBA myfilter mydriver")
+AiArraySetStr(outputs_array, 0, "RGB RGB myfilter mydriver")
 AiNodeSetArray(options, "outputs", outputs_array)
 
 # render the scene
 result = AiRender(AI_RENDER_MODE_CAMERA)
-if result == AI_SUCCESS:
-    print("[FabricArnold::TestSuite] Success!")
-else:
+if result != AI_SUCCESS:
     print("[FabricArnold::TestSuite] Error {0}".format(result))
 
 AiEnd()

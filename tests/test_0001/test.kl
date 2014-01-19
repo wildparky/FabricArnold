@@ -35,7 +35,7 @@ operator entry(in String filename) {
   AiNodeSetPtr(options, "camera", camera.node);
 
   // create an output driver
-  ArnoldNode driver = AiNode("driver_tiff");
+  ArnoldNode driver = AiNode("driver_jpeg");
   AiNodeSetStr(driver, "name", "mydriver");
   AiNodeSetStr(driver, "filename", filename);
 
@@ -45,16 +45,12 @@ operator entry(in String filename) {
 
   // assign th driver and the filter to the outputs
   ArnoldArray outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING);
-  AiArraySetStr(outputs_array, 0, "RGBA RGBA myfilter mydriver");
+  AiArraySetStr(outputs_array, 0, "RGB RGB myfilter mydriver");
   AiNodeSetArray(options, "outputs", outputs_array);
 
   // render the scene
   Integer result = AiRender(AI_RENDER_MODE_CAMERA);
-  if (result == AI_SUCCESS)
-  {
-    report("[FabricArnold::TestSuite] Success!");
-  }
-  else
+  if (result != AI_SUCCESS)
   {
     report("[FabricArnold::TestSuite] Error " + String(result));
   }

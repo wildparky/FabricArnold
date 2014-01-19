@@ -5,7 +5,7 @@ import sys
 import os
 
 testNumber = "test_0001"
-print("[FabricArnold::TestSuite] Running extension {0}".format(testNumber))
+print("[FabricArnold::TestSuite] Running extension {0}...".format(testNumber))
 
 import FabricEngine.Core as Core
 client = Core.createClient()
@@ -31,7 +31,7 @@ binding.setParameterLayout(["self.filename"])
 binding.setOperator(operator)
 node.bindings.append(binding)
 
-filename = os.path.join(os.getcwd(), testNumber, "test.tif")
+filename = os.path.join(os.getcwd(), testNumber, "test.jpg")
 node.setValue("filename", 0, filename)
 
 node.evaluate()
