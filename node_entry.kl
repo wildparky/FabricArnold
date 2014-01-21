@@ -1,18 +1,29 @@
 // FabricArnold Extension
 
-struct AtNodeMethods
-{
-  Data methods;
-};
-
 struct AtNodeEntry
 {
   Data entry;
 };
 
-// struct AtMetaDataEntry {};
-// struct AtParamIterator {};
-// struct AtMetaDataIterator {};
+struct AtNodeMethods
+{
+  Data methods;
+};
+
+struct AtParamIterator
+{
+  Data it;
+};
+
+struct AtMetaDataIterator
+{
+  Data it;
+};
+
+struct AtMetaDataEntry
+{
+  Data entry;
+};
 
 function AtNodeEntry AiNodeEntryLookUp(in String name) = "fe_AiNodeEntryLookUp";
 function String AiNodeEntryGetName(in AtNodeEntry nentry) = "fe_AiNodeEntryGetName";
@@ -25,16 +36,20 @@ function Integer AiNodeEntryGetCount(in AtNodeEntry nentry) = "fe_AiNodeEntryGet
 function Integer AiNodeEntryGetNumParams(in AtNodeEntry nentry) = "fe_AiNodeEntryGetNumParams";
 function AtParamEntry AiNodeEntryGetParameter(in AtNodeEntry nentry, in Integer i) = "fe_AiNodeEntryGetParameter";
 function AtParamEntry AiNodeEntryLookUpParameter(in AtNodeEntry nentry, in String param) = "fe_AiNodeEntryLookUpParameter";
-// function AtNodeEntry AiNodeEntryGetParamIterator(AtNodeEntry nentry) = "fe_AiNodeEntryGetParamIterator";
-// function AtNodeEntry AiNodeEntryGetMetaDataIterator(AtNodeEntry nentry, String param = NULL) = "fe_AiNodeEntryGetMetaDataIterator";
+function AtParamIterator AiNodeEntryGetParamIterator(in AtNodeEntry nentry) = "fe_AiNodeEntryGetParamIterator";
+function AtMetaDataIterator AiNodeEntryGetMetaDataIterator(in AtNodeEntry nentry, in String param) = "fe_AiNodeEntryGetMetaDataIterator";
 function AiNodeEntryInstall(in Integer type, in Byte output_type, in String name, in String filename, in AtNodeMethods methods, in String version) = "fe_AiNodeEntryInstall";
 function AiNodeEntryUninstall(String name) = "fe_AiNodeEntryUninstall";
-// function AiParamIteratorDestroy(AtNodeEntry iter) = "fe_AiParamIteratorDestroy";
-// function AtNodeEntry AiParamIteratorGetNext(AtNodeEntry iter) = "fe_AiParamIteratorGetNext";
-// function Boolean AiParamIteratorFinished(AtNodeEntry iter) = "fe_AiParamIteratorFinished";
-// function AiMetaDataIteratorDestroy(AtNodeEntry iter) = "fe_AiMetaDataIteratorDestroy";
-// function AtNodeEntry AiMetaDataIteratorGetNext(AtNodeEntry iter) = "fe_AiMetaDataIteratorGetNext";
-// function Boolean AiMetaDataIteratorFinished(AtNodeEntry iter) = "fe_AiMetaDataIteratorFinished";
+
+// param iterator functions
+function AiParamIteratorDestroy(AtParamIterator iter) = "fe_AiParamIteratorDestroy";
+function AtParamEntry AiParamIteratorGetNext(AtParamIterator iter) = "fe_AiParamIteratorGetNext";
+function Boolean AiParamIteratorFinished(AtParamIterator iter) = "fe_AiParamIteratorFinished";
+
+// metadata iterator functions
+function AiMetaDataIteratorDestroy(AtMetaDataIterator iter) = "fe_AiMetaDataIteratorDestroy";
+function AtNodeEntry AiMetaDataIteratorGetNext(AtMetaDataIterator iter) = "fe_AiMetaDataIteratorGetNext";
+function Boolean AiMetaDataIteratorFinished(AtMetaDataIterator iter) = "fe_AiMetaDataIteratorFinished";
 
 const Integer AI_NODE_UNDEFINED = 0x0000;
 const Integer AI_NODE_OPTIONS = 0x0001;
