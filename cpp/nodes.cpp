@@ -1,4 +1,6 @@
 #include "nodes.h"
+#include "node_entry.h"
+#include "params.h"
 #include "array.h"
 #include "color.h"
 #include "vector.h"
@@ -101,6 +103,20 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetName(
 {
    name = "";
    name = AiNodeGetName(node.node);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeGetNodeEntry(
+   ArnoldNodeEntry& nentry,
+   ArnoldNode& node)
+{
+   nentry.entry = AiNodeGetNodeEntry(node.node);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeGetParams(
+   ArnoldParamValue& pvalue,
+   ArnoldNode& node)
+{
+   pvalue.value = AiNodeGetParams(node.node);
 }
 
 // node parameter writer functions
