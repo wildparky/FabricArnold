@@ -34,6 +34,94 @@ FABRIC_EXT_EXPORT void fe_AiArrayDestroy(
    AiArrayDestroy(array.array);
 }
 
+FABRIC_EXT_EXPORT void fe_AiArrayConvert(
+   ArnoldArray& array,
+   const KL::UInt32 nelements,
+   const KL::Byte nkeys,
+   const KL::Byte type,
+   KL::Data data)
+{
+   array.array = AiArrayConvert(nelements, nkeys, type, data);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayModify(
+   ArnoldArray& outarray,
+   ArnoldArray inarray,
+   const KL::UInt32 nelements,
+   const KL::Byte nkeys,
+   const KL::Byte type)
+{
+   outarray.array = AiArrayModify(inarray.array, nelements, nkeys, type);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayCopy(
+   ArnoldArray& outarray,
+   ArnoldArray inarray)
+{
+   outarray.array = AiArrayCopy(inarray.array);
+}
+
+FABRIC_EXT_EXPORT KL::Boolean fe_AiArraySetKey(
+   ArnoldArray& array,
+   const KL::Byte key,
+   KL::Data data)
+{
+   return AiArraySetKey(array.array, key, data);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayInterpolatePnt(
+   AtPoint& point,
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx)
+{
+   point = AiArrayInterpolatePnt(array.array, time, idx);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayInterpolateVec(
+   AtVector& vector,
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx)
+{
+   vector = AiArrayInterpolateVec(array.array, time, idx);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayInterpolateRGB(
+   AtColor& color,
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx)
+{
+   color = AiArrayInterpolateRGB(array.array, time, idx);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayInterpolateRGBA(
+   AtRGBA& color,
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx)
+{
+   color = AiArrayInterpolateRGBA(array.array, time, idx);
+}
+
+FABRIC_EXT_EXPORT KL::Float32 fe_AiArrayInterpolateFlt(
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx)
+{
+   return AiArrayInterpolateFlt(array.array, time, idx);
+}
+
+FABRIC_EXT_EXPORT void fe_AiArrayInterpolateMtx(
+   ArnoldArray array,
+   KL::Float32 time,
+   KL::UInt32 idx,
+   AtMatrix& result)
+{
+   AiArrayInterpolateMtx(array.array, time, idx, result);
+}
+
 // array getters
 FABRIC_EXT_EXPORT KL::Boolean fe_AiArrayGetBool(
    ArnoldArray& a,

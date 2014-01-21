@@ -11,16 +11,16 @@ struct ArnoldArray{
 function ArnoldArray AiArray(UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArray";
 function ArnoldArray AiArrayAllocate(UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArrayAllocate";
 function AiArrayDestroy(ArnoldArray array) = "fe_AiArrayDestroy";
-// function ArnoldArray AiArrayConvert(UInt32 nelements, Byte nkeys, Byte type, Data data) = "fe_AiArrayConvert";
-// function ArnoldArray AiArrayModify(ArnoldArray array, UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArrayModify";
-// function ArnoldArray AiArrayCopy(ArnoldArray array) = "fe_AiArrayCopy";
-// function Boolean AiArraySetKey(ArnoldArray array, Byte key, Data data) = "fe_AiArraySetKey";
-// function Vec3 AiArrayInterpolatePnt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolatePnt";
-// function Vec3 AiArrayInterpolateVec(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateVec";
-// function AtRGB AiArrayInterpolateRGB(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGB";
-// function AtRGBA AiArrayInterpolateRGBA(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGBA";
-// function Float32 AiArrayInterpolateFlt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateFlt";
-// function AiArrayInterpolateMtx(ArnoldArray array, Float32 time, UInt32 idx, Mat44 result) = "fe_AiArrayInterpolateMtx";
+function ArnoldArray AiArrayConvert(UInt32 nelements, Byte nkeys, Byte type, Data data) = "fe_AiArrayConvert";
+function ArnoldArray AiArrayModify(ArnoldArray array, UInt32 nelements, Byte nkeys, Byte type) = "fe_AiArrayModify";
+function ArnoldArray AiArrayCopy(ArnoldArray array) = "fe_AiArrayCopy";
+function Boolean AiArraySetKey(ArnoldArray array, Byte key, Data data) = "fe_AiArraySetKey";
+function AtPoint AiArrayInterpolatePnt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolatePnt";
+function AtVector AiArrayInterpolateVec(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateVec";
+function AtColor AiArrayInterpolateRGB(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGB";
+function AtRGBA AiArrayInterpolateRGBA(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateRGBA";
+function Float32 AiArrayInterpolateFlt(ArnoldArray array, Float32 time, UInt32 idx) = "fe_AiArrayInterpolateFlt";
+function AiArrayInterpolateMtx(ArnoldArray array, Float32 time, UInt32 idx, io AtMatrix result) = "fe_AiArrayInterpolateMtx";
 
 // array getters
 function Boolean AiArrayGetBool(in ArnoldArray a, in UInt32 i) = "fe_AiArrayGetBool";
