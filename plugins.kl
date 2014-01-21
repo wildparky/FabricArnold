@@ -1,0 +1,4 @@
+// FabricArnold Extension
+
+function AiLoadPlugins(in String directory) = "fe_AiLoadPlugins";
+function AiLoadPlugin(in String path) = "fe_AiLoadPlugin";
