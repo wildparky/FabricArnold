@@ -1,0 +1,1 @@
+Test AiUniverseGetSceneBounds. The test also tests AtBBox struct and destroying nodes with AiNodeDestroy.
