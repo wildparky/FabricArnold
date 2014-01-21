@@ -1,0 +1,15 @@
+// FabricArnold Extension
+
+struct AtBBox
+{
+  AtPoint min;
+  AtPoint max;
+};
+
+struct AtBBox2
+{
+  Integer minx;
+  Integer miny;
+  Integer maxx;
+  Integer maxy;
+};
