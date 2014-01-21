@@ -1,0 +1,21 @@
+// FabricArnold Extension
+
+// how can we update these everytime we link against ai.h?
+const Integer AI_VERSION_ARCH_NUM = 4;
+const Integer AI_VERSION_MAJOR_NUM = 0;
+const Integer AI_VERSION_MINOR_NUM = 16;
+const String AI_VERSION_FIX = "2";
+
+const String AI_VERSION_ARCH = AI_VERSION_ARCH_NUM;
+const String AI_VERSION_MAJOR = AI_VERSION_MAJOR_NUM;
+const String AI_VERSION_MINOR = AI_VERSION_MINOR_NUM;
+
+const String AI_VERSION = AI_VERSION_ARCH + "." + AI_VERSION_MAJOR + "." + AI_VERSION_MINOR + "." + AI_VERSION_FIX;
+
+function String AiGetVersion(io String arch, io String major, io String minor, io String fix) = "fe_AiGetVersion";
+function String AiGetVersionInfo() = "fe_AiGetVersionInfo";
+function String AiGetCompileOptions() = "fe_AiGetCompileOptions";
+function Boolean AiCheckAPIVersion(in String arch, in String major, in String minor) = "fe_AiCheckAPIVersion";
+function AiSetAppString(in String appstr) = "fe_AiSetAppString";
+
+

@@ -16,6 +16,7 @@ fabricBuildEnv.Extension('FabricArnold',
     ['cpp/FabricArnold.cpp',
     'cpp/matrix.cpp',
     'cpp/vector.cpp',
+    'cpp/bbox.cpp',
     'cpp/render.cpp',
     'cpp/nodes.cpp',
     'cpp/node_entry.cpp',
@@ -25,6 +26,7 @@ fabricBuildEnv.Extension('FabricArnold',
     'cpp/color.cpp',
     'cpp/universe.cpp',
     'cpp/plugins.cpp',
+    'cpp/version.cpp',
     'cpp/dotass.cpp' ])
 
 # add arnold include

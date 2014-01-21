@@ -11,6 +11,8 @@
       "enum.kl",
       "array.kl",
       "color.kl",
+      "plugins.kl",
+      "version.kl",
       "universe.kl",
       "dotass.kl"
    ]
