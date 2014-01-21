@@ -5,5 +5,6 @@ syntax: glob
 *.lib
 *.tif
 *.jpg
+*.pyc
 .sconsign.dblite
 .git/
