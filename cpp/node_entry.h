@@ -5,14 +5,29 @@
 
 #include <ai.h>
 
+struct ArnoldNodeEntry
+{
+   const AtNodeEntry* entry;
+};
+
 struct ArnoldNodeMethods
 {
    AtNodeMethods* methods;
 };
 
-struct ArnoldNodeEntry
+struct ArnoldParamIterator
 {
-   const AtNodeEntry* entry;
+   AtParamIterator* it;
+};
+
+struct ArnoldMetaDataIterator
+{
+   AtMetaDataIterator* it;
+};
+
+struct ArnoldMetaDataEntry
+{
+   const AtMetaDataEntry* entry;
 };
 
 #endif
