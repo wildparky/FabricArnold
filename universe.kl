@@ -15,6 +15,11 @@ struct AtAOVIterator
   Data it;
 };
 
+struct AtAOVEntry
+{
+  Data it;
+};
+
 // universe methods
 function Boolean AiUniverseIsActive() = "fe_AiUniverseIsActive";
 function AiUniverseCacheFlush(Integer cache_flags) = "fe_AiUniverseCacheFlush";
@@ -39,9 +44,9 @@ function AtNodeEntry AiNodeEntryIteratorGetNext(AtNodeEntryIterator iter) = "fe_
 function Boolean AiNodeEntryIteratorFinished(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorFinished";
 
 // aov entry iterator functions
-//function AiAOVIteratorDestroy(Undefined iter) = "fe_AiAOVIteratorDestroy";
-//function ArnoldAOVEntry AiAOVIteratorGetNext(Undefined iter) = "fe_AiAOVIteratorGetNext";
-//function Boolean AiAOVIteratorFinished(Undefined iter) = "fe_AiAOVIteratorFinished";
+function AiAOVIteratorDestroy(AtAOVIterator iter) = "fe_AiAOVIteratorDestroy";
+function AtAOVEntry AiAOVIteratorGetNext(AtAOVIterator iter) = "fe_AiAOVIteratorGetNext";
+function Boolean AiAOVIteratorFinished(AtAOVIterator iter) = "fe_AiAOVIteratorFinished";
 
 // cache types
 const Integer AI_CACHE_TEXTURE = 0x0001;
