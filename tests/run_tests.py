@@ -27,6 +27,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-t", "-test", "--test", type=int, nargs="+", help="which test(s) to run")
 args = parser.parse_args()
 
+failedTests = list()
 if args.test:
     # run a specific set of tests
     for arg in args.test:
@@ -34,22 +35,31 @@ if args.test:
         # generate reference image
         arnoldPythonTest = os.path.join(os.getcwd(), testNumber, "reference.py")
         if os.path.exists(arnoldPythonTest):
-            execfile(arnoldPythonTest)
+            try:
+                execfile(arnoldPythonTest)
+            except e:
+                print(e)
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
+            failedTests.append(testNumber)
             continue
 
         # generate image made from kl bindings
         klExtTest = os.path.join(os.getcwd(), testNumber, "test.py")
         if os.path.exists(klExtTest):
-            execfile(klExtTest)
+            try:
+                execfile(klExtTest)
+            except e:
+                print(e)
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
+            failedTests.append(testNumber)
             continue
 
         # run difference test
         if imgdiff.main(testNumber):
             print("[FabricArnold::TestSuite] {0} failed!".format(testNumber))
+            failedTests.append(testNumber)
         else:
             print("[FabricArnold::TestSuite] {0} passed!".format(testNumber))
 else:
@@ -59,20 +69,40 @@ else:
             # generate reference image
             arnoldPythonTest = os.path.join(os.getcwd(), testNumber, "reference.py")
             if os.path.exists(arnoldPythonTest):
-                execfile(arnoldPythonTest)
+                try:
+                    execfile(arnoldPythonTest)
+                except e:
+                    print(e)
             else:
-                sys.exit(1)
+                print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
+                failedTests.append(testNumber)
+                continue
 
             # generate image made from kl bindings
             klExtTest = os.path.join(os.getcwd(), testNumber, "test.py")
             if os.path.exists(klExtTest):
-                execfile(klExtTest)
+                try:
+                    execfile(klExtTest)
+                except e:
+                    print(e)
             else:
-                sys.exit(1)
+                print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
+                failedTests.append(testNumber)
+                continue
 
             # run difference test
             if imgdiff.main(testNumber):
                 print("[FabricArnold::TestSuite] {0} failed!".format(testNumber))
+                failedTests.append(testNumber)
             else:
                 print("[FabricArnold::TestSuite] {0} passed!".format(testNumber))
+
+# print a report of failed tests
+print(os.linesep)
+if len(failedTests) > 0:
+    print("[FabricArnold::TestSuite] These tests failed...")
+    for fail in failedTests:
+        print("{0}".format(fail))
+else:
+    print("[FabricArnold::TestSuite] All tests passed!")
 
