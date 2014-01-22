@@ -37,7 +37,7 @@ if args.test:
         if os.path.exists(arnoldPythonTest):
             try:
                 execfile(arnoldPythonTest)
-            except e:
+            except Exception, e:
                 print(e)
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
@@ -49,7 +49,7 @@ if args.test:
         if os.path.exists(klExtTest):
             try:
                 execfile(klExtTest)
-            except e:
+            except Exception, e:
                 print(e)
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
@@ -71,7 +71,7 @@ else:
             if os.path.exists(arnoldPythonTest):
                 try:
                     execfile(arnoldPythonTest)
-                except e:
+                except Exception, e:
                     print(e)
             else:
                 print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
@@ -83,7 +83,7 @@ else:
             if os.path.exists(klExtTest):
                 try:
                     execfile(klExtTest)
-                except e:
+                except Exception, e:
                     print(e)
             else:
                 print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
