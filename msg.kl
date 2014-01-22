@@ -1,0 +1,47 @@
+// FabricArnold Extension
+
+function AiMsgSetLogFileName(in String filename) = "fe_AiMsgSetLogFileName";
+function AiMsgSetLogFileFlags(in Integer flags) = "fe_AiMsgSetLogFileFlags";
+function AiMsgSetConsoleFlags(in Integer flags) = "fe_AiMsgSetConsoleFlags";
+function AiMsgSetMaxWarnings(in Integer max_warnings) = "fe_AiMsgSetMaxWarnings";
+// unsure how to manage custom callbacks at this time
+// function AiMsgSetCallback(Undefined func) = "fe_AiMsgSetCallback";
+// function AiMsgResetCallback() = "fe_AiMsgResetCallback";
+function AiMsgInfo(in String format) = "fe_AiMsgInfo";
+function AiMsgDebug(in String format) = "fe_AiMsgDebug";
+function AiMsgWarning(in String format) = "fe_AiMsgWarning";
+function AiMsgError(in String format) = "fe_AiMsgError";
+function AiMsgFatal(in String format) = "fe_AiMsgFatal";
+function AiMsgTab(in Integer tabinc) = "fe_AiMsgTab";
+function UInt64 AiMsgUtilGetUsedMemory() = "fe_AiMsgUtilGetUsedMemory";
+function UInt32 AiMsgUtilGetElapsedTime() = "fe_AiMsgUtilGetElapsedTime";
+
+// severity codes
+const Integer AI_SEVERITY_INFO = 0x00;
+const Integer AI_SEVERITY_WARNING = 0x01;
+const Integer AI_SEVERITY_ERROR = 0x02;
+const Integer AI_SEVERITY_FATAL = 0x03;
+
+// logging flags
+const Integer AI_LOG_NONE = 0x0000;
+const Integer AI_LOG_INFO = 0x0001;
+const Integer AI_LOG_WARNINGS = 0x0002;
+const Integer AI_LOG_ERRORS = 0x0004;
+const Integer AI_LOG_DEBUG = 0x0008;
+const Integer AI_LOG_STATS = 0x0010;
+const Integer AI_LOG_ASS_PARSE = 0x0020;
+const Integer AI_LOG_PLUGINS = 0x0040;
+const Integer AI_LOG_PROGRESS = 0x0080;
+const Integer AI_LOG_NAN = 0x0100;
+const Integer AI_LOG_TIMESTAMP = 0x0200;
+const Integer AI_LOG_BACKTRACE = 0x0400;
+const Integer AI_LOG_MEMORY = 0x0800;
+const Integer AI_LOG_COLOR = 0x1000;
+const Integer AI_LOG_SSS = 0x2000;
+
+const Integer AI_LOG_ALL = 
+  AI_LOG_INFO       | AI_LOG_WARNINGS   | AI_LOG_ERRORS    | \
+  AI_LOG_DEBUG      | AI_LOG_STATS      | AI_LOG_PLUGINS   | \
+  AI_LOG_PROGRESS   | AI_LOG_NAN        | AI_LOG_ASS_PARSE | \
+  AI_LOG_TIMESTAMP  | AI_LOG_BACKTRACE  | AI_LOG_MEMORY    | \
+  AI_LOG_COLOR      | AI_LOG_SSS;

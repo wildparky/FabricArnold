@@ -28,7 +28,8 @@ fabricBuildEnv.Extension('FabricArnold',
     'cpp/universe.cpp',
     'cpp/plugins.cpp',
     'cpp/version.cpp',
-    'cpp/dotass.cpp' ])
+    'cpp/dotass.cpp',
+    'cpp/msg.cpp' ])
 
 # add arnold include
 # arnold root
