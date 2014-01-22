@@ -352,6 +352,14 @@ FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetPtr(
    return ptr;
 }
 
+FABRIC_EXT_EXPORT void fe_AiNodeGetNode(
+   ArnoldNode& outnode,
+   ArnoldNode& node,
+   const KL::String& param)
+{
+   outnode.node = (AtNode*)AiNodeGetPtr(node.node, param.data());
+}
+
 FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
    ArnoldArray& array,
    ArnoldNode& node,

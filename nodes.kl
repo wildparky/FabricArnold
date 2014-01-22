@@ -58,6 +58,7 @@ function AtPoint AiNodeGetPnt(ArnoldNode node, in String param) = "fe_AiNodeGetP
 function AtPoint2 AiNodeGetPnt2(ArnoldNode node, in String param) = "fe_AiNodeGetPnt2";
 function String AiNodeGetStr(ArnoldNode node, in String param) = "fe_AiNodeGetStr";
 function Data AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
+function ArnoldNode AiNodeGetNode(ArnoldNode node, in String param) = "fe_AiNodeGetNode";
 function ArnoldArray AiNodeGetArray(ArnoldNode node, in String param) = "fe_AiNodeGetArray";
 function AiNodeGetMatrix(ArnoldNode node, in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
 
@@ -94,6 +95,6 @@ function AtVector2 ArnoldNode.getPnt2?(in String param) = "fe_AiNodeGetPnt2";
 function String ArnoldNode.getStr?(in String param) = "fe_AiNodeGetStr";
 function String ArnoldNode.getName?() = "fe_AiNodeGetName";
 function Data ArnoldNode.getPtr?(in String param) = "fe_AiNodeGetPtr";
-// function ArnoldNode ArnoldNode.getNode?(in String param) = "fe_AiNodeGetNode";
+function ArnoldNode ArnoldNode.getNode?(in String param) = "fe_AiNodeGetNode";
 function ArnoldArray ArnoldNode.getArray?(in String param) = "fe_AiNodeGetArray";
 function ArnoldNode.getMatrix?(in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
