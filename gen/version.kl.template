@@ -1,9 +1,9 @@
 // FabricArnold Extension
 
-const Integer AI_VERSION_ARCH_NUM = 4;
-const Integer AI_VERSION_MAJOR_NUM = 0;
-const Integer AI_VERSION_MINOR_NUM = 16;
-const String AI_VERSION_FIX = "2";
+const Integer AI_VERSION_ARCH_NUM = {0};
+const Integer AI_VERSION_MAJOR_NUM = {1};
+const Integer AI_VERSION_MINOR_NUM = {2};
+const String AI_VERSION_FIX = {3};
 
 const String AI_VERSION_ARCH = AI_VERSION_ARCH_NUM;
 const String AI_VERSION_MAJOR = AI_VERSION_MAJOR_NUM;
