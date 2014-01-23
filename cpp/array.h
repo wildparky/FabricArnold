@@ -7,13 +7,4 @@
 
 using namespace Fabric::EDK;
 
-struct ArnoldArray
-{
-   AtArray* array;
-   KL::UInt32 nelements;
-   KL::Byte nkeys;
-   KL::Byte type;
-   KL::Byte padding;
-};
-
 #endif

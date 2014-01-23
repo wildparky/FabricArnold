@@ -5,341 +5,347 @@
 using namespace Fabric::EDK;
 
 FABRIC_EXT_EXPORT void fe_AiArray(
-   ArnoldArray& array,
+   AtArray& array,
    const KL::UInt32 nelements,
    const KL::Byte nkeys,
    const KL::Byte type)
 {
-   array.array = AiArray(nelements, nkeys, type);
-   array.nelements = nelements;
-   array.nkeys = nkeys;
-   array.type = type;
+   AtArray* a = AiArray(nelements, nkeys, type);
+   array = *a;
+   //array.nelements = nelements;
+   //array.nkeys = nkeys;
+   //array.type = type;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayAllocate(
-   ArnoldArray& array,
+   AtArray& array,
    const KL::UInt32 nelements,
    const KL::Byte nkeys,
    const KL::Byte type)
 {
-   array.array = AiArrayAllocate(nelements, nkeys, type);
-   array.nelements = nelements;
-   array.nkeys = nkeys;
-   array.type = type;
+   AtArray* a = AiArrayAllocate(nelements, nkeys, type);
+   array = *a;
+   // array.nelements = nelements;
+   // array.nkeys = nkeys;
+   // array.type = type;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayDestroy(
-   ArnoldArray& array)
+   AtArray& array)
 {
-   AiArrayDestroy(array.array);
+   AiArrayDestroy(&array);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayConvert(
-   ArnoldArray& array,
+   AtArray& array,
    const KL::UInt32 nelements,
    const KL::Byte nkeys,
    const KL::Byte type,
    KL::Data data)
 {
-   array.array = AiArrayConvert(nelements, nkeys, type, data);
+   AtArray* a = AiArrayConvert(nelements, nkeys, type, data);
+   array = *a;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayModify(
-   ArnoldArray& outarray,
-   ArnoldArray inarray,
+   AtArray& outarray,
+   AtArray& inarray,
    const KL::UInt32 nelements,
    const KL::Byte nkeys,
    const KL::Byte type)
 {
-   outarray.array = AiArrayModify(inarray.array, nelements, nkeys, type);
+   AtArray* a = AiArrayModify(&inarray, nelements, nkeys, type);
+   outarray = *a;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayCopy(
-   ArnoldArray& outarray,
-   ArnoldArray inarray)
+   AtArray& outarray,
+   AtArray& inarray)
 {
-   outarray.array = AiArrayCopy(inarray.array);
+   AtArray* a = AiArrayCopy(&inarray);
+   outarray = *a;
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiArraySetKey(
-   ArnoldArray& array,
+   AtArray& array,
    const KL::Byte key,
    KL::Data data)
 {
-   return AiArraySetKey(array.array, key, data);
+   return AiArraySetKey(&array, key, data);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayInterpolatePnt(
    AtPoint& point,
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx)
 {
-   point = AiArrayInterpolatePnt(array.array, time, idx);
+   point = AiArrayInterpolatePnt(&array, time, idx);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayInterpolateVec(
    AtVector& vector,
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx)
 {
-   vector = AiArrayInterpolateVec(array.array, time, idx);
+   vector = AiArrayInterpolateVec(&array, time, idx);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayInterpolateRGB(
    AtColor& color,
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx)
 {
-   color = AiArrayInterpolateRGB(array.array, time, idx);
+   color = AiArrayInterpolateRGB(&array, time, idx);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayInterpolateRGBA(
    AtRGBA& color,
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx)
 {
-   color = AiArrayInterpolateRGBA(array.array, time, idx);
+   color = AiArrayInterpolateRGBA(&array, time, idx);
 }
 
 FABRIC_EXT_EXPORT KL::Float32 fe_AiArrayInterpolateFlt(
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx)
 {
-   return AiArrayInterpolateFlt(array.array, time, idx);
+   return AiArrayInterpolateFlt(&array, time, idx);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayInterpolateMtx(
-   ArnoldArray array,
+   AtArray& array,
    KL::Float32 time,
    KL::UInt32 idx,
    AtMatrix& result)
 {
-   AiArrayInterpolateMtx(array.array, time, idx, result);
+   AiArrayInterpolateMtx(&array, time, idx, result);
 }
 
 // array getters
 FABRIC_EXT_EXPORT KL::Boolean fe_AiArrayGetBool(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   return AiArrayGetBool(a.array, i);
+   return AiArrayGetBool(&a, i);
 }
 
 FABRIC_EXT_EXPORT KL::Byte fe_AiArrayGetByte(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   return AiArrayGetByte(a.array, i);
+   return AiArrayGetByte(&a, i);
 }
 
 FABRIC_EXT_EXPORT KL::Integer fe_AiArrayGetInt(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   return AiArrayGetInt(a.array, i);
+   return AiArrayGetInt(&a, i);
 }
 
 FABRIC_EXT_EXPORT KL::UInt32 fe_AiArrayGetUInt(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   return AiArrayGetUInt(a.array, i);
+   return AiArrayGetUInt(&a, i);
 }
 
 FABRIC_EXT_EXPORT KL::Float32 fe_AiArrayGetFlt(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   return AiArrayGetFlt(a.array, i);
+   return AiArrayGetFlt(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetRGB(
    AtRGB& color,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   color = AiArrayGetRGB(a.array, i);
+   color = AiArrayGetRGB(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetRGBA(
    AtRGBA& color,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   color = AiArrayGetRGBA(a.array, i);
+   color = AiArrayGetRGBA(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetPnt(
    AtPoint& point,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   point = AiArrayGetPnt(a.array, i);
+   point = AiArrayGetPnt(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetPnt2(
    AtPoint2& point,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   point = AiArrayGetPnt2(a.array, i);
+   point = AiArrayGetPnt2(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetVec(
    AtVector& vector,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   vector = AiArrayGetVec(a.array, i);
+   vector = AiArrayGetVec(&a, i);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetMtx(
    AtMatrix& matrix,
-   ArnoldArray a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   AiArrayGetMtx(a.array, i, matrix);
+   AiArrayGetMtx(&a, i, matrix);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetStr(
    KL::String& str,
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
-   str = AiArrayGetStr(a.array, i);
+   str = AiArrayGetStr(&a, i);
 }
 
 FABRIC_EXT_EXPORT KL::Data fe_AiArrayGetPtr(
-   ArnoldArray& a,
+   AtArray& a,
    const KL::UInt32 i)
 {
    KL::Data ptr = NULL;
-   ptr = AiArrayGetPtr(a.array, i);
+   ptr = AiArrayGetPtr(&a, i);
    return ptr;
 }
 
 FABRIC_EXT_EXPORT void fe_AiArrayGetArray(
-   ArnoldArray& aout,
-   ArnoldArray a,
+   AtArray& aout,
+   AtArray& a,
    KL::UInt32 i)
 {
-   aout.array = AiArrayGetArray(a.array, i);
+   AtArray* array = AiArrayGetArray(&a, i);
+   aout = *array;
 }
 
 // array setters
 FABRIC_EXT_EXPORT void fe_AiArraySetBool(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::Boolean val)
 {
-   AiArraySetBool(a.array, i, val);
+   AiArraySetBool(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetByte(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::Byte val)
 {
-   AiArraySetByte(a.array, i, val);
+   AiArraySetByte(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetInt(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::Integer val)
 {
-   AiArraySetInt(a.array, i, val);
+   AiArraySetInt(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetUInt(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::UInt32 val)
 {
-   AiArraySetUInt(a.array, i, val);
+   AiArraySetUInt(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetFlt(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::Float32 val)
 {
-   AiArraySetFlt(a.array, i, val);
+   AiArraySetFlt(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetRGB(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtRGB val)
 {
-   AiArraySetRGB(a.array, i, val);
+   AiArraySetRGB(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetRGBA(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtRGBA val)
 {
-   AiArraySetRGBA(a.array, i, val);
+   AiArraySetRGBA(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetPnt(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtPoint val)
 {
-   AiArraySetPnt(a.array, i, val);
+   AiArraySetPnt(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetPnt2(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtPoint2 val)
 {
-   AiArraySetPnt2(a.array, i, val);
+   AiArraySetPnt2(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetVec(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtVector val)
 {
-   AiArraySetVec(a.array, i, val);
+   AiArraySetVec(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetMtx(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    AtMatrix val)
 {
-   AiArraySetMtx(a.array, i, val);
+   AiArraySetMtx(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetStr(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    const KL::String val)
 {
-   AiArraySetStr(a.array, i, val.data());
+   AiArraySetStr(&a, i, val.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetPtr(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
    KL::Data val)
 {
-   AiArraySetPtr(a.array, i, val);
+   AiArraySetPtr(&a, i, val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiArraySetArray(
-   ArnoldArray& a,
+   AtArray& a,
    KL::UInt32 i,
-   ArnoldArray val)
+   AtArray& val)
 {
-   AiArraySetArray(a.array, i, val.array);
+   AiArraySetArray(&a, i, &val);
 }
