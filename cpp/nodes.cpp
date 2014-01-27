@@ -119,6 +119,54 @@ FABRIC_EXT_EXPORT void fe_AiNodeGetParams(
    pvalue.value = AiNodeGetParams(node.node);
 }
 
+FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetLocalData(
+   ArnoldNode& node)
+{
+   return AiNodeGetLocalData(node.node);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeSetLocalData(
+   ArnoldNode& node,
+   KL::Data data)
+{
+   AiNodeSetLocalData(node.node, data);
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeLookUpUserParameter(
+   ArnoldUserParamEntry& upentry,
+   ArnoldNode& node,
+   KL::String::INParam param)
+{
+   upentry.entry = AiNodeLookUpUserParameter(node.node, param.data());
+}
+
+FABRIC_EXT_EXPORT void fe_AiNodeGetUserParamIterator(
+   ArnoldUserParamIterator& iter,
+   ArnoldNode& node)
+{
+   iter.it = AiNodeGetUserParamIterator(node.node);
+}
+
+// user param iterator methods
+FABRIC_EXT_EXPORT void fe_AiUserParamIteratorDestroy(
+   ArnoldUserParamIterator& iter)
+{
+   AiUserParamIteratorDestroy(iter.it);
+}
+
+FABRIC_EXT_EXPORT void fe_AiUserParamIteratorGetNext(
+   ArnoldUserParamEntry& upentry,
+   ArnoldUserParamIterator& iter)
+{
+   upentry.entry = AiUserParamIteratorGetNext(iter.it);
+}
+
+FABRIC_EXT_EXPORT KL::Boolean fe_AiUserParamIteratorFinished(
+   ArnoldUserParamIterator& iter)
+{
+   return AiUserParamIteratorFinished(iter.it);
+}
+
 // node parameter writer functions
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetByte(

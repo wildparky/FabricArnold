@@ -10,4 +10,9 @@ struct ArnoldNode
    AtNode* node;
 };
 
+struct ArnoldUserParamIterator
+{
+   AtUserParamIterator* it;
+};
+
 #endif

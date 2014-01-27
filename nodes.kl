@@ -1,7 +1,13 @@
 // FabricArnold Extension
 
-struct ArnoldNode {
+struct ArnoldNode
+{
   Data node;
+};
+
+struct AtUserParamIterator
+{
+  Data it;
 };
 
 function ArnoldNode AiNode(in String name) = "fe_AiNode";
@@ -19,13 +25,15 @@ function ArnoldNode AiNodeGetLink(in ArnoldNode node, in String input, Integer c
 function String AiNodeGetName(in ArnoldNode node) = "fe_AiNodeGetName";
 function AtNodeEntry AiNodeGetNodeEntry(in ArnoldNode node) = "fe_AiNodeGetNodeEntry";
 function AtParamValue AiNodeGetParams(in ArnoldNode node) = "fe_AiNodeGetParams";
-// function Data AiNodeGetLocalData(ArnoldNode node) = "fe_AiNodeGetLocalData";
-// function AiNodeSetLocalData(ArnoldNode node, Data data) = "fe_AiNodeSetLocalData";
-// function Undefined AiNodeLookUpUserParameter(ArnoldNode node, String param) = "fe_AiNodeLookUpUserParameter";
-// function AiNodeGetUserParamIterator(ArnoldNode node) = "fe_AiNodeGetUserParamIterator";
-// function AiUserParamIteratorDestroy(Undefined iter) = "fe_AiUserParamIteratorDestroy";
-// function Undefined AiUserParamIteratorGetNext(Undefined iter) = "fe_AiUserParamIteratorGetNext";
-// function Boolean AiUserParamIteratorFinished(Undefined iter) = "fe_AiUserParamIteratorFinished";
+function Data AiNodeGetLocalData(in ArnoldNode node) = "fe_AiNodeGetLocalData";
+function AiNodeSetLocalData(in ArnoldNode node, Data data) = "fe_AiNodeSetLocalData";
+function AtUserParamEntry AiNodeLookUpUserParameter(in ArnoldNode node, in String param) = "fe_AiNodeLookUpUserParameter";
+function AiNodeGetUserParamIterator(in ArnoldNode node) = "fe_AiNodeGetUserParamIterator";
+
+// user param iterator methods
+function AiUserParamIteratorDestroy(AtUserParamIterator iter) = "fe_AiUserParamIteratorDestroy";
+function AtUserParamEntry AiUserParamIteratorGetNext(AtUserParamIterator iter) = "fe_AiUserParamIteratorGetNext";
+function Boolean AiUserParamIteratorFinished(AtUserParamIterator iter) = "fe_AiUserParamIteratorFinished";
 
 // node parameter writer functions
 function AiNodeSetByte(ArnoldNode node, in String param, in Byte val) = "fe_AiNodeSetByte";
