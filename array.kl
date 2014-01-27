@@ -1,6 +1,7 @@
 // FabricArnold Extension
 
-struct ArnoldArray{
+struct ArnoldArray
+{
   Data array;
   UInt32 nelements;
   Byte nkeys;
