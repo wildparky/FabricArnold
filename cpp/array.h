@@ -13,7 +13,7 @@ struct ArnoldArray
    KL::UInt32 nelements;
    KL::Byte nkeys;
    KL::Byte type;
-   KL::Byte padding;
+   KL::Byte padding[2];
 };
 
 #endif
