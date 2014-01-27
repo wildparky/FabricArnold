@@ -1,7 +1,5 @@
 // FabricArnold Extension
 
-require Math;
-
 struct AtRGB
 {
   Float32 r;
