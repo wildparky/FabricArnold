@@ -38,7 +38,9 @@ if args.test:
             try:
                 execfile(arnoldPythonTest)
             except Exception, e:
-                print(e)
+                print("Exception : {0}".format(e))
+                failedTests.append(testNumber)
+                continue
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
             failedTests.append(testNumber)
@@ -50,7 +52,9 @@ if args.test:
             try:
                 execfile(klExtTest)
             except Exception, e:
-                print(e)
+                print("Exception : {0}".format(e))
+                failedTests.append(testNumber)
+                continue
         else:
             print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
             failedTests.append(testNumber)
@@ -72,7 +76,9 @@ else:
                 try:
                     execfile(arnoldPythonTest)
                 except Exception, e:
-                    print(e)
+                    print("Exception : {0}".format(e))
+                    failedTests.append(testNumber)
+                    continue
             else:
                 print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
                 failedTests.append(testNumber)
@@ -84,7 +90,9 @@ else:
                 try:
                     execfile(klExtTest)
                 except Exception, e:
-                    print(e)
+                    print("Exception : {0}".format(e))
+                    failedTests.append(testNumber)
+                    continue
             else:
                 print("[FabricArnold::TestSuite] {0} doesn't exist!".format(testNumber))
                 failedTests.append(testNumber)
