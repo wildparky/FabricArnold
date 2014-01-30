@@ -2,26 +2,30 @@
 
 require Math;
 
-struct AtPoint
-{
-  Float32 x;
-  Float32 y;
-  Float32 z;
-};
+// struct AtPoint
+// {
+//   Float32 x;
+//   Float32 y;
+//   Float32 z;
+// };
 
-struct AtPoint2
-{
-  Float32 x;
-  Float32 y;
-};
+// struct AtPoint2
+// {
+//   Float32 x;
+//   Float32 y;
+// };
 
-struct AtHPoint
-{
-  Float32 x;
-  Float32 y;
-  Float32 z;
-  Float32 w;
-};
+// struct AtHPoint
+// {
+//   Float32 x;
+//   Float32 y;
+//   Float32 z;
+//   Float32 w;
+// };
 
-alias AtPoint AtVector;
-alias AtPoint2 AtVector2;
+alias Vec3 AtPoint;
+alias Vec2 AtPoint2;
+alias Vec4 AtHPoint;
+
+alias Vec3 AtVector;
+alias Vec2 AtVector2;
