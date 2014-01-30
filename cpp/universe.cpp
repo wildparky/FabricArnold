@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
+
 #include "universe.h"
 #include "nodes.h"
 #include "node_entry.h"

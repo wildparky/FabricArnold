@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
+
 #include "node_entry.h"
 #include "params.h"
 

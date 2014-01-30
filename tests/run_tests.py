@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+#
+# Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+# 
+# FabricArnold Extension
+
 # run all tests
 # TODO: allow a specific test to be run
 
@@ -86,7 +91,7 @@ else:
     # run all the tests
     for testNumber in os.listdir(os.getcwd()):
         if os.path.isdir(testNumber):
-            
+
             # clean before running
             if args.clean:
                 refImage = os.path.join(os.getcwd(), testNumber, "reference.jpg")

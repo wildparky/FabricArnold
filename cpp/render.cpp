@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
+
 #include <Fabric/EDK/EDK.h>
 
 #include <ai.h>

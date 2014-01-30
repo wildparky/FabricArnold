@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+# 
+# Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+# 
+# FabricArnold Extension
 # test_0002
 
 import os

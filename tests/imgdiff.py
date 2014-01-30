@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+# 
+# Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+# 
+# FabricArnold Extension
+
 # absoluate difference of two images using PIL (pillow fork)
 # 8bit RGB (jpg) support for now
 

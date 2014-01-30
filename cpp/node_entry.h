@@ -1,3 +1,7 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
+
 #ifndef NODE_ENTRY_H
 #define NODE_ENTRY_H
 

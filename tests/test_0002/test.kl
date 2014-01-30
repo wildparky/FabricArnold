@@ -1,3 +1,8 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
+// FabricArnold Extension
+
 require FabricArnold;
 
 operator entry(in String filename) {

@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
+//
 // FabricArnold Extension
 
 const Integer AI_VERSION_ARCH_NUM = {0};
