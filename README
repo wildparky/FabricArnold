@@ -1,1 +1,3 @@
-An extension exposing Solid Angle's Arnold Render to Fabric Engine's KL Language.
+An extension exposing the Solid Angle® <a href="https://www.solidangle.com/arnold/">Arnold Render</a> to the <a href="http://fabricengine.com/splice/kernel-language-kl/">Fabric Engine® KL Language</a>.
+
+This code is NOT supported by Solid Angle S.L. or by Fabric Software Inc. The code is released under the "New BSD" license and a copy can be found in the LICENSE file.
