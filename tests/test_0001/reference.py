@@ -7,6 +7,7 @@ from arnold import *
 testNumber = "test_0001"
 print("[FabricArnold::TestSuite] Generating reference image for {0}...".format(testNumber))
 
+start = time.clock()
 AiBegin()
 
 # create a sphere
@@ -61,3 +62,5 @@ if result != AI_SUCCESS:
     print("[FabricArnold::TestSuite] Error {0}".format(result))
 
 AiEnd()
+secs = time.clock() - start
+print("Elapsed time: {0} seconds".format(secs))

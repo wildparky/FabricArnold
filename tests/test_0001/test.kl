@@ -1,6 +1,7 @@
 require FabricArnold;
 
 operator entry(in String filename) {
+  UInt64 start = getCurrentTicks();
   AiBegin();
 
   // create a sphere
@@ -55,4 +56,6 @@ operator entry(in String filename) {
     report("[FabricArnold::TestSuite] Error " + String(result));
   }
   AiEnd();
+  UInt64 end = getCurrentTicks();
+  report("Elapsed time: " + getSecondsBetweenTicks(start, end) + " seconds");
 }
