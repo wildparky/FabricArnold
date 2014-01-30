@@ -2,6 +2,7 @@
 # test_0002
 
 import os
+import time
 from arnold import *
 
 testNumber = "test_0002"
