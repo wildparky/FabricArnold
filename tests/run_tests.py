@@ -4,8 +4,7 @@
 # 
 # FabricArnold Extension
 
-# run all tests
-# TODO: allow a specific test to be run
+# test suite for the Arnold KL bindings
 
 import os
 import sys
