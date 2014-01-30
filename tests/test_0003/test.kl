@@ -67,7 +67,7 @@ operator entry(in String filename) {
   AiNodeSetStr(gfilter, "name", "myfilter");
 
   // assign th driver and the filter to the outputs
-  ArnoldArray outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING);
+  AtArray outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING);
   AiArraySetStr(outputs_array, 0, "RGB RGB myfilter mydriver");
   AiNodeSetArray(options, "outputs", outputs_array);
 
