@@ -7,5 +7,5 @@ Requirements
 
 * C++ compiler
 * Fabric Engine
-* Arnold Renderer SDK
+* Arnold Render SDK
 * Pillow (PIL) https://github.com/python-imaging/Pillow
