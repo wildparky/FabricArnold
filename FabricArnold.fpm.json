@@ -15,6 +15,7 @@
       "version.kl",
       "universe.kl",
       "dotass.kl",
-      "msg.kl"
+      "msg.kl",
+      "constants.kl"
    ]
 }
