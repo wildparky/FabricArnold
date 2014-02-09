@@ -2,432 +2,484 @@
 // Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
 //
 
-#include "nodes.h"
-#include "node_entry.h"
-#include "params.h"
-#include "array.h"
-#include "color.h"
-#include "vector.h"
+#include "./FabricArnold.h"
+
+#include <ai.h>
 
 using namespace Fabric::EDK;
 
 // node methods
 
 FABRIC_EXT_EXPORT void fe_AiNode(
-   ArnoldNode& node,
-   const KL::String& name)
+   KL::Traits< KL::AtNode >::Result result,
+   KL::Traits< KL::String>::INParam name)
 {
-   node.node = AiNode(name.data());
+   result.node = AiNode(name.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeLookUpByName(
-   ArnoldNode& node,
-   const KL::String& name)
+   KL::Traits< KL::AtNode >::Result result,
+   KL::Traits< KL::String>::INParam name)
 {
-   node.node = AiNodeLookUpByName(name.data());
+   result.node = AiNodeLookUpByName(name.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeReset(
-   ArnoldNode* node)
+   KL::Traits< KL::AtNode >::IOParam node)
 {
-   AiNodeReset(node->node);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeReset(n);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeClone(
-   ArnoldNode& clone,
-   ArnoldNode* node)
+   KL::Traits< KL::AtNode >::Result result,
+   KL::Traits< KL::AtNode >::INParam node)
 {
-   clone.node = AiNodeClone(node->node);
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   result.node = AiNodeClone(n);
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeDestroy(
-   ArnoldNode* node)
+   KL::Traits< KL::AtNode >::IOParam node)
 {
-   return AiNodeDestroy(node->node);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   return AiNodeDestroy(n);
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeIs(
-   ArnoldNode* node,
-   const KL::String& str)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam str)
 {
-   return AiNodeIs(node->node, str.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeIs(n, str.data());
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeDeclare(
-   ArnoldNode* node,
-   const KL::String& param,
-   const KL::String& declaration)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::String >::INParam declaration)
 {
-   return AiNodeDeclare(node->node, param.data(), declaration.data());
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   return AiNodeDeclare(n, param.data(), declaration.data());
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeLink(
-   ArnoldNode* src,
-   const KL::String input,
-   ArnoldNode* target)
+   KL::Traits< KL::AtNode >::INParam src,
+   KL::Traits< KL::String >::INParam input,
+   KL::Traits< KL::AtNode >::INParam target)
 {
-   return AiNodeLink(src->node, input.data(), target->node);
+   AtNode* s = reinterpret_cast<AtNode *>(src.node);
+   AtNode* t = reinterpret_cast<AtNode *>(target.node);
+   return AiNodeLink(s, input.data(), t);
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeLinkOutput(
-   ArnoldNode* src,
-   const KL::String& output,
-   ArnoldNode* target,
-   const KL::String& input)
+   KL::Traits< KL::AtNode >::INParam src,
+   KL::Traits< KL::String >::INParam output,
+   KL::Traits< KL::AtNode >::INParam target,
+   KL::Traits< KL::String >::INParam input)
 {
-   return AiNodeLinkOutput(
-      src->node, output.data(), target->node, input.data());
+   AtNode* s = reinterpret_cast<AtNode *>(src.node);
+   AtNode* t = reinterpret_cast<AtNode *>(target.node);
+   return AiNodeLinkOutput(s, output.data(), t, input.data());
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeUnlink(
-   ArnoldNode* node,
-   const KL::String& input)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam input)
 {
-   return AiNodeUnlink(node->node, input.data());
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   return AiNodeUnlink(n, input.data());
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeIsLinked(
-   ArnoldNode* node,
-   const KL::String& input)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam input)
 {
-   return AiNodeIsLinked(node->node, input.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeIsLinked(n, input.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetLink(
-   ArnoldNode& link,
-   ArnoldNode& node,
-   const KL::String& input)
+   KL::Traits< KL::AtNode >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam input,
+   KL::Traits< KL::SInt32 >::INParam comp)
 {
-   link.node = AiNodeGetLink(node.node, input.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   result.node = AiNodeGetLink(n, input.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetName(
-   KL::String& name,
-   ArnoldNode& node)
+   KL::Traits< KL::String >::Result result,
+   KL::Traits< KL::AtNode >::INParam node)
 {
-   name = "";
-   name = AiNodeGetName(node.node);
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   result = AiNodeGetName(n);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetNodeEntry(
-   ArnoldNodeEntry& nentry,
-   ArnoldNode& node)
+   KL::Traits< KL::AtNodeEntry >::Result result,
+   KL::Traits< KL::AtNode >::INParam node)
 {
-   nentry.entry = AiNodeGetNodeEntry(node.node);
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtNodeEntry const * nentry = AiNodeGetNodeEntry(n);
+   result = reinterpret_cast<KL::AtNodeEntry &>(nentry);
 }
 
-FABRIC_EXT_EXPORT void fe_AiNodeGetParams(
-   ArnoldParamValue& pvalue,
-   ArnoldNode& node)
-{
-   pvalue.value = AiNodeGetParams(node.node);
-}
+// FABRIC_EXT_EXPORT void fe_AiNodeGetParams(
+//    ArnoldParamValue& pvalue,
+//    ArnoldNode& node)
+// {
+//    pvalue.value = AiNodeGetParams(node.node);
+// }
 
-FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetLocalData(
-   ArnoldNode& node)
-{
-   return AiNodeGetLocalData(node.node);
-}
+// FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetLocalData(
+//    ArnoldNode& node)
+// {
+//    return AiNodeGetLocalData(node.node);
+// }
 
-FABRIC_EXT_EXPORT void fe_AiNodeSetLocalData(
-   ArnoldNode& node,
-   KL::Data data)
-{
-   AiNodeSetLocalData(node.node, data);
-}
+// FABRIC_EXT_EXPORT void fe_AiNodeSetLocalData(
+//    KL::Traits< KL::AtNode >::INParam node,
+//    KL::Data data)
+// {
+//    AiNodeSetLocalData(node.node, data);
+// }
 
-FABRIC_EXT_EXPORT void fe_AiNodeLookUpUserParameter(
-   ArnoldUserParamEntry& upentry,
-   ArnoldNode& node,
-   KL::String::INParam param)
-{
-   upentry.entry = AiNodeLookUpUserParameter(node.node, param.data());
-}
+// FABRIC_EXT_EXPORT void fe_AiNodeLookUpUserParameter(
+//    ArnoldUserParamEntry& upentry,
+//    KL::Traits< KL::AtNode >::INParam node,
+//    KL::String::INParam param)
+// {
+//    upentry.entry = AiNodeLookUpUserParameter(node.node, param.data());
+// }
 
-FABRIC_EXT_EXPORT void fe_AiNodeGetUserParamIterator(
-   ArnoldUserParamIterator& iter,
-   ArnoldNode& node)
-{
-   iter.it = AiNodeGetUserParamIterator(node.node);
-}
+// FABRIC_EXT_EXPORT void fe_AiNodeGetUserParamIterator(
+//    ArnoldUserParamIterator& iter,
+//    ArnoldNode& node)
+// {
+//    iter.it = AiNodeGetUserParamIterator(node.node);
+// }
 
-// user param iterator methods
-FABRIC_EXT_EXPORT void fe_AiUserParamIteratorDestroy(
-   ArnoldUserParamIterator& iter)
-{
-   AiUserParamIteratorDestroy(iter.it);
-}
+// // user param iterator methods
+// FABRIC_EXT_EXPORT void fe_AiUserParamIteratorDestroy(
+//    ArnoldUserParamIterator& iter)
+// {
+//    AiUserParamIteratorDestroy(iter.it);
+// }
 
-FABRIC_EXT_EXPORT void fe_AiUserParamIteratorGetNext(
-   ArnoldUserParamEntry& upentry,
-   ArnoldUserParamIterator& iter)
-{
-   upentry.entry = AiUserParamIteratorGetNext(iter.it);
-}
+// FABRIC_EXT_EXPORT void fe_AiUserParamIteratorGetNext(
+//    ArnoldUserParamEntry& upentry,
+//    ArnoldUserParamIterator& iter)
+// {
+//    upentry.entry = AiUserParamIteratorGetNext(iter.it);
+// }
 
-FABRIC_EXT_EXPORT KL::Boolean fe_AiUserParamIteratorFinished(
-   ArnoldUserParamIterator& iter)
-{
-   return AiUserParamIteratorFinished(iter.it);
-}
+// FABRIC_EXT_EXPORT KL::Boolean fe_AiUserParamIteratorFinished(
+//    ArnoldUserParamIterator& iter)
+// {
+//    return AiUserParamIteratorFinished(iter.it);
+// }
 
 // node parameter writer functions
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetByte(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Byte val)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::UInt8 >::INParam val)
 {
-   AiNodeSetByte(node.node, param.data(), val);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetByte(n, param.data(), val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetInt(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Integer val)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::SInt32 >::INParam val)
 {
-   AiNodeSetInt(node.node, param.data(), val);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetInt(n, param.data(), val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetUInt(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::UInt32 val)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::UInt32 >::INParam val)
 {
-   AiNodeSetUInt(node.node, param.data(), val);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetUInt(n, param.data(), val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetBool(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Boolean val)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Boolean >::INParam val)
 {
-   AiNodeSetBool(node.node, param.data(), val);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetBool(n, param.data(), val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetFlt(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 val)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Float32 >::INParam val)
 {
-   AiNodeSetFlt(node.node, param.data(), val);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetFlt(n, param.data(), val);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetRGB(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 r,
-   const KL::Float32 g,
-   const KL::Float32 b)
+  KL::Traits< KL::AtNode >::IOParam node,
+  KL::Traits< KL::String >::INParam param,
+  KL::Traits< KL::Float32 >::INParam r,
+  KL::Traits< KL::Float32 >::INParam g,
+  KL::Traits< KL::Float32 >::INParam b)
 {
-   AiNodeSetRGB(node.node, param.data(), r, g, b);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetRGB(n, param.data(), r, g, b);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetRGBA(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 r,
-   const KL::Float32 g,
-   const KL::Float32 b,
-   const KL::Float32 a)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Float32 >::INParam r,
+   KL::Traits< KL::Float32 >::INParam g,
+   KL::Traits< KL::Float32 >::INParam b,
+   KL::Traits< KL::Float32 >::INParam a)
 {
-   AiNodeSetRGBA(node.node, param.data(), r, g, b, a);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetRGBA(n, param.data(), r, g, b, a);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetVec(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 x,
-   const KL::Float32 y,
-   const KL::Float32 z)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Float32 >::INParam x,
+   KL::Traits< KL::Float32 >::INParam y,
+   KL::Traits< KL::Float32 >::INParam z)
 {
-   AiNodeSetVec(node.node, param.data(), x, y, z);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetVec(n, param.data(), x, y, z);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetPnt(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 x,
-   const KL::Float32 y,
-   const KL::Float32 z)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Float32 >::INParam x,
+   KL::Traits< KL::Float32 >::INParam y,
+   KL::Traits< KL::Float32 >::INParam z)
 {
-   AiNodeSetPnt(node.node, param.data(), x, y, z);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetPnt(n, param.data(), x, y, z);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetPnt2(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::Float32 x,
-   const KL::Float32 y)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Float32 >::INParam x,
+   KL::Traits< KL::Float32 >::INParam y)
 {
-   AiNodeSetPnt2(node.node, param.data(), x, y);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetPnt2(n, param.data(), x, y);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetStr(
-   ArnoldNode& node,
-   const KL::String& param,
-   const KL::String& str)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::String >::INParam str)
 {
-   AiNodeSetStr(node.node, param.data(), str.data());
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetStr(n, param.data(), str.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetPtr(
-   ArnoldNode& node,
-   const KL::String& param,
-   KL::Data ptr)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::Data >::INParam ptr)
 {
-   AiNodeSetPtr(node.node, param.data(), ptr);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetPtr(n, param.data(), ptr);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetNode(
-   ArnoldNode& node,
-   const KL::String& param,
-   ArnoldNode& value)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::AtNode >::INParam value)
 {
-   AiNodeSetPtr(node.node, param.data(), value.node);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetPtr(n, param.data(), value.node);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetArray(
-   ArnoldNode& node,
-   const KL::String& param,
-   AtArray& array)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::AtArray >::IOParam array)
 {
-   AiNodeSetArray(node.node, param.data(), &array);
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AtArray* a = reinterpret_cast<AtArray *>(&array);
+   printf(AiNodeGetName(n));
+   printf(AiArrayGetStr(a, 0));
+   AiNodeSetArray(n, param.data(), a);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetMatrix(
-   ArnoldNode& node,
-   const KL::String& param,
-   AtMatrix& matrix)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::FixedArray< KL::FixedArray< KL::Float32, 4 >, 4 > >::IOParam matrix)
 {
-   AiNodeSetMatrix(node.node, param.data(), matrix);
+   AtNode& n = reinterpret_cast<AtNode &>(node.node);
+   AtMatrix& m = reinterpret_cast<AtMatrix &>(matrix);
+   AiNodeSetMatrix(&n, param.data(), m);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeSetAttributes(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::IOParam node,
+   KL::Traits< KL::String >::INParam attributes)
 {
-   AiNodeSetAttributes(node.node, param.data());
+   AtNode* n = reinterpret_cast<AtNode *>(node.node);
+   AiNodeSetAttributes(n, attributes.data());
 }
 
 // node parameter reader functions
 
 FABRIC_EXT_EXPORT KL::Byte fe_AiNodeGetByte(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   return AiNodeGetByte(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeGetByte(n, param.data());
 }
 
 FABRIC_EXT_EXPORT KL::Integer fe_AiNodeGetInt(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   return AiNodeGetInt(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeGetInt(n, param.data());
 }
 
 FABRIC_EXT_EXPORT KL::UInt32 fe_AiNodeGetUInt(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   return AiNodeGetUInt(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeGetUInt(n, param.data());
 }
 
 FABRIC_EXT_EXPORT KL::Boolean fe_AiNodeGetBool(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   return AiNodeGetBool(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeGetBool(n, param.data());
 }
 
 FABRIC_EXT_EXPORT KL::Float32 fe_AiNodeGetFlt(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   return AiNodeGetFlt(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   return AiNodeGetFlt(n, param.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetRGB(
-   AtRGB& color,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtRGB >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   color = AiNodeGetRGB(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtRGB& color = reinterpret_cast<AtRGB &>(result);
+   AtRGB rgb = AiNodeGetRGB(n, param.data());
+   color = rgb;
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetRGBA(
-   AtRGBA& color,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtRGBA >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   color = AiNodeGetRGBA(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtRGBA& color = reinterpret_cast<AtRGBA &>(result);
+   AtRGBA rgba = AiNodeGetRGBA(n, param.data());
+   color = rgba;
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetVec(
-   AtVector& vector,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtVector >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   vector = AiNodeGetVec(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtVector vec = AiNodeGetVec(n, param.data());
+   result = reinterpret_cast<KL::AtVector &>(vec);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetPnt(
-   AtPoint& point,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtPoint >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   point = AiNodeGetPnt(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtPoint pnt = AiNodeGetPnt(n, param.data());
+   result = reinterpret_cast<KL::AtPoint &>(pnt);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetPnt2(
-   AtPoint2& point,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtPoint2 >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   point = AiNodeGetPnt2(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtPoint2 pnt2 = AiNodeGetPnt2(n, param.data());
+   result = reinterpret_cast<KL::AtPoint2 &>(pnt2);
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetStr(
-   KL::String& str,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::String >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   str = KL::String(AiNodeGetStr(node.node, param.data()));
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   result = KL::String(AiNodeGetStr(n, param.data()));
 }
 
 FABRIC_EXT_EXPORT KL::Data fe_AiNodeGetPtr(
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
    KL::Data ptr = NULL;
-   ptr = AiNodeGetPtr(node.node, param.data());
+   AtNode const & n = reinterpret_cast<AtNode const &>(node.node);
+   ptr = AiNodeGetPtr(&n, param.data());
    return ptr;
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetNode(
-   ArnoldNode& outnode,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtNode >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   outnode.node = (AtNode*)AiNodeGetPtr(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   result.node = AiNodeGetPtr(n, param.data());
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetArray(
-   AtArray& array,
-   ArnoldNode& node,
-   const KL::String& param)
+   KL::Traits< KL::AtArray >::Result result,
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param)
 {
-   AtArray* a = AiNodeGetArray(node.node, param.data());
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtArray& array = reinterpret_cast<AtArray &>(result);
+   AtArray* a = AiNodeGetArray(n, param.data());
    array = *a;
-   // array.nelements = array.array->nelements;
-   // array.nkeys = array.array->nkeys;
-   // array.type = array.array->type;
 }
 
 FABRIC_EXT_EXPORT void fe_AiNodeGetMatrix(
-   ArnoldNode& node,
-   const KL::String& param,
-   AtMatrix& matrix)
+   KL::Traits< KL::AtNode >::INParam node,
+   KL::Traits< KL::String >::INParam param,
+   KL::Traits< KL::AtMatrix >::IOParam matrix)
 {
-   AiNodeGetMatrix(node.node, param.data(), matrix);
+   AtNode const * n = reinterpret_cast<AtNode const *>(node.node);
+   AtMatrix& m = reinterpret_cast<AtMatrix &>(matrix);
+   AiNodeGetMatrix(n, param.data(), m);
 }

@@ -60,6 +60,7 @@ AiNodeSetStr(gfilter, "name", "myfilter");
 outputs_array = AiArrayAllocate(1, 1, AI_TYPE_STRING)
 AiArraySetStr(outputs_array, 0, "RGB RGB myfilter mydriver")
 AiNodeSetArray(options, "outputs", outputs_array)
+#AiArrayDestroy(outputs_array)
 
 # render the scene
 result = AiRender(AI_RENDER_MODE_CAMERA)

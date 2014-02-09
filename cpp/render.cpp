@@ -2,8 +2,9 @@
 // Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
 //
 
-#include <Fabric/EDK/EDK.h>
+//#include <Fabric/EDK/EDK.h>
 
+#include "./FabricArnold.h"
 #include <ai.h>
 
 using namespace Fabric::EDK;
@@ -19,7 +20,7 @@ FABRIC_EXT_EXPORT void fe_AiEnd()
 }
 
 FABRIC_EXT_EXPORT KL::Integer fe_AiRender(
-   KL::Integer mode)
+   KL::Traits< KL::SInt32 >::INParam mode)
 {
    return AiRender(mode);
 }

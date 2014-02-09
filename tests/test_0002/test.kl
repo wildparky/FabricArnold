@@ -10,12 +10,12 @@ operator entry(in String filename) {
   AiBegin();
 
   // create a sphere
-  ArnoldNode sphere = AiNode("sphere");
+  AtNode sphere = AiNode("sphere");
   AiNodeSetStr(sphere, "name", "mysphere");
   AiNodeSetFlt(sphere, "radius", 5.0);
 
   // create a lambert shader
-  ArnoldNode lambert = AiNode("lambert");
+  AtNode lambert = AiNode("lambert");
   AiNodeSetStr(lambert, "name", "myshader");
   AiNodeSetRGB(lambert, "Kd_color", 0.0, 1.0, 0.0);
 
@@ -23,30 +23,30 @@ operator entry(in String filename) {
   AiNodeSetPtr(sphere, "shader", lambert.node);
 
   // create a perspective camera
-  ArnoldNode camera = AiNode("persp_camera");
+  AtNode camera = AiNode("persp_camera");
   AiNodeSetStr(camera, "name", "mycamera");
   AiNodeSetPnt(camera, "position", 0.0, 0.0, 20.0);
 
   // create a point light
-  ArnoldNode light = AiNode("point_light");
+  AtNode light = AiNode("point_light");
   AiNodeSetStr(light, "name", "mylight");
   AiNodeSetFlt(light, "exposure", 7.5);
   AiNodeSetPnt(light, "position", 0.0, 10.0, 10.0);
 
   // set render options
-  ArnoldNode options = AiUniverseGetOptions();
+  AtNode options = AiUniverseGetOptions();
   AiNodeSetInt(options, "AA_samples", 1);
   AiNodeSetInt(options, "xres", 320);
   AiNodeSetInt(options, "yres", 240);
   AiNodeSetPtr(options, "camera", camera.node);
 
   // create an output driver
-  ArnoldNode driver = AiNode("driver_jpeg");
+  AtNode driver = AiNode("driver_jpeg");
   AiNodeSetStr(driver, "name", "mydriver");
   AiNodeSetStr(driver, "filename", filename);
 
   // create a gaussian filter node
-  ArnoldNode gfilter = AiNode("gaussian_filter");
+  AtNode gfilter = AiNode("gaussian_filter");
   AiNodeSetStr(gfilter, "name", "myfilter");
 
   // assign th driver and the filter to the outputs
@@ -66,7 +66,7 @@ operator entry(in String filename) {
 
   // remove the sphere, create a box the size of the bounds
   AiNodeDestroy(sphere);
-  ArnoldNode box = AiNode("box");
+  AtNode box = AiNode("box");
   AiNodeSetStr(box, "name", "mybox");
   AiNodeSetPtr(box, "shader", lambert.node);
 
@@ -79,7 +79,7 @@ operator entry(in String filename) {
   {
     report("[FabricArnold::TestSuite] Error " + String(result));
   }
-  AiEnd();
+  //AiEnd();
   UInt64 end = getCurrentTicks();
   report("Elapsed time: " + getSecondsBetweenTicks(start, end) + " seconds");
 }

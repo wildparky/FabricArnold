@@ -3,7 +3,7 @@
 //
 // FabricArnold Extension
 
-struct ArnoldNode
+struct AtNode
 {
   Data node;
 };
@@ -13,99 +13,99 @@ struct AtUserParamIterator
   Data it;
 };
 
-function ArnoldNode AiNode(in String name) = "fe_AiNode";
-function ArnoldNode AiNodeLookUpByName(in String name) = "fe_AiNodeLookUpByName";
-function AiNodeReset(in ArnoldNode node) = "fe_AiNodeReset";
-function ArnoldNode AiNodeClone(in ArnoldNode node) = "fe_AiNodeClone";
-function Boolean AiNodeDestroy(in ArnoldNode node) = "fe_AiNodeDestroy";
-function Boolean AiNodeIs(in ArnoldNode node, in String str) = "fe_AiNodeIs";
-function Boolean AiNodeDeclare(in ArnoldNode node, in String param, in String declaration) = "fe_AiNodeDeclare";
-function Boolean AiNodeLink(in ArnoldNode src, in ArnoldNode target) = "fe_AiNodeLink";
-function Boolean AiNodeLinkOutput(in ArnoldNode src, in ArnoldNode target, in String input) = "fe_AiNodeLinkOutput";
-function Boolean AiNodeUnlink(in ArnoldNode node, in String input) = "fe_AiNodeUnlink";
-function Boolean AiNodeIsLinked(in ArnoldNode node, in String input) = "fe_AiNodeIsLinked";
-function ArnoldNode AiNodeGetLink(in ArnoldNode node, in String input, Integer comp) = "fe_AiNodeGetLink";
-function String AiNodeGetName(in ArnoldNode node) = "fe_AiNodeGetName";
-function AtNodeEntry AiNodeGetNodeEntry(in ArnoldNode node) = "fe_AiNodeGetNodeEntry";
-function AtParamValue AiNodeGetParams(in ArnoldNode node) = "fe_AiNodeGetParams";
-function Data AiNodeGetLocalData(in ArnoldNode node) = "fe_AiNodeGetLocalData";
-function AiNodeSetLocalData(in ArnoldNode node, Data data) = "fe_AiNodeSetLocalData";
-function AtUserParamEntry AiNodeLookUpUserParameter(in ArnoldNode node, in String param) = "fe_AiNodeLookUpUserParameter";
-function AiNodeGetUserParamIterator(in ArnoldNode node) = "fe_AiNodeGetUserParamIterator";
+function AtNode AiNode(String name) = "fe_AiNode";
+function AtNode AiNodeLookUpByName(String name) = "fe_AiNodeLookUpByName";
+function AiNodeReset(io AtNode node) = "fe_AiNodeReset";
+function AtNode AiNodeClone(AtNode node) = "fe_AiNodeClone";
+function Boolean AiNodeDestroy(io AtNode node) = "fe_AiNodeDestroy";
+function Boolean AiNodeIs(AtNode node, String str) = "fe_AiNodeIs";
+function Boolean AiNodeDeclare(AtNode node, String param, String declaration) = "fe_AiNodeDeclare";
+function Boolean AiNodeLink(AtNode src, String input, AtNode target) = "fe_AiNodeLink";
+function Boolean AiNodeLinkOutput(AtNode src, String output, AtNode target, String input) = "fe_AiNodeLinkOutput";
+function Boolean AiNodeUnlink(AtNode node, String input) = "fe_AiNodeUnlink";
+function Boolean AiNodeIsLinked(AtNode node, String input) = "fe_AiNodeIsLinked";
+function AtNode AiNodeGetLink(AtNode node, String input, Integer comp) = "fe_AiNodeGetLink";
+function String AiNodeGetName(AtNode node) = "fe_AiNodeGetName";
+function AtNodeEntry AiNodeGetNodeEntry(AtNode node) = "fe_AiNodeGetNodeEntry";
+// function AtParamValue AiNodeGetParams(in AtNode node) = "fe_AiNodeGetParams";
+// function Data AiNodeGetLocalData(in AtNode node) = "fe_AiNodeGetLocalData";
+// function AiNodeSetLocalData(in AtNode node, Data data) = "fe_AiNodeSetLocalData";
+// function AtUserParamEntry AiNodeLookUpUserParameter(in AtNode node, in String param) = "fe_AiNodeLookUpUserParameter";
+// function AiNodeGetUserParamIterator(in AtNode node) = "fe_AiNodeGetUserParamIterator";
 
 // user param iterator methods
-function AiUserParamIteratorDestroy(AtUserParamIterator iter) = "fe_AiUserParamIteratorDestroy";
-function AtUserParamEntry AiUserParamIteratorGetNext(AtUserParamIterator iter) = "fe_AiUserParamIteratorGetNext";
-function Boolean AiUserParamIteratorFinished(AtUserParamIterator iter) = "fe_AiUserParamIteratorFinished";
+// function AiUserParamIteratorDestroy(AtUserParamIterator iter) = "fe_AiUserParamIteratorDestroy";
+// function AtUserParamEntry AiUserParamIteratorGetNext(AtUserParamIterator iter) = "fe_AiUserParamIteratorGetNext";
+// function Boolean AiUserParamIteratorFinished(AtUserParamIterator iter) = "fe_AiUserParamIteratorFinished";
 
 // node parameter writer functions
-function AiNodeSetByte(ArnoldNode node, in String param, in Byte val) = "fe_AiNodeSetByte";
-function AiNodeSetInt(ArnoldNode node, in String param, in Integer val) = "fe_AiNodeSetInt";
-function AiNodeSetUInt(ArnoldNode node, in String param, in UInt32 val) = "fe_AiNodeSetUInt";
-function AiNodeSetBool(ArnoldNode node, in String param, in Boolean val) = "fe_AiNodeSetBool";
-function AiNodeSetFlt(ArnoldNode node, in String param, in Float32 val) = "fe_AiNodeSetFlt";
-function AiNodeSetRGB(ArnoldNode node, in String param, in Float32 r, in Float32 g, in Float32 b) = "fe_AiNodeSetRGB";
-function AiNodeSetRGBA(ArnoldNode node, in String param, in Float32 r, in Float32 g, in Float32 b, in Float32 a) = "fe_AiNodeSetRGBA";
-function AiNodeSetVec(ArnoldNode node, in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetVec";
-function AiNodeSetPnt(ArnoldNode node, in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetPnt";
-function AiNodeSetPnt2(ArnoldNode node, in String param, in Float32 x, in Float32 y) = "fe_AiNodeSetPnt2";
-function AiNodeSetStr(ArnoldNode node, in String param, in String str) = "fe_AiNodeSetStr";
-function AiNodeSetPtr(ArnoldNode node, in String param, in Data ptr) = "fe_AiNodeSetPtr";
-function AiNodeSetNode(ArnoldNode node, in String param, in ArnoldNode value) = "fe_AiNodeSetNode";
-function AiNodeSetArray(ArnoldNode node, in String param, in AtArray array) = "fe_AiNodeSetArray";
-function AiNodeSetMatrix(ArnoldNode node, in String param, in AtMatrix matrix) = "fe_AiNodeSetMatrix";
-function AiNodeSetAttributes(ArnoldNode node, in String attributes) = "fe_AiNodeSetAttributes";
+function AiNodeSetByte(io AtNode node, String param, Byte val) = "fe_AiNodeSetByte";
+function AiNodeSetInt(io AtNode node, String param, Integer val) = "fe_AiNodeSetInt";
+function AiNodeSetUInt(io AtNode node, String param, UInt32 val) = "fe_AiNodeSetUInt";
+function AiNodeSetBool(io AtNode node, String param, Boolean val) = "fe_AiNodeSetBool";
+function AiNodeSetFlt(io AtNode node, String param, Float32 val) = "fe_AiNodeSetFlt";
+function AiNodeSetRGB(io AtNode node, String param, Float32 r, Float32 g, Float32 b) = "fe_AiNodeSetRGB";
+function AiNodeSetRGBA(io AtNode node, String param, Float32 r, Float32 g, Float32 b, Float32 a) = "fe_AiNodeSetRGBA";
+function AiNodeSetVec(io AtNode node, String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetVec";
+function AiNodeSetPnt(io AtNode node, String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetPnt";
+function AiNodeSetPnt2(io AtNode node, String param, Float32 x, Float32 y) = "fe_AiNodeSetPnt2";
+function AiNodeSetStr(io AtNode node, String param, String str) = "fe_AiNodeSetStr";
+function AiNodeSetPtr(io AtNode node, String param, Data ptr) = "fe_AiNodeSetPtr";
+function AiNodeSetNode(io AtNode node, String param, AtNode value) = "fe_AiNodeSetNode";
+function AiNodeSetArray(io AtNode node, String param, io AtArray array) = "fe_AiNodeSetArray";
+function AiNodeSetMatrix(io AtNode node, String param, io AtMatrix matrix) = "fe_AiNodeSetMatrix";
+function AiNodeSetAttributes(io AtNode node, String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader functions
-function Byte AiNodeGetByte(ArnoldNode node, in String param) = "fe_AiNodeGetByte";
-function Integer AiNodeGetInt(ArnoldNode node, in String param) = "fe_AiNodeGetInt";
-function UInt32 AiNodeGetUInt(ArnoldNode node, in String param) = "fe_AiNodeGetUInt";
-function Boolean AiNodeGetBool(ArnoldNode node, in String param) = "fe_AiNodeGetBool";
-function Float32 AiNodeGetFlt(ArnoldNode node, in String param) = "fe_AiNodeGetFlt";
-function AtRGB AiNodeGetRGB(ArnoldNode node, in String param) = "fe_AiNodeGetRGB";
-function AtRGBA AiNodeGetRGBA(ArnoldNode node, in String param) = "fe_AiNodeGetRGBA";
-function AtVector AiNodeGetVec(ArnoldNode node, in String param) = "fe_AiNodeGetVec";
-function AtPoint AiNodeGetPnt(ArnoldNode node, in String param) = "fe_AiNodeGetPnt";
-function AtPoint2 AiNodeGetPnt2(ArnoldNode node, in String param) = "fe_AiNodeGetPnt2";
-function String AiNodeGetStr(ArnoldNode node, in String param) = "fe_AiNodeGetStr";
-function Data AiNodeGetPtr(ArnoldNode node, in String param) = "fe_AiNodeGetPtr";
-function ArnoldNode AiNodeGetNode(ArnoldNode node, in String param) = "fe_AiNodeGetNode";
-function AtArray AiNodeGetArray(ArnoldNode node, in String param) = "fe_AiNodeGetArray";
-function AiNodeGetMatrix(ArnoldNode node, in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
+function Byte AiNodeGetByte(AtNode node, String param) = "fe_AiNodeGetByte";
+function Integer AiNodeGetInt(AtNode node, String param) = "fe_AiNodeGetInt";
+function UInt32 AiNodeGetUInt(AtNode node, String param) = "fe_AiNodeGetUInt";
+function Boolean AiNodeGetBool(AtNode node, String param) = "fe_AiNodeGetBool";
+function Float32 AiNodeGetFlt(AtNode node, String param) = "fe_AiNodeGetFlt";
+function AtRGB AiNodeGetRGB(AtNode node, String param) = "fe_AiNodeGetRGB";
+function AtRGBA AiNodeGetRGBA(AtNode node, String param) = "fe_AiNodeGetRGBA";
+function AtVector AiNodeGetVec(AtNode node, String param) = "fe_AiNodeGetVec";
+function AtPoint AiNodeGetPnt(AtNode node, String param) = "fe_AiNodeGetPnt";
+function AtPoint2 AiNodeGetPnt2(AtNode node, String param) = "fe_AiNodeGetPnt2";
+function String AiNodeGetStr(AtNode node, String param) = "fe_AiNodeGetStr";
+function Data AiNodeGetPtr(AtNode node, String param) = "fe_AiNodeGetPtr";
+function AtNode AiNodeGetNode(AtNode node, String param) = "fe_AiNodeGetNode";
+function AtArray AiNodeGetArray(AtNode node, String param) = "fe_AiNodeGetArray";
+function AiNodeGetMatrix(AtNode node, String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
 
 // convenience methods, not representative of the Arnold API
 // node parameter writer methods
-function ArnoldNode.setByte?(in String param, in Byte value) = "fe_AiNodeSetByte";
-function ArnoldNode.setInt?(in String param, in Integer value) = "fe_AiNodeSetInt";
-function ArnoldNode.setUInt?(in String param, in UInt32 value) = "fe_AiNodeSetUInt";
-function ArnoldNode.setBool?(in String param, in Boolean value) = "fe_AiNodeSetBool";
-function ArnoldNode.setFlt?(in String param, in Float32 value) = "fe_AiNodeSetFlt";
-function ArnoldNode.setRGB?(in String param, in Float32 r, in Float32 g, in Float32 b) = "fe_AiNodeSetRGB";
-function ArnoldNode.setRGBA?(in String param, in Float32 r, in Float32 g, in Float32 b, in Float32 a) = "fe_AiNodeSetRGBA";
-function ArnoldNode.setVec?(in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetVec";
-function ArnoldNode.setPnt?(in String param, in Float32 x, in Float32 y, in Float32 z) = "fe_AiNodeSetPnt";
-function ArnoldNode.setPnt2?(in String param, in Float32 x, in Float32 y) = "fe_AiNodeSetPnt2";
-function ArnoldNode.setStr?(in String param, in String value) = "fe_AiNodeSetStr";
-function ArnoldNode.setPtr?(in String param, in Data value) = "fe_AiNodeSetPtr";
-function ArnoldNode.setNode?(in String param, in ArnoldNode value) = "fe_AiNodeSetNode";
-function ArnoldNode.setArray?(in String param, in AtArray value) = "fe_AiNodeSetArray";
-function ArnoldNode.setMatrix?(in String param, in AtMatrix value) = "fe_AiNodeSetMatrix";
-function ArnoldNode.setAttributes?(in String attributes) = "fe_AiNodeSetAttributes";
+function AtNode.setByte(String param, Byte value) = "fe_AiNodeSetByte";
+function AtNode.setInt(String param, Integer value) = "fe_AiNodeSetInt";
+function AtNode.setUInt(String param, UInt32 value) = "fe_AiNodeSetUInt";
+function AtNode.setBool(String param, Boolean value) = "fe_AiNodeSetBool";
+function AtNode.setFlt(String param, Float32 value) = "fe_AiNodeSetFlt";
+function AtNode.setRGB(String param, Float32 r, Float32 g, Float32 b) = "fe_AiNodeSetRGB";
+function AtNode.setRGBA(String param, Float32 r, Float32 g, Float32 b, Float32 a) = "fe_AiNodeSetRGBA";
+function AtNode.setVec(String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetVec";
+function AtNode.setPnt(String param, Float32 x, Float32 y, Float32 z) = "fe_AiNodeSetPnt";
+function AtNode.setPnt2(String param, Float32 x, Float32 y) = "fe_AiNodeSetPnt2";
+function AtNode.setStr(String param, String value) = "fe_AiNodeSetStr";
+function AtNode.setPtr(String param, Data value) = "fe_AiNodeSetPtr";
+function AtNode.setNode(String param, AtNode value) = "fe_AiNodeSetNode";
+function AtNode.setArray(String param, io AtArray value) = "fe_AiNodeSetArray";
+function AtNode.setMatrix(String param, io AtMatrix value) = "fe_AiNodeSetMatrix";
+function AtNode.setAttributes(String attributes) = "fe_AiNodeSetAttributes";
 
 // node parameter reader methods
-function Byte ArnoldNode.getByte?(in String param) = "fe_AiNodeGetByte";
-function Integer ArnoldNode.getInt?(in String param) = "fe_AiNodeGetInt";
-function Size ArnoldNode.getUInt?(in String param) = "fe_AiNodeGetUInt";
-function Boolean ArnoldNode.getBool?(in String param) = "fe_AiNodeGetBool";
-function Float32 ArnoldNode.getFlt?(in String param) = "fe_AiNodeGetFlt";
-function AtRGB ArnoldNode.getRGB?(in String param) = "fe_AiNodeGetRGB";
-function AtRGBA ArnoldNode.getRGBA?(in String param) = "fe_AiNodeGetRGBA";
-function AtVector ArnoldNode.getVec?(in String param) = "fe_AiNodeGetVec";
-function AtPoint ArnoldNode.getPnt?(in String param) = "fe_AiNodeGetPnt";
-function AtVector2 ArnoldNode.getPnt2?(in String param) = "fe_AiNodeGetPnt2";
-function String ArnoldNode.getStr?(in String param) = "fe_AiNodeGetStr";
-function String ArnoldNode.getName?() = "fe_AiNodeGetName";
-function Data ArnoldNode.getPtr?(in String param) = "fe_AiNodeGetPtr";
-function ArnoldNode ArnoldNode.getNode?(in String param) = "fe_AiNodeGetNode";
-function AtArray ArnoldNode.getArray?(in String param) = "fe_AiNodeGetArray";
-function ArnoldNode.getMatrix?(in String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";
+function Byte AtNode.getByte?(String param) = "fe_AiNodeGetByte";
+function Integer AtNode.getInt?(String param) = "fe_AiNodeGetInt";
+function Size AtNode.getUInt?(String param) = "fe_AiNodeGetUInt";
+function Boolean AtNode.getBool?(String param) = "fe_AiNodeGetBool";
+function Float32 AtNode.getFlt?(String param) = "fe_AiNodeGetFlt";
+function AtRGB AtNode.getRGB?(String param) = "fe_AiNodeGetRGB";
+function AtRGBA AtNode.getRGBA?(String param) = "fe_AiNodeGetRGBA";
+function AtVector AtNode.getVec?(String param) = "fe_AiNodeGetVec";
+function AtPoint AtNode.getPnt?(String param) = "fe_AiNodeGetPnt";
+function AtVector2 AtNode.getPnt2?(String param) = "fe_AiNodeGetPnt2";
+function String AtNode.getStr?(String param) = "fe_AiNodeGetStr";
+function String AtNode.getName?() = "fe_AiNodeGetName";
+function Data AtNode.getPtr?(String param) = "fe_AiNodeGetPtr";
+function AtNode AtNode.getNode?(String param) = "fe_AiNodeGetNode";
+function AtArray AtNode.getArray?(String param) = "fe_AiNodeGetArray";
+function AtNode.getMatrix?(String param, io AtMatrix matrix) = "fe_AiNodeGetMatrix";

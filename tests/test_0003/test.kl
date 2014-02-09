@@ -21,14 +21,14 @@ operator entry(in String filename) {
     Float32 z = radius * sin(theta);
 
     // create a sphere
-    ArnoldNode sphere = AiNode("sphere");
+    AtNode sphere = AiNode("sphere");
     String name = "mysphere_" + String(i);
     AiNodeSetStr(sphere, "name", name);
     AiNodeSetFlt(sphere, "radius", step*0.5);
     AiNodeSetPnt(sphere, "center", x, theta, z);
 
     // create a lambert shader
-    ArnoldNode lambert = AiNode("lambert");
+    AtNode lambert = AiNode("lambert");
     name = "myshader_" + String(i);
     AiNodeSetStr(lambert, "name", name);
     AiNodeSetRGB(lambert, "Kd_color", 0.0, 1.0, 0.0);
@@ -38,37 +38,37 @@ operator entry(in String filename) {
   }
 
   // create a perspective camera
-  ArnoldNode camera = AiNode("persp_camera");
+  AtNode camera = AiNode("persp_camera");
   AiNodeSetStr(camera, "name", "mycamera");
   AiNodeSetPnt(camera, "position", 0.0, 5.0, 20.0);
   AiNodeSetPnt(camera, "look_at", 0.0, 5.0, 0.0);
 
   // create a point light
-  ArnoldNode light = AiNode("point_light");
+  AtNode light = AiNode("point_light");
   AiNodeSetStr(light, "name", "mylight");
   AiNodeSetFlt(light, "exposure", 10.5);
   AiNodeSetPnt(light, "position", 0.0, 20.0, 0.0);
 
   // create a point light
-  ArnoldNode light1 = AiNode("point_light");
+  AtNode light1 = AiNode("point_light");
   AiNodeSetStr(light1, "name", "mylight_1");
   AiNodeSetFlt(light1, "exposure", 10.5);
   AiNodeSetPnt(light1, "position", 0.0, -20.0, 0.0);
 
   // set render options
-  ArnoldNode options = AiUniverseGetOptions();
+  AtNode options = AiUniverseGetOptions();
   AiNodeSetInt(options, "AA_samples", 4);
   AiNodeSetInt(options, "xres", 320);
   AiNodeSetInt(options, "yres", 240);
   AiNodeSetPtr(options, "camera", camera.node);
 
   // create an output driver
-  ArnoldNode driver = AiNode("driver_jpeg");
+  AtNode driver = AiNode("driver_jpeg");
   AiNodeSetStr(driver, "name", "mydriver");
   AiNodeSetStr(driver, "filename", filename);
 
   // create a gaussian filter node
-  ArnoldNode gfilter = AiNode("gaussian_filter");
+  AtNode gfilter = AiNode("gaussian_filter");
   AiNodeSetStr(gfilter, "name", "myfilter");
 
   // assign th driver and the filter to the outputs
@@ -83,7 +83,7 @@ operator entry(in String filename) {
     report("[FabricArnold::TestSuite] Error " + String(result));
   }
 
-  AiEnd();
+  //AiEnd();
   UInt64 end = getCurrentTicks();
   report("Elapsed time: " + getSecondsBetweenTicks(start, end) + " seconds");
 }

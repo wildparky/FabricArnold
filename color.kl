@@ -3,6 +3,8 @@
 //
 // FabricArnold Extension
 
+require Math;
+
 struct AtRGB
 {
   Float32 r;
@@ -10,15 +12,8 @@ struct AtRGB
   Float32 b;
 };
 
-struct AtRGBA
-{
-  Float32 r;
-  Float32 g;
-  Float32 b;
-  Float32 a;
-};
-
-alias AtRGB AtColor; // same as AtRGB
+alias Color AtRGBA;
+alias AtRGB AtColor;
 
 function AtColor AiColor(Float32 f) = "fe_AiColor";
 function AtColor AiColorCreate(Float32 r, Float32 g, Float32 b) = "fe_AiColorCreate";

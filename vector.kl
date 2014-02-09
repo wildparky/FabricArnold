@@ -5,27 +5,6 @@
 
 require Math;
 
-// struct AtPoint
-// {
-//   Float32 x;
-//   Float32 y;
-//   Float32 z;
-// };
-
-// struct AtPoint2
-// {
-//   Float32 x;
-//   Float32 y;
-// };
-
-// struct AtHPoint
-// {
-//   Float32 x;
-//   Float32 y;
-//   Float32 z;
-//   Float32 w;
-// };
-
 alias Vec3 AtPoint;
 alias Vec2 AtPoint2;
 alias Vec4 AtHPoint;

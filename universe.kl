@@ -26,30 +26,30 @@ struct AtAOVEntry
 // universe methods
 function Boolean AiUniverseIsActive() = "fe_AiUniverseIsActive";
 function AiUniverseCacheFlush(Integer cache_flags) = "fe_AiUniverseCacheFlush";
-function ArnoldNode AiUniverseGetOptions() = "fe_AiUniverseGetOptions";
-function ArnoldNode AiUniverseGetCamera() = "fe_AiUniverseGetCamera";
+function AtNode AiUniverseGetOptions() = "fe_AiUniverseGetOptions";
+function AtNode AiUniverseGetCamera() = "fe_AiUniverseGetCamera";
 function AtBBox AiUniverseGetSceneBounds() = "fe_AiUniverseGetSceneBounds";
-function Integer AiUniverseGetNumLights() = "fe_AiUniverseGetNumLights";
-function ArnoldNode[] AiUniverseGetLights() = "fe_AiUniverseGetLights";
-function Integer AiUniverseGetNumGObjects() = "fe_AiUniverseGetNumGObjects";
-function AtNodeIterator AiUniverseGetNodeIterator(in UInt32 node_mask) = "fe_AiUniverseGetNodeIterator";
-function AtNodeEntryIterator AiUniverseGetNodeEntryIterator(in UInt32 node_mask) = "fe_AiUniverseGetNodeEntryIterator";
-function AtAOVIterator AiUniverseGetAOVIterator() = "fe_AiUniverseGetAOVIterator";
+// function Integer AiUniverseGetNumLights() = "fe_AiUniverseGetNumLights";
+// function AtNode[] AiUniverseGetLights() = "fe_AiUniverseGetLights";
+// function Integer AiUniverseGetNumGObjects() = "fe_AiUniverseGetNumGObjects";
+// function AtNodeIterator AiUniverseGetNodeIterator(in UInt32 node_mask) = "fe_AiUniverseGetNodeIterator";
+// function AtNodeEntryIterator AiUniverseGetNodeEntryIterator(in UInt32 node_mask) = "fe_AiUniverseGetNodeEntryIterator";
+// function AtAOVIterator AiUniverseGetAOVIterator() = "fe_AiUniverseGetAOVIterator";
 
 // node iterator functions
-function AiNodeIteratorDestroy(AtNodeIterator iter) = "fe_AiNodeIteratorDestroy";
-function ArnoldNode AiNodeIteratorGetNext(AtNodeIterator iter) = "fe_AiNodeIteratorGetNext";
-function Boolean AiNodeIteratorFinished(AtNodeIterator iter) = "fe_AiNodeIteratorFinished";
+// function AiNodeIteratorDestroy(AtNodeIterator iter) = "fe_AiNodeIteratorDestroy";
+// function AtNode AiNodeIteratorGetNext(AtNodeIterator iter) = "fe_AiNodeIteratorGetNext";
+// function Boolean AiNodeIteratorFinished(AtNodeIterator iter) = "fe_AiNodeIteratorFinished";
 
 // node entry iterator functions
-function AiNodeEntryIteratorDestroy(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorDestroy";
-function AtNodeEntry AiNodeEntryIteratorGetNext(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorGetNext";
-function Boolean AiNodeEntryIteratorFinished(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorFinished";
+// function AiNodeEntryIteratorDestroy(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorDestroy";
+// function AtNodeEntry AiNodeEntryIteratorGetNext(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorGetNext";
+// function Boolean AiNodeEntryIteratorFinished(AtNodeEntryIterator iter) = "fe_AiNodeEntryIteratorFinished";
 
 // aov entry iterator functions
-function AiAOVIteratorDestroy(AtAOVIterator iter) = "fe_AiAOVIteratorDestroy";
-function AtAOVEntry AiAOVIteratorGetNext(AtAOVIterator iter) = "fe_AiAOVIteratorGetNext";
-function Boolean AiAOVIteratorFinished(AtAOVIterator iter) = "fe_AiAOVIteratorFinished";
+// function AiAOVIteratorDestroy(AtAOVIterator iter) = "fe_AiAOVIteratorDestroy";
+// function AtAOVEntry AiAOVIteratorGetNext(AtAOVIterator iter) = "fe_AiAOVIteratorGetNext";
+// function Boolean AiAOVIteratorFinished(AtAOVIterator iter) = "fe_AiAOVIteratorFinished";
 
 // cache types
 const Integer AI_CACHE_TEXTURE = 0x0001;

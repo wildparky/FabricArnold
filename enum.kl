@@ -5,7 +5,7 @@
 
 struct AtEnum
 {
-  Data enum;
+  Data aenum;
 };
 
 function Integer AiEnumGetValue(in AtEnum enum_type, in String string) = "fe_AiEnumGetValue";

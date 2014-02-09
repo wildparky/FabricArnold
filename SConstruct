@@ -18,26 +18,26 @@ Import('fabricBuildEnv')
 
 # source files
 fabricBuildEnv.Extension('FabricArnold',
-    ['cpp/FabricArnold.cpp',
-    'cpp/matrix.cpp',
-    'cpp/vector.cpp',
-    'cpp/bbox.cpp',
-    'cpp/render.cpp',
-    'cpp/nodes.cpp',
-    'cpp/node_entry.cpp',
-    'cpp/params.cpp',
-    'cpp/enum.cpp',
-    'cpp/array.cpp',
-    'cpp/color.cpp',
-    'cpp/universe.cpp',
-    'cpp/plugins.cpp',
-    'cpp/version.cpp',
-    'cpp/dotass.cpp',
-    'cpp/msg.cpp' ])
+    ['cpp/FabricArnold.cpp', 'FabricArnold.kl',
+    'cpp/matrix.cpp', 'matrix.kl',
+    'cpp/vector.cpp', 'vector.kl',
+    'cpp/bbox.cpp', 'bbox.kl',
+    'cpp/render.cpp', 'render.kl',
+    'cpp/nodes.cpp', 'nodes.kl',
+    'cpp/node_entry.cpp', 'node_entry.kl',
+    'cpp/params.cpp', 'params.kl',
+    'cpp/enum.cpp', 'enum.kl',
+    'cpp/array.cpp', 'array.kl',
+    'cpp/color.cpp', 'color.kl',
+    'cpp/universe.cpp', 'universe.kl',
+    'cpp/plugins.cpp', 'plugins.kl',
+    'cpp/version.cpp', 'version.kl',
+    'cpp/dotass.cpp', 'dotass.kl',
+    'cpp/msg.cpp', 'msg.kl' ], subDir="cpp")
 
 # add arnold include
 # arnold root
-arnoldRoot = "E:/library/development/solidangle/Arnold-4.0.16.2-windows"
+arnoldRoot = "E:/library/development/solidangle/Arnold-4.1.3.3-windows"
 includePath = os.path.join(arnoldRoot, "include")
 fabricBuildEnv.Append(CPPPATH = [includePath])
 fabricBuildEnv.Append(LIBS = ["ai"], LIBPATH=[os.path.join(arnoldRoot, "lib")])

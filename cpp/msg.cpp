@@ -2,8 +2,9 @@
 // Copyright (c) 2014, Steven Caron <steven@steven-caron.com> All rights reserved.
 //
 
-#include <Fabric/EDK/EDK.h>
+//#include <Fabric/EDK/EDK.h>
 
+#include "./FabricArnold.h"
 #include <ai.h>
 
 using namespace Fabric::EDK;
